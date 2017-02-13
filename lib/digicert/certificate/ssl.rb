@@ -4,7 +4,7 @@
 #
 
 module Digicert::Certificate
-  class Ssl < OpenStruct
+  class Ssl
 
     REQUEST_FORMAT_ATTRS = {
       certificate: {
@@ -29,7 +29,9 @@ module Digicert::Certificate
     GENERATED_ATTRS = %i(
       id thumbprint serial_number dns_names date_created valid_from
       valid_till server_platform key_size ca_cert status is_renewal
+      organization
     )
+    attr_accessor *(REQUEST_ATTRS + GENERATED_ATTRS)
     # attr_accessor :id, :common_name, :dns_names, :valid_till, :signature_hash,
     #   :csr, :thumbprint, :serial_number
 
@@ -64,11 +66,21 @@ module Digicert::Certificate
     #      "name": "DCert Private CA"
     #    }
 
-    # def initialize options={}
-    #   options.each_pair do |k, v|
-    #     send("#{k}=", v)
-    #   end
-    # end
+    def initialize options={}
+      options.each_pair do |k, v|
+        case k
+        when "organization"
+          # New or fetch
+          self.organization = ::Digicert::Organization.new(v)
+
+        else
+          #puts "k is #{k}"
+          self.send("#{k.to_s}=", v)
+
+        end
+      end
+
+    end
 
     def download(client, format)
       accepted_formats = %w(pem p7b crt)

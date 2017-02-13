@@ -4,13 +4,24 @@
 #
 
 module Digicert
-  class Organization < OpenStruct
+  class Organization
 
-    # def initialize options={}
-    #   options.each_pair do |k, v|
-    #     send("#{k}=", v)
-    #   end
-    # end
+    GENERATED_ATTRS = %i(
+      id
+      name
+      display_name
+      is_active
+      city
+      state
+      country
+    )
+    attr_accessor *GENERATED_ATTRS
+
+    def initialize options={}
+      options.each_pair do |k, v|
+        send("#{k}=", v)
+      end
+    end
   end
 end
 
