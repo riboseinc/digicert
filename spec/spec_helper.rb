@@ -1,6 +1,6 @@
+require "webmock/rspec"
 require "bundler/setup"
 require "digicert/api"
-require "digicert/config"
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -12,8 +12,7 @@ RSpec.configure do |config|
 
   config.before :all do
     Digicert.configure do |digicert_config|
-      digicert_config.api_host = "www.digicert.com"
-      digicert_config.base_path = "services/v2"
+      digicert_config.api_key = "SECRET_DEV_API_KEY"
     end
   end
 end

@@ -7,6 +7,8 @@ require 'curb'
 require 'json'
 require 'pp'
 
+require "digicert/config"
+
 module Digicert
 
   class << self
