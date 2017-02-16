@@ -24,4 +24,26 @@ RSpec.describe Digicert::CertificateRequest do
       expect(certificate_request.requester.first_name).not_to be_nil
     end
   end
+
+  describe ".update" do
+    it "updates the specified ceritfiicate reqeust status" do
+      request_id = 123_456_789
+      stub_digicert_certificate_request_update_api(
+        request_id, request_status_attributes,
+      )
+
+      status_update = Digicert::CertificateRequest.update(
+        request_id, request_status_attributes,
+      )
+
+      expect(status_update.class).to eq(Digicert::ResponseObject)
+    end
+  end
+
+  def request_status_attributes
+    {
+      status: "approved",
+      processor_comment: "Your domain is approved",
+    }
+  end
 end

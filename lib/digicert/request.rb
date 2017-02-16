@@ -21,7 +21,7 @@ module Digicert
 
     def send_http_request
       Net::HTTP.start(*net_http_options) do |http|
-        request = Net::HTTP::Get.new(uri)
+        request = constanize_net_http_class.new(uri)
         set_request_headers!(request)
         set_request_body!(request)
         http.request(request)
@@ -37,6 +37,10 @@ module Digicert
         host: Digicert.configuration.api_host,
         path: digicert_api_path_with_base,
       )
+    end
+
+    def constanize_net_http_class
+      Object.const_get("Net::HTTP::#{@http_method.capitalize}")
     end
 
     def set_request_body!(request)

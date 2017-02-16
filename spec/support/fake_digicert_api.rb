@@ -27,6 +27,16 @@ module Digicert
       )
     end
 
+    def stub_digicert_certificate_request_update_api(request_id, attributes)
+      stub_api_response(
+        :put,
+        ["request", request_id, "status"].join("/"),
+        data: attributes,
+        filename: "empty",
+        status: 204,
+      )
+    end
+
     def stub_api_response(method, end_point, filename:, status: 200, data: nil)
       stub_request(method, digicert_api_end_point(end_point)).
         with(digicert_api_request_headers(data: data)).

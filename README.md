@@ -73,6 +73,17 @@ Use this interface to retrieve the details for a certificate request.
 Digicert::CertificateRequest.fetch(request_id)
 ```
 
+#### Update Request Status
+
+Use this interface to update the status of a previously submitted certificate
+request.
+
+```ruby
+Digicert::CertificateRequest.update(
+  request_id, status: "approved", processor_comment: "Your domain is approved",
+)
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the
