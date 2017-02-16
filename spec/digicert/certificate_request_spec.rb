@@ -1,0 +1,14 @@
+require "spec_helper"
+
+RSpec.describe Digicert::CertificateRequest do
+  describe ".all" do
+    it "retrieves the lists of certificate requests" do
+      stub_digicert_certificate_request_list_api
+      certificate_requests = Digicert::CertificateRequest.all
+
+      expect(certificate_requests.count).to eq(2)
+      expect(certificate_requests.first.id).not_to be_nil
+      expect(certificate_requests.first.requester.first_name).not_to be_nil
+    end
+  end
+end

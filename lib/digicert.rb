@@ -9,6 +9,7 @@ require 'pp'
 
 require "digicert/config"
 require "digicert/product"
+require "digicert/certificate_request"
 
 module Digicert
 

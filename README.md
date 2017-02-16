@@ -55,23 +55,14 @@ Use this interface to retrieve a full set of details for a product.
 Digicert::Product.fetch(name_id)
 ```
 
--- Previous usages guide ---
+### Certificate Request
 
-Run `bin/console` for an interactive prompt.
+#### List certificate requests
 
-This is how you run it:
-
-Set your API key in shell:
-```sh
-export DIGICERT_API_KEY="MY-KEY-ID"
-export DIGICERT_TEST_ORDER_ID="MY-ORDER-ID-FOR-TESTING"
-```
+Use this interface to retrieve a list of certificate requests.
 
 ```ruby
-$ bin/console
-orders = Digicert.list_orders
-order = Digicert.fetch_order
-
+Digicert::CertificateRequest.all
 ```
 
 ## Play Box
@@ -96,4 +87,22 @@ Start playing with it.
 
 ```ruby
 Digicert::Product.all
+```
+
+-- Previous usages guide ---
+
+Run `bin/console` for an interactive prompt.
+
+This is how you run it:
+
+Set your API key in shell:
+```sh
+export DIGICERT_API_KEY="MY-KEY-ID"
+export DIGICERT_TEST_ORDER_ID="MY-ORDER-ID-FOR-TESTING"
+```
+
+```ruby
+$ bin/console
+orders = Digicert.list_orders
+order = Digicert.fetch_order
 ```
