@@ -11,4 +11,17 @@ RSpec.describe Digicert::CertificateRequest do
       expect(certificate_requests.first.requester.first_name).not_to be_nil
     end
   end
+
+  describe ".fetch" do
+    it "retrieves the specified certificate request" do
+      request_id = 123_456_789
+
+      stub_digicert_certificate_request_fetch_api(request_id)
+      certificate_request = Digicert::CertificateRequest.fetch(request_id)
+
+      expect(certificate_request.order.id).not_to be_nil
+      expect(certificate_request.status).to eq("pending")
+      expect(certificate_request.requester.first_name).not_to be_nil
+    end
+  end
 end

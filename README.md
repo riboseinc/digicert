@@ -65,6 +65,14 @@ Use this interface to retrieve a list of certificate requests.
 Digicert::CertificateRequest.all
 ```
 
+#### Certificate Request details
+
+Use this interface to retrieve the details for a certificate request.
+
+```ruby
+Digicert::CertificateRequest.fetch(request_id)
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the
