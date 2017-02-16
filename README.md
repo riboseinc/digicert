@@ -66,3 +66,26 @@ order = Digicert.fetch_order
 
 ```
 
+## Play Box
+
+The API Play Box provides an interactive console so we can easily test out the
+actual API interaction. But before moving forward let's configure the your key.
+
+Setup the client configuration.
+
+```sh
+cp .sample.pryrc .pryrc
+vim .pryrc
+```
+
+Start the console.
+
+```sh
+bin/console
+```
+
+Start playing with it.
+
+```ruby
+Digicert::Product.all
+```

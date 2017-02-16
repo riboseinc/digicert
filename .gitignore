@@ -2,6 +2,7 @@ source_credentials.sh
 .DS_Store
 /.bundle/
 /.yardoc
+/.pryrc
 /Gemfile.lock
 /_yardoc/
 /coverage/
