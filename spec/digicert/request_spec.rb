@@ -12,8 +12,11 @@ RSpec.describe Digicert::Request do
   end
 
   def stub_ping_reqeust_via_get
-    stub_request(:get, "https://www.digicert.com/services/v2/ping").
-      with(headers: { "X-Dc-Devkey"=> Digicert.configuration.api_key }).
-      to_return(status: 200, body: { data: "Pong!"}.to_json )
+    # This helper method is defined in `spec/support/fake_digicert_api`
+    # all it does it verify the reqeust verb, end_point and and data along
+    # with the digicert reqeust headers, and once satisfied then it will
+    # reponse with an identical json file that can be found in `fixtures`
+    #
+    stub_api_response(:get, "ping", filename: "ping")
   end
 end

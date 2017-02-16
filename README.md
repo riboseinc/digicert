@@ -18,7 +18,36 @@ Or install it yourself as:
 
     $ gem install digicert-api
 
+## Configure
+
+Once you have your API key then you can configure it by adding an initializer
+with the following code
+
+```ruby
+Digicert.configure do |config|
+  config.api_key = "SECRET_DEV_API_KEY"
+end
+```
+
+Or
+
+```ruby
+Digicert.configuration.api_key = "SECRET_DEV_API_KEY"
+```
+
 ## Usage
+
+### Product
+
+#### List Products
+
+Use this interface to retrieve a list of available products for an account.
+
+```ruby
+Digicert::Product.all
+```
+
+-- Previous usages guide ---
 
 Run `bin/console` for an interactive prompt.
 

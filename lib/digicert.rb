@@ -8,6 +8,7 @@ require 'json'
 require 'pp'
 
 require "digicert/config"
+require "digicert/product"
 
 module Digicert
 

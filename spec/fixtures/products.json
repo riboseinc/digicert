@@ -1,0 +1,100 @@
+{
+  "products": [
+    {
+      "group_name": "ssl_certificate",
+      "name_id": "ssl_plus",
+      "name": "SSL Plus",
+      "type": "ssl_certificate"
+    },
+    {
+      "group_name": "ssl_certificate",
+      "name_id": "ssl_wildcard",
+      "name": "WildCard Plus",
+      "type": "ssl_certificate"
+    },
+    {
+      "group_name": "ssl_certificate",
+      "name_id": "ssl_multi_domain",
+      "name": "Multi-Domain SSL",
+      "type": "ssl_certificate"
+    },
+    {
+      "group_name": "ssl_certificate",
+      "name_id": "ssl_ev_plus",
+      "name": "EV SSL Plus",
+      "type": "ssl_certificate"
+    },
+    {
+      "group_name": "client_certificate",
+      "name_id": "client_premium",
+      "name": "Premium",
+      "type": "client_certificate"
+    },
+    {
+      "group_name": "client_certificate",
+      "name_id": "client_email_security_plus",
+      "name": "Email Security Plus",
+      "type": "client_certificate"
+    },
+    {
+      "group_name": "client_certificate",
+      "name_id": "client_digital_signature_plus",
+      "name": "Digital Signature Plus",
+      "type": "client_certificate"
+    },
+    {
+      "group_name": "code_signing_certificate",
+      "name_id": "code_signing",
+      "name": "Code Signing",
+      "type": "code_signing_certificate"
+    },
+    {
+      "group_name": "grid_certificate",
+      "name_id": "client_grid_private_premium",
+      "name": "Grid SMIME and Client Authentication",
+      "type": "client_certificate"
+    },
+    {
+      "group_name": "ssl_certificate",
+      "name_id": "ssl_ev_multi_domain",
+      "name": "EV Multi-Domain",
+      "type": "ssl_certificate"
+    },
+    {
+      "group_name": "code_signing",
+      "name_id": "code_signing_ev",
+      "name": "EV Code Signing",
+      "type": "code_signing_certificate"
+    },
+    {
+      "group_name": "private_ssl_certificate",
+      "name_id": "private_ssl_plus",
+      "name": "Private SSL",
+      "type": "ssl_certificate"
+    },
+    {
+      "group_name": "grid_certificate",
+      "name_id": "grid_host_ssl",
+      "name": "Public Grid Host SSL",
+      "type": "ssl_certificate"
+    },
+    {
+      "group_name": "grid_certificate",
+      "name_id": "grid_robot_ssl",
+      "name": "Public Grid Robot SSL",
+      "type": "ssl_certificate"
+    },
+    {
+      "group_name": "grid_certificate",
+      "name_id": "grid_host_ssl_multi_domain",
+      "name": "Public Grid Host Multi-Domain",
+      "type": "ssl_certificate"
+    },
+    {
+      "group_name": "grid_certificate",
+      "name_id": "grid_robot_ssl_multi_domain",
+      "name": "Public Grid Robot Multi-Domain",
+      "type": "ssl_certificate"
+    }
+  ]
+}
