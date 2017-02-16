@@ -1,0 +1,71 @@
+{
+  "group_name": "ssl_certificate",
+  "name_id": "ssl_plus",
+  "name": "SSL Plus",
+  "type": "ssl_certificate",
+  "duplicates_allowed": false,
+  "allowed_validity_years": [
+    1,
+    2,
+    3
+  ],
+  "signature_hash_types": {
+    "allowed_hash_types": [
+      {
+        "id": "sha1",
+        "name": "SHA"
+      },
+      {
+        "id": "sha256",
+        "name": "SHA-256"
+      },
+      {
+        "id": "sha384",
+        "name": "SHA-384"
+      },
+      {
+        "id": "sha512",
+        "name": "SHA-512"
+      }
+    ],
+    "default_hash_type_id": "sha256"
+  },
+  "additional_dns_names_allowed": false,
+  "increased_compatibility_allowed": true,
+  "custom_expiration_date_allowed": true,
+  "csr_required": true,
+  "allow_auto_renew": true,
+  "server_platforms": [
+    {
+      "id": 2,
+      "name": "Apache",
+      "install_url": "http:\/\/www.digicert.com\/ssl-certificate-installation-apache.htm",
+      "csr_url": "http:\/\/www.digicert.com\/csr-creation-apache.htm"
+    },
+    {
+      "id": 14,
+      "name": "Microsoft IIS 5 or 6",
+      "install_url": "http:\/\/www.digicert.com\/ssl-certificate-installation-apache.htm",
+      "csr_url": "http:\/\/www.digicert.com\/csr-creation-apache.htm"
+    },
+    {
+      "id": 40,
+      "name": "Microsoft IIS 7",
+      "install_url": "http:\/\/www.digicert.com\/ssl-certificate-installation-apache.htm",
+      "csr_url": "http:\/\/www.digicert.com\/csr-creation-apache.htm"
+    },
+    {
+      "id": 67,
+      "name": "Microsoft IIS 8",
+      "install_url": "http:\/\/www.digicert.com\/ssl-certificate-installation-apache.htm",
+      "csr_url": "http:\/\/www.digicert.com\/csr-creation-apache.htm"
+    },
+    {
+      "id": 68,
+      "name": "Microsoft Exchange Server 2013",
+      "install_url": "http:\/\/www.digicert.com\/ssl-certificate-installation-apache.htm",
+      "csr_url": "http:\/\/www.digicert.com\/csr-creation-apache.htm"
+    }
+  ],
+  "license_agreement": "CERTIFICATE SUBSCRIBER AGREEMENT"
+}

@@ -47,6 +47,14 @@ Use this interface to retrieve a list of available products for an account.
 Digicert::Product.all
 ```
 
+#### Product details
+
+Use this interface to retrieve a full set of details for a product.
+
+```ruby
+Digicert::Product.fetch(name_id)
+```
+
 -- Previous usages guide ---
 
 Run `bin/console` for an interactive prompt.
