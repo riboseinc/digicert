@@ -1,14 +1,11 @@
-require "digicert/request"
+require "digicert/base"
 
 module Digicert
-  class Product
-    def self.all
-      response = Digicert::Request.new(:get, "product").run
-      response.products
-    end
+  class Product < Digicert::Base
+    private
 
-    def self.fetch(name_id)
-      Digicert::Request.new(:get, ["product", name_id].join("/")).run
+    def resource_path
+      "product"
     end
   end
 end
