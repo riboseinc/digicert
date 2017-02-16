@@ -10,7 +10,14 @@ module Digicert
     API_ORDER_CLIENT_PREMIUM = "#{API_BASE}/order/certificate/client_premium_sha2"
     API_ORDER_VIEW = "/order/certificate/ORDERID"
     API_CERTIFICATE_DOWNLOAD = "/order/certificate/ORDERID"
-    API_ORDER_CLIENT_PREMIUM = "/order/certificate/client_premium_sha2"
+
+    #
+    # This is raising a warning as we might alredy assing
+    # this constent somewhere else, so for now I am just
+    # going to comment this out but I am gonna be back to
+    # this one soon - Abu Nashir, 16th Feb
+    #
+    # API_ORDER_CLIENT_PREMIUM = "/order/certificate/client_premium_sha2"
 
     def new(url)
       URI.encode(URI.decode(url))
