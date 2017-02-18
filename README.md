@@ -169,7 +169,7 @@ Use this interface to order a Client Premium Certificate.
 ```ruby
 Digicert::Order::ClientPremium.create(
   certificate: {
-    common_name: "digicert.com",
+    common_name: "Full Name",
     emails: ["email@example.com", "email1@example.com"],
     csr: "------ [CSR HERE] ------",
     signature_hash: "sha256",
@@ -184,6 +184,29 @@ Digicert::Order::ClientPremium.create(
   custom_expiration_date: "2017-05-18",
   comments: "Comments for the the approver",
   disable_renewal_notifications: false,
+  renewal_of_order_id: 314152,
+)
+```
+
+#### Order Email Security Plus
+
+Use this interface to order a Email Security Plus Certificate
+
+```ruby
+Digicert::EmailSecurityPlus.create(
+  certificate: {
+    common_name: "Full Name",
+    emails: ["email@example.com", "email1@example.com"],
+    signature_hash: "sha256",
+
+    organization_units: ["Developer Operations"],
+    server_platform: { id: 45 },
+    profile_option: "some_ssl_profile",
+  },
+
+  organization: { id: 117483 },
+  validity_years: 3,
+  auto_renew: 10,
   renewal_of_order_id: 314152,
 )
 ```
