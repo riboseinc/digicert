@@ -13,6 +13,7 @@ require "digicert/certificate_request"
 require "digicert/order/ssl_plus"
 require "digicert/order/ssl_wildcard"
 require "digicert/order/ssl_ev_plus"
+require "digicert/order/client_premium"
 
 module Digicert
 
