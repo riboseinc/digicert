@@ -3,7 +3,7 @@ require "spec_helper"
 RSpec.describe Digicert::Order::SSLWildcard do
   describe ".create" do
     it "creates a new order for a ssl wildcard certificate" do
-      stub_digicert_ssl_wildcard_create_api(order_attributes)
+      stub_digicert_order_create_api("ssl_wildcard", order_attributes)
       order = Digicert::Order::SSLWildcard.create(order_attributes)
 
       expect(order.id).not_to be_nil

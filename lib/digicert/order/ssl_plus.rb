@@ -1,38 +1,12 @@
-require "digicert/base"
+require "digicert/order/base"
 
 module Digicert
   module Order
-    class SSLPlus < Digicert::Base
-      def create(certificate:, organization:, validity_years:, **attributes)
-        required_attributes = {
-          certificate: validate_certificate(certificate),
-          organization: validate_organization(organization),
-          validity_years: validity_years,
-        }
-
-        Digicert::Request.new(
-          :post, resource_path, required_attributes.merge(attributes),
-        ).run
-      end
-
-      def self.create(order_attributes)
-        new.create(order_attributes)
-      end
-
+    class SSLPlus < Digicert::Order::Base
       private
 
-      def resource_path
-        "order/certificate/ssl_plus"
-      end
-
-      def validate_organization(id:)
-        { id: id }
-      end
-
-      def validate_certificate(common_name:, csr:, signature_hash:, **attrs)
-        attrs.merge(
-          csr: csr, common_name: common_name, signature_hash: signature_hash,
-        )
+      def certificate_type
+        "ssl_plus"
       end
     end
   end

@@ -37,22 +37,12 @@ module Digicert
       )
     end
 
-    def stub_digicert_ssl_plus_create(attributes)
+    def stub_digicert_order_create_api(certificate_type, attributes)
       stub_api_response(
         :post,
-        "order/certificate/ssl_plus",
+        ["order/certificate", certificate_type].join("/"),
         data: attributes,
-        filename: "ssl_plus_order_created",
-        status: 201,
-      )
-    end
-
-    def stub_digicert_ssl_wildcard_create_api(attributes)
-      stub_api_response(
-        :post,
-        "order/certificate/ssl_wildcard",
-        data: attributes,
-        filename: "ssl_wildcard_order_created",
+        filename: "order_created",
         status: 201,
       )
     end
