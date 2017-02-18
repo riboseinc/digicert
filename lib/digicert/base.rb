@@ -2,6 +2,11 @@ require "digicert/request"
 
 module Digicert
   class Base
+    def initialize(resource_id: nil, **attributes)
+      @resource_id = resource_id
+      @attributes = attributes
+    end
+
     def all
       response = Digicert::Request.new(:get, resource_path).run
       response[resources_key]
@@ -20,6 +25,8 @@ module Digicert
     end
 
     private
+
+    attr_reader :resource_id, :attributes
 
     def resources_key
       [resource_path, "s"].join

@@ -10,6 +10,7 @@ require 'pp'
 require "digicert/config"
 require "digicert/product"
 require "digicert/certificate_request"
+require "digicert/order/ssl_plus"
 
 module Digicert
 
