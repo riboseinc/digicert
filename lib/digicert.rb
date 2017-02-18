@@ -15,6 +15,7 @@ require "digicert/order/ssl_wildcard"
 require "digicert/order/ssl_ev_plus"
 require "digicert/order/client_premium"
 require "digicert/order/email_security_plus"
+require "digicert/order/digital_signature_plus"
 
 module Digicert
 

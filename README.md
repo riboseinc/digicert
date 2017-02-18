@@ -211,6 +211,26 @@ Digicert::EmailSecurityPlus.create(
 )
 ```
 
+#### Order Client Digital Signature Plus
+
+Use this interface to order a Order Client Digital Signature Plus
+
+```ruby
+Digicert::DigitalSignaturePlus.create(
+  certificate: {
+    common_name: "Full Name",
+    emails: ["email@example.com", "email1@example.com"],
+    csr: "-----BEGIN CERTIFICATE REQUEST----- ...",
+    signature_hash: "sha256",
+  },
+
+  organization: { id: 117483 },
+  validity_years: 3,
+  auto_renew: 10,
+  renewal_of_order_id: 314152,
+)
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the
