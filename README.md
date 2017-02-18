@@ -137,6 +137,31 @@ Digicert::Order::SSLWildcard.create(
 )
 ```
 
+#### Order SSL EV Plus Certificate
+
+Use this interface to order a SSL EV Plus Certificate.
+
+```ruby
+Digicert::Order::SSLEVPlus.create(
+  certificate: {
+    common_name: "digicert.com",
+    csr: "------ [CSR HERE] ------",
+    signature_hash: "sha256",
+
+    organization_units: ["Developer Operations"],
+    server_platform: { id: 45 },
+    profile_option: "some_ssl_profile",
+  },
+
+  organization: { id: 117483 },
+  validity_years: 3,
+  custom_expiration_date: "2017-05-18",
+  comments: "Comments for the the approver",
+  disable_renewal_notifications: false,
+  renewal_of_order_id: 314152,
+)
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the

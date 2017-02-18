@@ -12,6 +12,7 @@ require "digicert/product"
 require "digicert/certificate_request"
 require "digicert/order/ssl_plus"
 require "digicert/order/ssl_wildcard"
+require "digicert/order/ssl_ev_plus"
 
 module Digicert
 
