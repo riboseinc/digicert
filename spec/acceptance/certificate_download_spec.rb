@@ -2,7 +2,7 @@ require "spec_helper"
 require "digicert"
 
 RSpec.describe "Download a certificate" do
-  it "creates and download a certificate" do
+  it "creates and download an approved certificate" do
     name_id = "ssl_plus"
 
     # Retrieve the product details uisng the
@@ -22,10 +22,24 @@ RSpec.describe "Download a certificate" do
     # certificate id in it, so we can use this one to
     # download the certificate using the API
     #
-    stub_digicert_certificate_order_fetch_api(order.id)
-    certificate_order = Digicert::CertificateOrder.fetch(order.id)
+    stub_digicert_order_fetch_api(order.id)
+    certificate_order = Digicert::Order.fetch(order.id)
 
-    expect(certificate_order.certificate.id).not_to be_nil
+    # Now that we have the certicate orders detials with
+    # the certificate id and the order status, so let's assume
+    # all requiremetns are meet and let's fetch the certificate
+    #
+    certificate_id = certificate_order.certificate.id
+    stub_digicert_certificate_content_fetch_api(certificate_id)
+    certificate = Digicert::CertificateDownloader.fetch(certificate_id)
+
+    # Normally zip archieves content starts with `PK` and then
+    # the content of the files inside the zip folder
+    #
+    # Source: http://filext.com/faq/look_into_files.php
+    #
+    expect(certificate.code.to_i).to eq(200)
+    expect(certificate.body.start_with?("PK")).to be_truthy
   end
 
   def build_order_attributes(product)

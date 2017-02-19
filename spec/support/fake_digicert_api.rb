@@ -164,6 +164,19 @@ module Digicert
       )
     end
 
+    def stub_digicert_certificate_content_fetch_api(id)
+      end_point = ["certificate", id, "download", "platform"].join("/")
+
+      stub_request(:get, digicert_api_end_point(end_point)).
+        with(digicert_api_request_headers(data: nil)).
+        to_return(
+          body: File.new(
+            File.expand_path("../../fixtures/certificate.zip", __FILE__)
+          ),
+          status: 200,
+        )
+    end
+
     def stub_api_response(method, end_point, filename:, status: 200, data: nil)
       stub_request(method, digicert_api_end_point(end_point)).
         with(digicert_api_request_headers(data: data)).

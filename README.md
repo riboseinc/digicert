@@ -478,6 +478,26 @@ domain = Digicert::Domain.find(domain_id)
 domain.deactivate
 ```
 
+### Certificate
+
+#### Download a Certificate
+
+This request will return an SSL Certificate file from an order. By default, it
+uses the platform specified by the order.
+
+```ruby
+# Fetch the certficate details that includes a http status code
+# and the file content in the `#body`, so you can choose if you
+# want to write it to your filesystem or directly upload it to
+# your host, and the contents it returns is `zip` archieve.
+#
+certificate = Digicert::CertificateDownloader.fetch(certificate_id)
+
+# write to content to somewhere in your filesystem.
+#
+File.write("path_to_file_system/certificate.zip", certificate.body)
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the
