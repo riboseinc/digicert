@@ -39,11 +39,16 @@ RSpec.describe "Download a certificate" do
         common_name: "digicert.com",
         signature_hash: product.signature_hash_types.allowed_hash_types[0].id,
       },
-      organization: { id: 117483 },
+      organization: { id: organizations.first.id },
       validity_years: product.allowed_validity_years.last,
       disable_renewal_notifications: false,
       renewal_of_order_id: 314152,
       payment_method: "balance",
     }
+  end
+
+  def organizations
+    stub_digicert_organization_list_api
+    Digicert::Organization.all
   end
 end

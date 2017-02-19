@@ -241,6 +241,16 @@ Use this interface to retrieve a certificate order.
 Digicert::CertificateOrder.fetch(order_id)
 ```
 
+### Organization
+
+#### List all organizations
+
+Use this interface to retrieve a list of organizations.
+
+```ruby
+Digicert::Organization.all
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the

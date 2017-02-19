@@ -2,26 +2,14 @@
 # (c) 2017 Ribose, Inc. as unpublished work.
 #
 #
+require "digicert/base"
 
 module Digicert
-  class Organization
+  class Organization < Digicert::Base
+    private
 
-    GENERATED_ATTRS = %i(
-      id
-      name
-      display_name
-      is_active
-      city
-      state
-      country
-    )
-    attr_accessor *GENERATED_ATTRS
-
-    def initialize options={}
-      options.each_pair do |k, v|
-        send("#{k}=", v)
-      end
+    def resource_path
+      "organization"
     end
   end
 end
-

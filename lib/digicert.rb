@@ -17,6 +17,7 @@ require "digicert/order/client_premium"
 require "digicert/order/email_security_plus"
 require "digicert/order/digital_signature_plus"
 require "digicert/certificate_order"
+require "digicert/organization"
 
 module Digicert
 
@@ -51,7 +52,6 @@ end
 require 'digicert/client'
 require 'digicert/endpoint'
 require 'digicert/order'
-require 'digicert/organization'
 require 'digicert/certificate'
 
 

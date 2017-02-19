@@ -1,0 +1,84 @@
+{
+  "organizations": [
+    {
+      "id": 117483,
+      "status": "approved",
+      "name": "DigiCert, Inc.",
+      "assumed_name": "DigiCert",
+      "display_name": "DigiCert, Inc. (DigiCert)",
+      "is_active": true,
+      "address": "333 S 520 W",
+      "address2": "Suite 500",
+      "zip": "84042",
+      "city": "Lindon",
+      "state": "Utah",
+      "country": "US",
+      "telephone": "801-555-0453",
+      "container": {
+        "id": 1,
+        "name": "My Company",
+        "is_active": true
+      },
+      "validations": [
+        {
+          "type": "ov",
+          "name": "OV",
+          "description": "Normal Organization Validation",
+          "date_created": "2015-08-09T17:04:59+00:00",
+          "validated_until": "2016-08-09T17:04:45+00:00",
+          "status": "active"
+        },
+        {
+          "type": "ev",
+          "name": "EV",
+          "description": "Extended Organization Validation (EV)",
+          "status": "pending",
+          "verified_users": [
+            {
+              "id": 1,
+              "first_name": "John",
+              "last_name": "Harrison"
+            }
+          ]
+        },
+        {
+          "type": "cs",
+          "name": "CS",
+          "description": "Code Signing Validation",
+          "date_created": "2014-08-09T17:04:59+00:00",
+          "validated_until": "2015-08-09T17:04:45+00:00",
+          "status": "expired",
+          "verified_users": [
+            {
+              "id": 1,
+              "first_name": "John",
+              "last_name": "Harrison"
+            }
+          ]
+        }
+      ],
+      "ev_approvers": [
+        {
+          "id": 4321,
+          "first_name": "Bro",
+          "last_name": "Jackson"
+        }
+      ]
+    },
+    {
+      "id": 117483,
+      "status": "approved",
+      "name": "Testing, Inc.",
+      "address": "123 Testing Way",
+      "zip": "84043",
+      "city": "Lehi",
+      "state": "Utah",
+      "country": "US",
+      "container": {
+        "id": 1,
+        "name": "My Company",
+        "is_active": true
+      }
+    }
+  ]
+}
