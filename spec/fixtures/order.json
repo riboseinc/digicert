@@ -1,0 +1,107 @@
+{
+  "id": 123456789,
+  "certificate": {
+    "id": 112358,
+    "thumbprint": "7D236B54D19D5EACF0881FAF24D51DFE5D23E945",
+    "serial_number": "0669D46CAE79EF684A69777490602485",
+    "common_name": "digicert.com",
+    "dns_names": [
+      "digicert.com"
+    ],
+    "date_created": "2014-08-19T18:16:07+00:00",
+    "valid_from": "2014-08-19",
+    "valid_till": "2015-08-19",
+    "csr": "------ [CSR HERE] ------",
+    "organization": {
+      "id": 117483
+    },
+    "organization_units": [
+      "Digicert"
+    ],
+    "server_platform": {
+      "id": 45,
+      "name": "nginx",
+      "install_url": "https:\/\/www.digicert.com\/ssl-certificate-installation-nginx.htm",
+      "csr_url": "https:\/\/www.digicert.com\/csr-creation-nginx.htm"
+    },
+    "signature_hash": "sha256",
+    "key_size": 2048,
+    "ca_cert": {
+      "id": "f7slk4shv9s2wr3",
+      "name": "DCert Private CA"
+    }
+  },
+  "status": "approved",
+  "is_renewal": true,
+  "is_renewed": false,
+  "renewed_order_id": 0,
+  "business_unit": "Some Unit",
+  "date_created": "2014-08-19T18:16:07+00:00",
+  "organization": {
+    "name": "DigiCert, Inc.",
+    "display_name": "DigiCert, Inc.",
+    "is_active": true,
+    "city": "Lindon",
+    "state": "Utah",
+    "country": "us"
+  },
+  "disable_renewal_notifications": false,
+  "container": {
+    "id": 5,
+    "name": "College of Science"
+  },
+  "product": {
+    "name_id": "ssl_plus",
+    "name": "SSL Plus",
+    "type": "ssl_certificate",
+    "validation_type": "ov",
+    "validation_name": "OV",
+    "validation_description": "Normal Organization Validation"
+  },
+  "organization_contact": {
+    "first_name": "Some",
+    "last_name": "Guy",
+    "email": "someguy@digicert.com",
+    "telephone": "8015551212"
+  },
+  "technical_contact": {
+    "first_name": "Some",
+    "last_name": "Guy",
+    "email": "someguy@digicert.com",
+    "telephone": "8015551212"
+  },
+  "user": {
+    "id": 153208,
+    "first_name": "Clive",
+    "last_name": "Collegedean",
+    "email": "clivecollegedean@digicert.com"
+  },
+  "requests": [
+    {
+      "id": 1,
+      "date": "2015-01-01T18:20:00+00:00",
+      "type": "new_request",
+      "status": "approved",
+      "comments": "Form autofill"
+    }
+  ],
+  "receipt_id": 123892,
+  "cs_provisioning_method": "none",
+  "send_minus_90": true,
+  "send_minus_60": true,
+  "send_minus_30": true,
+  "send_minus_7": true,
+  "send_minus_3": true,
+  "send_plus_7": true,
+  "public_id": "MZv8RhHDVl9R3Ieko3iMX89wvYT3bYPA",
+  "allow_duplicates": false,
+  "user_assignments": [
+    {
+      "id": 153208,
+      "first_name": "Clive",
+      "last_name": "Collegedean",
+      "email": "clivecollegedean@digicert.com"
+    }
+  ],
+  "payment_method": "balance"
+}

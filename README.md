@@ -231,6 +231,16 @@ Digicert::DigitalSignaturePlus.create(
 )
 ```
 
+### Certificate Order
+
+#### Certificate order details
+
+Use this interface to retrieve a certificate order.
+
+```ruby
+Digicert::CertificateOrder.fetch(order_id)
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the
