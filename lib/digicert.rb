@@ -9,9 +9,8 @@ require 'pp'
 
 require "digicert/config"
 require "digicert/product"
+require "digicert/order"
 require "digicert/certificate_request"
-require "digicert/ssl_certificate"
-require "digicert/client_certificate"
 require "digicert/certificate_order"
 require "digicert/organization"
 
@@ -45,10 +44,10 @@ module Digicert
 end
 
 
-require 'digicert/client'
-require 'digicert/endpoint'
-require 'digicert/order'
-require 'digicert/certificate'
+# require 'digicert/client'
+# require 'digicert/endpoint'
+# require 'digicert/order'
+# require 'digicert/certificate'
 
 
 __END__

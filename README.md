@@ -86,6 +86,47 @@ Digicert::CertificateRequest.update(
 
 ### Order
 
+### Create a new order
+
+Use this interface to create a new order, this expect two arguments one is
+`name_id` for the order and another one is the attributes hash for the order.
+
+```ruby
+order = Digicert::Order.create(
+  name_id, order_attributes_hash,
+)
+
+# Pay close attension building the order attributes
+# hash, it requries to format the data in a specific
+# format and once that is satisfied only then it will
+# perfrom the API operation otherwise it will raise
+# invalid argument errors.
+#
+order_attributes = {
+  certificate: {
+    common_name: "digicert.com",
+    csr: "------ [CSR HERE] ------",
+    signature_hash: "sha256",
+
+    organization_units: ["Developer Operations"],
+    server_platform: { id: 45 },
+    profile_option: "some_ssl_profile",
+  },
+
+  organization: { id: 117483 },
+  validity_years: 3,
+  custom_expiration_date: "2017-05-18",
+  comments: "Comments for the the approver",
+  disable_renewal_notifications: false,
+  renewal_of_order_id: 314152,
+  payment_method: "balance",
+}
+```
+
+The supported `name_id`'s are `ssl_plus`, `ssl_wildcard`, `ssl_ev_plus`,
+`client_premium`, `email_security_plus` and `digital_signature_plus`. Please
+check the Digicert documentation for more details on those.
+
 #### Order SSL Plus Certificate
 
 Use this interface to order a SSL Plus Certificate.
