@@ -1,7 +1,7 @@
-require "digicert/order/base"
+require "digicert/base_order"
 
 module Digicert
-  module Order
+  module SSLCertificate
     class SSLPlus < Digicert::Order::Base
       private
 

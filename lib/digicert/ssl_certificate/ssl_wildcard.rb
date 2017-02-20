@@ -1,8 +1,8 @@
-require "digicert/order/base"
+require "digicert/base_order"
 
 module Digicert
-  module Order
-    class SSLWildcard < Digicert::Order::Base
+  module SSLCertificate
+    class SSLWildcard < Digicert::BaseOrder
       private
 
       def certificate_type

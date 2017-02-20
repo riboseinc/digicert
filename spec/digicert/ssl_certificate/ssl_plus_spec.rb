@@ -1,10 +1,10 @@
 require "spec_helper"
 
-RSpec.describe Digicert::Order::SSLPlus do
+RSpec.describe Digicert::SSLCertificate::SSLPlus do
   describe ".create" do
     it "creates a new order for ssl plus certificate" do
       stub_digicert_order_create_api("ssl_plus", order_attributes)
-      order = Digicert::Order::SSLPlus.create(order_attributes)
+      order = Digicert::SSLCertificate::SSLPlus.create(order_attributes)
 
       expect(order.id).not_to be_nil
       expect(order.requests.first.id).not_to be_nil

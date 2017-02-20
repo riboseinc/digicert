@@ -16,7 +16,8 @@ RSpec.describe "Download a certificate" do
     #
     order_attributes = build_order_attributes(product)
     stub_digicert_order_create_api("ssl_plus", order_attributes)
-    order = Digicert::Order::SSLPlus.create(order_attributes)
+    order = Digicert::SSLCertificate::SSLPlus.create(order_attributes)
+    # order = Digicert::Order::SSLPlus.create(order_attributes)
 
     # Retrieve the certificate order details with the
     # certificate id in it, so we can use this one to
