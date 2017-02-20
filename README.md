@@ -193,7 +193,7 @@ Digicert::Order::ClientPremium.create(
 Use this interface to order a Email Security Plus Certificate
 
 ```ruby
-Digicert::EmailSecurityPlus.create(
+Digicert::Order::EmailSecurityPlus.create(
   certificate: {
     common_name: "Full Name",
     emails: ["email@example.com", "email1@example.com"],
@@ -216,7 +216,7 @@ Digicert::EmailSecurityPlus.create(
 Use this interface to order a Order Client Digital Signature Plus
 
 ```ruby
-Digicert::DigitalSignaturePlus.create(
+Digicert::Order::DigitalSignaturePlus.create(
   certificate: {
     common_name: "Full Name",
     emails: ["email@example.com", "email1@example.com"],
