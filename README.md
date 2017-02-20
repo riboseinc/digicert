@@ -91,7 +91,7 @@ Digicert::CertificateRequest.update(
 Use this interface to order a SSL Plus Certificate.
 
 ```ruby
-Digicert::Order::SSLPlus.create(
+Digicert::SSLCertificate::SSLPlus.create(
   certificate: {
     common_name: "digicert.com",
     csr: "------ [CSR HERE] ------",
@@ -117,7 +117,7 @@ Digicert::Order::SSLPlus.create(
 Use this interface to order a SSL Wildcard Certificate.
 
 ```ruby
-Digicert::Order::SSLWildcard.create(
+Digicert::SSLCertificate::SSLWildcard.create(
   certificate: {
     common_name: "digicert.com",
     csr: "------ [CSR HERE] ------",
@@ -142,7 +142,7 @@ Digicert::Order::SSLWildcard.create(
 Use this interface to order a SSL EV Plus Certificate.
 
 ```ruby
-Digicert::Order::SSLEVPlus.create(
+Digicert::SSLCertificate::SSLEVPlus.create(
   certificate: {
     common_name: "digicert.com",
     csr: "------ [CSR HERE] ------",
@@ -167,7 +167,7 @@ Digicert::Order::SSLEVPlus.create(
 Use this interface to order a Client Premium Certificate.
 
 ```ruby
-Digicert::Order::ClientPremium.create(
+Digicert::ClientCertificate::Premium.create(
   certificate: {
     common_name: "Full Name",
     emails: ["email@example.com", "email1@example.com"],
@@ -193,7 +193,7 @@ Digicert::Order::ClientPremium.create(
 Use this interface to order a Email Security Plus Certificate
 
 ```ruby
-Digicert::Order::EmailSecurityPlus.create(
+Digicert::ClientCertificate::EmailSecurityPlus.create(
   certificate: {
     common_name: "Full Name",
     emails: ["email@example.com", "email1@example.com"],

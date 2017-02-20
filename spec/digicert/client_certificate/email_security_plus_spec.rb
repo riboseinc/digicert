@@ -1,10 +1,15 @@
 require "spec_helper"
 
-RSpec.describe Digicert::Order::ClientPremium do
+RSpec.describe Digicert::ClientCertificate::EmailSecurityPlus do
   describe ".create" do
-    it "creates a new order for a client premium certificate" do
-      stub_digicert_order_create_api("client_premium_sha2", order_attributes)
-      order = Digicert::Order::ClientPremium.create(order_attributes)
+    it "creates a new order for a email security plus certificate" do
+      stub_digicert_order_create_api(
+        "client_email_security_plus", order_attributes,
+      )
+
+      order = Digicert::ClientCertificate::EmailSecurityPlus.create(
+        order_attributes,
+      )
 
       expect(order.id).not_to be_nil
     end
@@ -19,15 +24,12 @@ RSpec.describe Digicert::Order::ClientPremium do
 
         # Required for certificate
         emails: ["email@example.com", "email1@example.com"],
-        csr: "------ [CSR HERE] ------",
-        common_name: "digicert.com",
+        common_name: "Full Name",
         signature_hash: "sha256",
       },
       organization: { id: 117483 },
       validity_years: 3,
-      custom_expiration_date: "2017-05-18",
-      comments: "Comments for the the approver",
-      disable_renewal_notifications: false,
+      auto_renew: 10,
       renewal_of_order_id: 314152,
     }
   end
