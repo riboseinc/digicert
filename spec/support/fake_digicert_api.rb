@@ -77,6 +77,16 @@ module Digicert
       )
     end
 
+    def stub_digicert_container_create_api(container_id:, **attributes)
+      stub_api_response(
+        :post,
+        ["container", container_id, "children"].join("/"),
+        data: attributes,
+        filename: "container_created",
+        status: 201,
+      )
+    end
+
     def stub_api_response(method, end_point, filename:, status: 200, data: nil)
       stub_request(method, digicert_api_end_point(end_point)).
         with(digicert_api_request_headers(data: data)).

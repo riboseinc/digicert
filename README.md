@@ -60,6 +60,31 @@ Digicert::ContainerTemplate.fetch(
 )
 ```
 
+#### Create a Container
+
+Container is an Operational Division used to model your organizational
+structure. The features of the container you create are determined by its
+Container Template. Use this interface to create new container, and this
+interface also expects us to provide `parent_container` along with the others
+attributes as `container_id`.
+
+```ruby
+Digicert::Container.create(
+  container_id: 123_456_789,
+  template_id: 5,
+  name: "History Department",
+  description: "History, Civ, Ancient Languages",
+
+  user: {
+    first_name: "Awesome",
+    last_name: "User"
+    email: "awesomeuser@example.com",
+    username: "awesomeuser@example.com",
+    access_roles: [{ id: 1 }],
+  },
+)
+```
+
 ### Product
 
 #### List Products
