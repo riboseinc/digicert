@@ -1,16 +1,14 @@
-require "digicert/request"
+require "digicert/actions/base"
 
 module Digicert
   module Actions
     module Fetch
+      extend Digicert::Actions::Base
+
       def fetch
         Digicert::Request.new(
           :get, [resource_path, resource_id].join("/"),
         ).run
-      end
-
-      def self.included(base)
-        base.extend(ClassMethods)
       end
 
       module ClassMethods
