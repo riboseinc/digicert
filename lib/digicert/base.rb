@@ -1,7 +1,10 @@
 require "digicert/request"
+require "digicert/actions/fetch"
 
 module Digicert
   class Base
+    include Digicert::Actions::Fetch
+
     def initialize(resource_id: nil, **attributes)
       @resource_id = resource_id
       @attributes = attributes
@@ -12,18 +15,8 @@ module Digicert
       response[resources_key]
     end
 
-    def fetch
-      Digicert::Request.new(
-        :get, [resource_path, @resource_id].join("/"),
-      ).run
-    end
-
     def self.all
       new.all
-    end
-
-    def self.fetch(resource_id)
-      new(resource_id: resource_id).fetch
     end
 
     private
