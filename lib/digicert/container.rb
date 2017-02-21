@@ -2,8 +2,9 @@ require "digicert/base"
 
 module Digicert
   class Container < Digicert::Base
-    def initialize(container_id)
-      @container_id = container_id
+    def initialize(attributes = {})
+      @resource_id = attributes[:resource_id]
+      @container_id = attributes[:container_id]
     end
 
     def create(name:, template_id:, **attributes)
@@ -15,7 +16,7 @@ module Digicert
     end
 
     def self.create(container_id:, **attributes)
-      new(container_id).create(attributes)
+      new(container_id: container_id).create(attributes)
     end
 
     private

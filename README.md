@@ -85,6 +85,15 @@ Digicert::Container.create(
 )
 ```
 
+#### View a Container
+
+Information about a specific container can be retrieved through this interface,
+including its name, description, template, and parent container id.
+
+```ruby
+Digicert::Container.fetch(container_id)
+```
+
 ### Product
 
 #### List Products

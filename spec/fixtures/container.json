@@ -1,0 +1,15 @@
+{
+  "id": 3,
+  "public_id": "c3f355cae8eb30b8d77b7b282686f0c",
+  "name": "Heidelberg University",
+  "description": "Germany University of Heidelberg",
+  "parent_id": 2,
+  "template_id": 3,
+  "ekey": "BR549",
+  "has_logo": false,
+  "is_active": true,
+  "allowed_domain_names": [
+    "abc.xyz",
+    "digicert.com"
+  ]
+}

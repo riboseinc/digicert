@@ -10,6 +10,19 @@ RSpec.describe Digicert::Container do
     end
   end
 
+  describe ".fetch" do
+    it "retrieves the details for a container" do
+      container_id = 123_456_789
+
+      stub_digicert_container_fetch_api(container_id)
+      container = Digicert::Container.fetch(container_id)
+
+      expect(container.name).not_to be_nil
+      expect(container.parent_id).not_to be_nil
+      expect(container.allowed_domain_names.first).to eq("abc.xyz")
+    end
+  end
+
   def container_attributes
     {
       container_id: 123_456_789,
