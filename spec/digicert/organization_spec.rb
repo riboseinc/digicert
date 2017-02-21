@@ -12,4 +12,37 @@ RSpec.describe Digicert::Organization do
       expect(organizations.first.container.id).not_to be_nil
     end
   end
+
+  describe ".create" do
+    it "creates a new organization" do
+      stub_digicert_organization_create_api(organization_attributes)
+      organization = Digicert::Organization.create(organization_attributes)
+
+      expect(organization.id).not_to be_nil
+    end
+  end
+
+  def organization_attributes
+    {
+      name: "digicert, inc.",
+      address: "333 s 520 w",
+      zip: 84042,
+      city: "lindon",
+      state: "utah",
+      country: "us",
+      telephone: 8015551212,
+      container: { id: 17 },
+
+      organization_contact: {
+        first_name: "Some",
+        last_name: "Guy",
+        email: "someguy@digicert.com",
+        telephone: 8015551212,
+      },
+
+      # Optional attributes
+      assumed_name: "DigiCert",
+      address2: "Suite 500",
+    }
+  end
 end

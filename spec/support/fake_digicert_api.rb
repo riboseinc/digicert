@@ -59,6 +59,16 @@ module Digicert
       )
     end
 
+    def stub_digicert_organization_create_api(organization_attributes)
+      stub_api_response(
+        :post,
+        "organization",
+        data: organization_attributes,
+        filename: "organization_created",
+        status: 201,
+      )
+    end
+
     def stub_digicert_container_template_list_api(container_id)
       stub_api_response(
         :get,

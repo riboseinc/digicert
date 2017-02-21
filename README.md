@@ -349,6 +349,43 @@ Use this interface to retrieve a list of organizations.
 Digicert::Organization.all
 ```
 
+#### Create an Organization
+
+Use this interface to create a new organization. The organization information
+will be used by DigiCert for validation and may appear on certificates.
+
+```ruby
+# Create a new organization
+# Please pay close attension bellow
+# on building the organization_attributes
+#
+Digicert::Organization.create(organization_attributes)
+
+# Organization attributes hash
+#
+organization_attributes = {
+  name: "digicert, inc.",
+  address: "333 s 520 w",
+  zip: 84042,
+  city: "lindon",
+  state: "utah",
+  country: "us",
+  telephone: 8015551212,
+  container: { id: 17 },
+
+  organization_contact: {
+    first_name: "Some",
+    last_name: "Guy",
+    email: "someguy@digicert.com",
+    telephone: 8015551212,
+  },
+
+  # Optional attributes
+  assumed_name: "DigiCert",
+  address2: "Suite 500",
+}
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the
