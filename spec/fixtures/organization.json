@@ -1,0 +1,35 @@
+{
+  "id": 117483,
+  "status": "approved",
+  "name": "DigiCert, Inc.",
+  "assumed_name": "DigiCert",
+  "display_name": "DigiCert",
+  "is_active": true,
+  "address": "333 S 520 W",
+  "address2": "Suite 500",
+  "zip": "84042",
+  "city": "Lindon",
+  "state": "Utah",
+  "country": "US",
+  "telephone": "801-555-0246",
+  "container": {
+    "id": 1,
+    "name": "Parent Company",
+    "is_active": true
+  },
+  "organization_contact": {
+    "id": 376032,
+    "first_name": "Some",
+    "last_name": "Guy",
+    "email": "someguy@digicert.com",
+    "telephone": "8017050481",
+    "telephone_extension": "5"
+  },
+  "ev_approvers": [
+    {
+      "id": 1500432,
+      "first_name": "John",
+      "last_name": "Smith"
+    }
+  ]
+}

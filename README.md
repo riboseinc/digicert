@@ -386,6 +386,14 @@ organization_attributes = {
 }
 ```
 
+#### View an Organization
+
+Use this interface to view information about an organization.
+
+```ruby
+Digicert::Organization.fetch(organization_id)
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the

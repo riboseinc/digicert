@@ -69,6 +69,12 @@ module Digicert
       )
     end
 
+    def stub_digicert_organization_fetch_api(id)
+      stub_api_response(
+        :get, ["organization", id].join("/"), filename: "organization",
+      )
+    end
+
     def stub_digicert_container_template_list_api(container_id)
       stub_api_response(
         :get,

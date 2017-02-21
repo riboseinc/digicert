@@ -22,6 +22,19 @@ RSpec.describe Digicert::Organization do
     end
   end
 
+  describe ".fetch" do
+    it "retrieves the specified organization details" do
+      organization_id = 123_456_789
+
+      stub_digicert_organization_fetch_api(organization_id)
+      organization = Digicert::Organization.fetch(organization_id)
+
+      expect(organization.id).not_to be_nil
+      expect(organization.name).not_to be_nil
+      expect(organization.container.id).not_to be_nil
+    end
+  end
+
   def organization_attributes
     {
       name: "digicert, inc.",
