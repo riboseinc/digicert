@@ -1,8 +1,8 @@
-require "digicert/base_order"
+require "digicert/ssl_certificate/base"
 
 module Digicert
   module SSLCertificate
-    class SSLPlus < Digicert::BaseOrder
+    class SSLPlus < Digicert::SSLCertificate::Base
       private
 
       def certificate_type
