@@ -1,7 +1,7 @@
 require "spec_helper"
 require "digicert/base"
 
-RSpec.describe "Digicert::TestFetchAction" do
+RSpec.describe "Digicert::Actions::Fetch" do
   describe ".fetch" do
     it "fetch a specified resource" do
       resource_id = 123_456_789

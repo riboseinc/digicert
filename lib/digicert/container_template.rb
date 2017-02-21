@@ -2,9 +2,9 @@ require "digicert/base"
 
 module Digicert
   class ContainerTemplate < Base
-    def initialize(container_id:, resource_id: nil)
-      @resource_id = resource_id
-      @container_id = container_id
+    def initialize(attributes = {})
+      @container_id = attributes.delete(:container_id)
+      super
     end
 
     def self.all(container_id)

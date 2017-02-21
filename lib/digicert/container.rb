@@ -1,38 +1,35 @@
 require "digicert/base"
+require "digicert/actions/create"
 
 module Digicert
   class Container < Digicert::Base
+    include Digicert::Actions::Create
+
     def initialize(attributes = {})
-      @resource_id = attributes[:resource_id]
-      @container_id = attributes[:container_id]
-    end
-
-    def create(name:, template_id:, **attributes)
-      required_attributes = {
-        name: name, template_id: template_id
-      }
-
-      create_container(required_attributes, attributes)
+      @container_id = attributes.delete(:container_id)
+      super
     end
 
     def self.create(container_id:, **attributes)
-      new(container_id: container_id).create(attributes)
+      new(attributes.merge(container_id: container_id)).create
     end
 
     private
 
-    def create_container(required_attrs, additional_attrs)
-      Digicert::Request.new(
-        :post, container_creation_path, required_attrs.merge(additional_attrs),
-      ).run
-    end
+    def validate(name:, template_id:, **attributes)
+      required_attributes = {
+        name: name, template_id: template_id
+      }
 
-    def container_creation_path
-      [resource_path, @container_id, "children"].join("/")
+      required_attributes.merge(attributes)
     end
 
     def resource_path
       "container"
+    end
+
+    def resource_creation_path
+      [resource_path, @container_id, "children"].join("/")
     end
   end
 end

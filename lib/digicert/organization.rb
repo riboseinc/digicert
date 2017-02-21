@@ -3,28 +3,16 @@
 #
 #
 require "digicert/base"
+require "digicert/actions/create"
 
 module Digicert
   class Organization < Digicert::Base
-
-    def create
-      create_organization
-    end
-
-    def self.create(attributes)
-      new(attributes).create
-    end
+    include Digicert::Actions::Create
 
     private
 
     def resource_path
       "organization"
-    end
-
-    def create_organization
-      Digicert::Request.new(
-        :post, resource_path, validate(attributes),
-      ).run
     end
 
     def validate(name:, address:, zip:, city:, state:, country:,
