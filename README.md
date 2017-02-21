@@ -49,6 +49,17 @@ to create child containers.
 Digicert::ContainerTemplate.all(container_id)
 ```
 
+#### View a Container Template
+
+Use this interface to retrieve information about a specific container template,
+including which user access roles are available under this template.
+
+```ruby
+Digicert::ContainerTemplate.fetch(
+  template_id: template_id, container_id: container_id,
+)
+```
+
 ### Product
 
 #### List Products

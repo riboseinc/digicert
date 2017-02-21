@@ -1,0 +1,15 @@
+{
+  "id": 4,
+  "name": "University Department",
+  "date_created": "2014-08-05T20:11:28+00:00",
+  "access_roles": [
+    {
+      "id": 1,
+      "name": "Administrator"
+    },
+    {
+      "id": 2,
+      "name": "User"
+    }
+  ]
+}
