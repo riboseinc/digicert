@@ -37,6 +37,18 @@ Digicert.configuration.api_key = "SECRET_DEV_API_KEY"
 
 ## Usage
 
+### Container
+
+#### List Container Templates
+
+Container Templates define a set of features that are available to a container.
+Use this interface to retrieve a list of the templates that are available to use
+to create child containers.
+
+```ruby
+Digicert::ContainerTemplate.all(container_id)
+```
+
 ### Product
 
 #### List Products

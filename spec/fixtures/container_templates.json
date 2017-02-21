@@ -1,0 +1,14 @@
+{
+  "container_templates": [
+    {
+      "id": 4,
+      "name": "College",
+      "date_created": "2014-08-05T20:11:28+00:00"
+    },
+    {
+      "id": 5,
+      "name": "Department",
+      "date_created": "2014-08-05T20:11:28+00:00"
+    }
+  ]
+}
