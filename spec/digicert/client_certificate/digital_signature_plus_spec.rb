@@ -20,7 +20,6 @@ RSpec.describe Digicert::ClientCertificate::DigitalSignaturePlus do
       certificate: {
         # Required for certificate
         emails: ["email@example.com", "email1@example.com"],
-        csr: "-----BEGIN CERTIFICATE REQUEST----- ...",
         common_name: "Full Name",
         signature_hash: "sha256",
       },

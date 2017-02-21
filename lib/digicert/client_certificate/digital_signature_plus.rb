@@ -1,16 +1,12 @@
-require "digicert/base_order"
+require "digicert/client_certificate/base"
 
 module Digicert
   module ClientCertificate
-    class DigitalSignaturePlus < Digicert::BaseOrder
+    class DigitalSignaturePlus < Digicert::ClientCertificate::Base
       private
 
       def certificate_type
         "client_digital_signature_plus"
-      end
-
-      def validate_certificate(emails:, **attributes)
-        super(attributes.merge(emails: emails))
       end
     end
   end

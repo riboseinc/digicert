@@ -18,8 +18,8 @@ RSpec.describe Digicert::ClientCertificate::Premium do
         profile_option: "some_ssl_profile",
 
         # Required for certificate
-        emails: ["email@example.com", "email1@example.com"],
         csr: "------ [CSR HERE] ------",
+        emails: ["email@example.com", "email1@example.com"],
         common_name: "digicert.com",
         signature_hash: "sha256",
       },
