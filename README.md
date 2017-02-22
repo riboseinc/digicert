@@ -394,6 +394,35 @@ Use this interface to view information about an organization.
 Digicert::Organization.fetch(organization_id)
 ```
 
+### Domain
+
+#### Create a new Domain
+
+Use this interface to add a domain for an organization in a container. You must
+specify at least one validation type for the domain.
+
+```ruby
+# Create a new domain in an organization
+# Please pay close attension in building the attibutes hash
+#
+Digicert::Domain.create(domain_attributes)
+
+# Domain attributes hash
+#
+domain_attributes = {
+  name: "digicert.com",
+  organization: { id: 117483 },
+  validations: [
+    {
+      type: "ev",
+      user: { id: 12 }
+    },
+  ],
+
+  dcv: { method: "email" },
+}
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the

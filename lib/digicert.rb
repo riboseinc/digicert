@@ -15,6 +15,7 @@ require "digicert/certificate_order"
 require "digicert/organization"
 require "digicert/container_template"
 require "digicert/container"
+require "digicert/domain"
 
 module Digicert
 
