@@ -5,10 +5,11 @@ require "digicert/response"
 
 module Digicert
   class Request
-    def initialize(http_method, end_point, attributes = {})
+    def initialize(http_method, end_point, params: {}, **attributes)
       @end_point = end_point
       @http_method = http_method
       @attributes = attributes
+      @query_params = params
     end
 
     def run
@@ -36,6 +37,7 @@ module Digicert
       URI::HTTPS.build(
         host: Digicert.configuration.api_host,
         path: digicert_api_path_with_base,
+        query: build_query_params,
       )
     end
 
@@ -54,6 +56,12 @@ module Digicert
       request.initialize_http_header(
         "X-DC-DEVKEY" => Digicert.configuration.api_key,
       )
+    end
+
+    def build_query_params
+      if @query_params
+        URI.encode_www_form(@query_params)
+      end
     end
 
     def digicert_api_path_with_base

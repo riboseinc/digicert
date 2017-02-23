@@ -6,13 +6,16 @@ module Digicert
       extend Digicert::Actions::Base
 
       def all
-        response = Digicert::Request.new(:get, resource_path).run
+        response = Digicert::Request.new(
+          :get, resource_path, params: params,
+        ).run
+
         response[resources_key]
       end
 
       module ClassMethods
-        def all
-          new.all
+        def all(filter_params = {})
+          new(params: filter_params).all
         end
       end
     end

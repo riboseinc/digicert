@@ -119,6 +119,14 @@ module Digicert
       )
     end
 
+    def stub_digicert_domain_list_api(filters = {})
+      params = filters.map { |key, value| "#{key}=#{value}" }.join("&")
+
+      stub_api_response(
+        :get, ["domain", params].join("?"), filename: "domains", status: 200,
+      )
+    end
+
     def stub_api_response(method, end_point, filename:, status: 200, data: nil)
       stub_request(method, digicert_api_end_point(end_point)).
         with(digicert_api_request_headers(data: data)).

@@ -1,0 +1,49 @@
+{
+  "domains": [
+    {
+      "id": 1,
+      "name": "digicert.com",
+      "date_created": "2013-10-17T22:27:42+00:00",
+      "organization": {
+        "id": 117483,
+        "name": "DigiCert, Inc.",
+        "assumed_name": "Assumed Name Example",
+        "display_name": "DigiCert, Inc. (Assumed Name Example)"
+      },
+      "validations": [
+        {
+          "type": "ov",
+          "name": "OV",
+          "description": "Normal Organization Validation",
+          "status": "pending"
+        },
+        {
+          "type": "ev",
+          "name": "EV",
+          "description": "Extended Organization Validation (EV)",
+          "status": "pending"
+        }
+      ],
+      "container": {
+        "id": 3,
+        "name": "Heidelberg University"
+      }
+    },
+    {
+      "id": 2,
+      "name": "testing.com",
+      "date_created": "2013-10-17T22:27:42+00:00",
+      "organization": {
+        "id": 117483,
+        "name": "DigiCert, Inc.",
+        "assumed_name": "Assumed Name Example",
+        "display_name": "DigiCert, Inc. (Assumed Name Example)"
+      },
+      "container": {
+        "id": 3,
+        "name": "Heidelberg University"
+      }
+    }
+  ]
+}
+

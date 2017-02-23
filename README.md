@@ -423,6 +423,16 @@ domain_attributes = {
 }
 ```
 
+#### List Domains
+
+Use this interface to retrieve a list of domains. This interface also supports
+an additional `filter_params` hash, which can be used to filter the list we want
+the interface to return.
+
+```ruby
+Digicert::Domain.all(filter_params_hash)
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the
