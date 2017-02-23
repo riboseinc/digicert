@@ -8,7 +8,17 @@ module Digicert
     end
 
     def parse
-      JSON.parse(@response.body || "{}", object_class: ResponseObject)
+      parse_response || response
+    end
+
+    private
+
+    attr_reader :response
+
+    def parse_response
+      if response.body
+        JSON.parse(response.body, object_class: ResponseObject)
+      end
     end
   end
 

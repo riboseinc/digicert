@@ -49,6 +49,18 @@ RSpec.describe Digicert::Domain do
     end
   end
 
+  describe "#activate" do
+    it "activates a specific domain" do
+      domain_id = 123_456_789
+      domain = Digicert::Domain.find(domain_id)
+
+      stub_digicert_domain_activate_api(domain_id)
+      domain_activation = domain.activate
+
+      expect(domain_activation.code).to eq("204")
+    end
+  end
+
   def domain_attributes
     {
       name: "digicert.com",

@@ -443,6 +443,15 @@ response.
 Digicert::Domain.fetch(domain_id, include_dcv: true)
 ```
 
+#### Activate a Domain
+
+Use this interface to activate a domain that was previously deactivated.
+
+```ruby
+domain = Digicert::Domain.find(domain_id)
+domain.activate
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the

@@ -36,7 +36,7 @@ RSpec.describe Digicert::CertificateRequest do
         request_id, request_status_attributes,
       )
 
-      expect(status_update.class).to eq(Digicert::ResponseObject)
+      expect(status_update.code).to eq("204")
     end
   end
 
