@@ -35,6 +35,20 @@ RSpec.describe Digicert::Domain do
     end
   end
 
+  describe ".fetch" do
+    it "retrieves the specific domain" do
+      domain_id = 123_456_789
+      filters = { include_dcv: true, include_validation: true}
+
+      stub_digicert_domain_fetch_api(domain_id, filters)
+      domain = Digicert::Domain.fetch(domain_id, filters)
+
+      expect(domain.id).not_to be_nil
+      expect(domain.dcv.name_scope).not_to be_nil
+      expect(domain.validations.first.type).to eq("ev")
+    end
+  end
+
   def domain_attributes
     {
       name: "digicert.com",

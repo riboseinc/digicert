@@ -7,13 +7,13 @@ module Digicert
 
       def fetch
         Digicert::Request.new(
-          :get, [resource_path, resource_id].join("/"),
+          :get, [resource_path, resource_id].join("/"), params: query_params,
         ).run
       end
 
       module ClassMethods
-        def fetch(resource_id)
-          new(resource_id: resource_id).fetch
+        def fetch(resource_id, filter_params = {})
+          new(resource_id: resource_id, params: filter_params).fetch
         end
       end
     end

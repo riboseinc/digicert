@@ -433,6 +433,16 @@ the interface to return.
 Digicert::Domain.all(filter_params_hash)
 ```
 
+#### View a Domain
+
+Use this interface to view a domain, This interface also allows you to pass an
+additional to `hash` to specify if you want to retrieve additional data with the
+response.
+
+```ruby
+Digicert::Domain.fetch(domain_id, include_dcv: true)
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the

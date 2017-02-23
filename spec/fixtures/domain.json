@@ -1,0 +1,71 @@
+{
+  "id": 1,
+  "is_active": true,
+  "name": "digicert.com",
+  "date_created": "2013-10-17T22:27:42+00:00",
+  "organization": {
+    "id": 117483,
+    "status": "active",
+    "name": "DigiCert, Inc.",
+    "assumed_name": "DigiCert, Inc.",
+    "display_name": "DigiCert, Inc.",
+    "is_active": true
+  },
+  "validations": [
+    {
+      "type": "ev",
+      "name": "EV",
+      "description": "Extended Organization Validation (EV)",
+      "date_created": "2014-08-09T17:04:59+00:00",
+      "validated_until": "2015-08-09T17:04:45+00:00",
+      "status": "active",
+      "dcv_status": "complete",
+      "verified_users": [
+        {
+          "id": 1234,
+          "first_name": "Jane",
+          "last_name": "Doe"
+        }
+      ]
+    },
+    {
+      "type": "ov",
+      "name": "OV",
+      "description": "Normal Organization Validation",
+      "status": "pending",
+      "dcv_status": "pending"
+    }
+  ],
+  "dcv": {
+    "method": "email",
+    "name_scope": "digicert.com",
+    "dcv_invitations": [
+      {
+        "invitation_id": 1,
+        "email": "postmaster@digicert.com",
+        "source": "base",
+        "date_sent": "2014-08-09T17:04:59+00:00",
+        "name_scope": "digicert.com"
+      },
+      {
+        "invitation_id": 2,
+        "email": "webmaster@digicert.com",
+        "source": "base",
+        "date_sent": "2014-08-09T17:04:59+00:00",
+        "name_scope": "digicert.com"
+      },
+      {
+        "invitation_id": 3,
+        "email": "janedoe@digicert.com",
+        "source": "whois",
+        "date_sent": "2014-08-09T17:04:59+00:00",
+        "name_scope": "digicert.com"
+      }
+    ]
+  },
+  "container": {
+    "id": 3,
+    "name": "Heidelberg University",
+    "is_active": true
+  }
+}

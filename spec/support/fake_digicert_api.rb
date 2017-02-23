@@ -120,10 +120,17 @@ module Digicert
     end
 
     def stub_digicert_domain_list_api(filters = {})
-      params = filters.map { |key, value| "#{key}=#{value}" }.join("&")
-
       stub_api_response(
-        :get, ["domain", params].join("?"), filename: "domains", status: 200,
+        :get, path_with_query("domain", filters), filename: "domains",
+      )
+    end
+
+    def stub_digicert_domain_fetch_api(domain_id, filters)
+      stub_api_response(
+        :get,
+        path_with_query(["domain", domain_id].join("/"), filters),
+        filename: "domain",
+        status: 200,
       )
     end
 
@@ -137,6 +144,11 @@ module Digicert
 
     def digicert_api_end_point(end_point)
       ["https://www.digicert.com/services/v2", end_point].join("/")
+    end
+
+    def path_with_query(path, params)
+      query_params = params.map { |key, value| "#{key}=#{value}" }.join("&")
+      [path, query_params].join("?")
     end
 
     def digicert_api_request_headers(data: nil)

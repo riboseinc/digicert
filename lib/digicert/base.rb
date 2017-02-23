@@ -9,13 +9,13 @@ module Digicert
 
     def initialize(attributes = {})
       @attributes = attributes
-      @params = @attributes.delete(:params)
+      @query_params = @attributes.delete(:params)
       @resource_id = @attributes.delete(:resource_id)
     end
 
     private
 
-    attr_reader :attributes, :resource_id, :params
+    attr_reader :attributes, :resource_id, :query_params
 
     def resources_key
       [resource_path, "s"].join
