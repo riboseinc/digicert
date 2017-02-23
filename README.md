@@ -452,6 +452,15 @@ domain = Digicert::Domain.find(domain_id)
 domain.activate
 ```
 
+#### Deactivate a Domain
+
+Use this interface to deactivate a domain.
+
+```ruby
+domain = Digicert::Domain.find(domain_id)
+domain.deactivate
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the

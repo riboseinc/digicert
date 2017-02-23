@@ -11,6 +11,12 @@ module Digicert
       ).run
     end
 
+    def deactivate
+      Digicert::Request.new(
+        :put, [resource_path, resource_id, "deactivate"].join("/"),
+      ).run
+    end
+
     # The `.find` interface is just an alternvatie to instantiate
     # a new object, and please remeber this does not perform any
     # actual API Request. Use this interface whenever you need to
