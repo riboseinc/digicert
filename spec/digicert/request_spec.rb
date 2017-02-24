@@ -7,6 +7,16 @@ RSpec.describe Digicert::Request do
       stub_ping_reqeust_via_get
       response = Digicert::Request.new(:get, "ping").run
 
+      expect(response.code.to_i).to eq(200)
+      expect(response.class).to eq(Net::HTTPOK)
+    end
+  end
+
+  describe "#parse" do
+    it "retrives and parse the resource to object" do
+      stub_ping_reqeust_via_get
+      response = Digicert::Request.new(:get, "ping").parse
+
       expect(response.data).to eq("Pong!")
     end
   end

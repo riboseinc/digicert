@@ -6,7 +6,7 @@ module Digicert
     def update
       Digicert::Request.new(
         :put, update_status_path, attributes,
-      ).run
+      ).parse
     end
 
     def self.update(resource_id, attributes)

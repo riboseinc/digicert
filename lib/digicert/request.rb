@@ -13,7 +13,11 @@ module Digicert
     end
 
     def run
-      Response.new(send_http_request).parse
+      send_http_request
+    end
+
+    def parse
+      Digicert::Response.new(run).parse
     end
 
     private

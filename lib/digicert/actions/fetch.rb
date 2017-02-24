@@ -8,7 +8,7 @@ module Digicert
       def fetch
         Digicert::Request.new(
           :get, [resource_path, resource_id].join("/"), params: query_params,
-        ).run
+        ).parse
       end
 
       module ClassMethods

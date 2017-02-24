@@ -8,13 +8,13 @@ module Digicert
     def activate
       Digicert::Request.new(
         :put, [resource_path, resource_id, "activate"].join("/"),
-      ).run
+      ).parse
     end
 
     def deactivate
       Digicert::Request.new(
         :put, [resource_path, resource_id, "deactivate"].join("/"),
-      ).run
+      ).parse
     end
 
     # The `.find` interface is just an alternvatie to instantiate
