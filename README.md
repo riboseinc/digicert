@@ -498,6 +498,19 @@ certificate = Digicert::CertificateDownloader.fetch(certificate_id)
 File.write("path_to_file_system/certificate.zip", certificate.body)
 ```
 
+#### Download a Certificate By Format
+
+This interface will return an SSL Certificate file from an order. The certificate
+will be return in the format you specify, but one thing to remember the
+certificate will be archived as `zip` along with the instructions, so you need
+to write that as zip archive.
+
+```ruby
+Digicert::CertificateDownloader.fetch_by_format(
+  certificate_id, format: format,
+)
+```
+
 #### Download a Certificate By Platform
 
 This interface will return an SSL Certificate file from an order using the
