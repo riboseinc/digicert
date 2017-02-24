@@ -193,6 +193,14 @@ the order attributes along with a `certificate` in it.
 Digicert::Order.fetch(order_id)
 ```
 
+#### List Certificate Orders
+
+Use this interface to retrieve a list of all certificate orders.
+
+```ruby
+Digicert::Order.all
+```
+
 #### Order SSL Plus Certificate
 
 Use this interface to order a SSL Plus Certificate.

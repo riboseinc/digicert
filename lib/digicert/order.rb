@@ -33,6 +33,10 @@ module Digicert
       "order/certificate"
     end
 
+    def resources_key
+      "orders"
+    end
+
     def certificate_klass
       certificate_klass_hash[@name_id.to_sym] ||
         Digicert::SSLCertificate::SSLPlus

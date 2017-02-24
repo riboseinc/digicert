@@ -1,0 +1,93 @@
+{
+  "orders": [
+    {
+      "id": 556729,
+      "certificate": {
+        "common_name": "digicert.com",
+        "dns_names": [
+          "digicert.com",
+          "www.digicert.com"
+        ],
+        "valid_till": "2017-08-19",
+        "signature_hash": "sha256"
+      },
+      "status": "issued",
+      "date_created": "2014-08-19T18:16:07+00:00",
+      "organization": {
+        "id": 117483,
+        "name": "DigiCert, Inc."
+      },
+      "validity_years": 3,
+      "container": {
+        "id": 5,
+        "name": "College of Science"
+      },
+      "product": {
+        "name_id": "ssl_plus",
+        "name": "SSL Plus",
+        "type": "ssl_certificate"
+      },
+      "price": 293
+    },
+    {
+      "id": 556730,
+      "certificate": {
+        "common_name": "digicert.com",
+        "dns_names": [
+          "digicert.com",
+          "www.digicert.com"
+        ],
+        "valid_till": "2017-08-19",
+        "signature_hash": "sha256"
+      },
+      "status": "needs_approval",
+      "date_created": "2014-08-20T17:20:59+00:00",
+      "organization": {
+        "id": 117483,
+        "name": "DigiCert, Inc."
+      },
+      "validity_years": 3,
+      "container": {
+        "id": 5,
+        "name": "College of Science"
+      },
+      "product": {
+        "name_id": "ssl_plus",
+        "name": "SSL Plus",
+        "type": "ssl_certificate"
+      }
+    },
+    {
+      "id": 556731,
+      "certificate": {
+        "common_name": "digicert.com",
+        "dns_names": [
+          "digicert.com",
+          "www.digicert.com"
+        ],
+        "signature_hash": "SHA256"
+      },
+      "status": "needs_approval",
+      "date_created": "2014-08-20T17:20:59+00:00",
+      "organization": {
+        "id": 117483,
+        "name": "DigiCert, Inc."
+      },
+      "validity_years": 3,
+      "container": {
+        "id": 5,
+        "name": "College of Science"
+      },
+      "product": {
+        "name_id": "ssl_plus",
+        "name": "SSL Plus",
+        "type": "ssl_certificate"
+      }
+    }
+  ],
+  "page": {
+    "total": 1,
+    "limit": 1000,
+    "offset": 0
+  }
+}

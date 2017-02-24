@@ -27,6 +27,17 @@ RSpec.describe Digicert::Order do
     end
   end
 
+  describe ".all" do
+    it "retrieves the list of all certificate orders" do
+      stub_digicert_order_list_api
+      orders = Digicert::Order.all
+
+      expect(orders.first.id).not_to be_nil
+      expect(orders.first.status).to eq("issued")
+      expect(orders.first.certificate.common_name).to eq("digicert.com")
+    end
+  end
+
   def order_attributes
     {
       certificate: {
