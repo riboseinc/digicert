@@ -47,6 +47,12 @@ module Digicert
       )
     end
 
+    def stub_digicert_order_fetch_api(order_id)
+      stub_api_response(
+        :get, ["order/certificate", order_id].join("/"), filename: "order",
+      )
+    end
+
     def stub_digicert_certificate_order_fetch_api(order_id)
       stub_api_response(
         :get, ["order/certificate", order_id].join("/"), filename: "order",

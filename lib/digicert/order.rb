@@ -3,6 +3,7 @@
 #
 #
 
+require "digicert/base"
 require "digicert/ssl_certificate/ssl_plus"
 require "digicert/ssl_certificate/ssl_ev_plus"
 require "digicert/ssl_certificate/ssl_wildcard"
@@ -12,10 +13,10 @@ require "digicert/client_certificate/email_security_plus"
 require "digicert/client_certificate/digital_signature_plus"
 
 module Digicert
-  class Order
-    def initialize(name_id, attributes = {})
-      @name_id = name_id
-      @attributes = attributes
+  class Order < Digicert::Base
+    def initialize(attributes = {})
+      @name_id = attributes.delete(:name_id)
+      super
     end
 
     def create
@@ -23,12 +24,14 @@ module Digicert
     end
 
     def self.create(name_id, attributes)
-      new(name_id, attributes).create
+      new(name_id: name_id, **attributes).create
     end
 
     private
 
-    attr_reader :attributes
+    def resource_path
+      "order/certificate"
+    end
 
     def certificate_klass
       certificate_klass_hash[@name_id.to_sym] ||

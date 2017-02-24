@@ -14,6 +14,19 @@ RSpec.describe Digicert::Order do
     end
   end
 
+  describe ".fetch" do
+    it "retrieves a specific certificate order" do
+      order_id = 123_456_789
+
+      stub_digicert_order_fetch_api(order_id)
+      order = Digicert::Order.fetch(order_id)
+
+      expect(order.id).not_to be_nil
+      expect(order.status).to eq("approved")
+      expect(order.certificate.common_name).to eq("digicert.com")
+    end
+  end
+
   def order_attributes
     {
       certificate: {

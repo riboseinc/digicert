@@ -184,6 +184,15 @@ The supported `name_id`'s are `ssl_plus`, `ssl_wildcard`, `ssl_ev_plus`,
 `client_premium`, `email_security_plus` and `digital_signature_plus`. Please
 check the Digicert documentation for more details on those.
 
+#### View a Certificate Order
+
+Use this interface to retrieve a certificate order and the response includes all
+the order attributes along with a `certificate` in it.
+
+```ruby
+Digicert::Order.fetch(order_id)
+```
+
 #### Order SSL Plus Certificate
 
 Use this interface to order a SSL Plus Certificate.
