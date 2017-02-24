@@ -30,7 +30,7 @@ RSpec.describe "Download a certificate" do
     # all requiremetns are meet and let's fetch the certificate
     #
     certificate_id = certificate_order.certificate.id
-    stub_digicert_certificate_content_fetch_api(certificate_id)
+    stub_digicert_certificate_download_by_platform(certificate_id)
     certificate = Digicert::CertificateDownloader.fetch(certificate_id)
 
     # Normally zip archieves content starts with `PK` and then

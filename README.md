@@ -498,6 +498,17 @@ certificate = Digicert::CertificateDownloader.fetch(certificate_id)
 File.write("path_to_file_system/certificate.zip", certificate.body)
 ```
 
+#### Download a Certificate By Platform
+
+This interface will return an SSL Certificate file from an order using the
+platform specified.
+
+```ruby
+certificate = Digicert::CertificateDownloader.fetch_by_platform(
+  certificate_id, platform: "apache",
+)
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the
