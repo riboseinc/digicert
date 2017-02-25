@@ -38,6 +38,19 @@ RSpec.describe Digicert::Order do
     end
   end
 
+  describe "#email_validations" do
+    it "retrieves list of emails with validation status" do
+      order_id = 123_456_789
+      order = Digicert::Order.find(order_id)
+
+      stub_digicert_email_validations_api(order_id)
+      email_validations = order.email_validations
+
+      expect(email_validations.first.status).to eq("validated")
+      expect(email_validations.first.email).to eq("email@example.com")
+    end
+  end
+
   def order_attributes
     {
       certificate: {

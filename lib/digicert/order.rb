@@ -23,6 +23,10 @@ module Digicert
       certificate_klass.create(attributes)
     end
 
+    def email_validations
+      Digicert::EmailValidation.all(order_id: resource_id)
+    end
+
     def self.create(name_id, attributes)
       new(name_id: name_id, **attributes).create
     end

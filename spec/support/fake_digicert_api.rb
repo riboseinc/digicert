@@ -164,6 +164,15 @@ module Digicert
       )
     end
 
+    def stub_digicert_email_validations_api(order_id)
+      stub_api_response(
+        :get,
+        ["order", "certificate", order_id, "email-validation"].join("/"),
+        filename: "email_validations",
+        status: 200,
+      )
+    end
+
     def stub_digicert_certificate_download_by_format(id, format)
       stub_api_response_with_io(
         :get,

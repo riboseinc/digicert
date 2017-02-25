@@ -522,6 +522,24 @@ certificate = Digicert::CertificateDownloader.fetch_by_platform(
 )
 ```
 
+### Email Validations
+
+#### List of Email Validations
+
+Use this interface to view the status of all emails that require validation on a
+client certificate order.
+
+```ruby
+Digicert::EmailValidation.all(order_id: order_id)
+
+# If you prefer then there is an alternative alias method
+# on the order class, you can invoke that on any of its
+# instances. Usages
+#
+order = Digicert::Order.find(order_id)
+order.email_validations
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the

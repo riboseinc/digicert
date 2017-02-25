@@ -1,0 +1,17 @@
+{
+  "delivery_options": [
+    "browser"
+  ],
+  "emails": [
+    {
+      "email": "email@example.com",
+      "status": "validated",
+      "date_emailed": "2013-05-02"
+    },
+    {
+      "email": "email2@example2.com",
+      "status": "unvalidated",
+      "date_emailed": "2013-05-02"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+require "digicert/base"
+
+module Digicert
+  class EmailValidation < Digicert::Base
+    def initialize(attributes = {})
+      @order_id = attributes.delete(:order_id)
+    end
+
+    def self.all(order_id:, **filter_params)
+      new(order_id: order_id, params: filter_params).all
+    end
+
+    private
+
+    attr_reader :order_id
+
+    def resources_key
+      "emails"
+    end
+
+    def resource_path
+      ["order", "certificate", order_id, "email-validation"].join("/")
+    end
+  end
+end
