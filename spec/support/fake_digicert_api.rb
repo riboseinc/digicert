@@ -173,6 +173,15 @@ module Digicert
       )
     end
 
+    def stub_digicert_email_validations_validate_api(token:, email:)
+      stub_api_response(
+        :put,
+        path_with_query("email-validation/#{token}", email: email),
+        filename: "empty",
+        status: 204,
+      )
+    end
+
     def stub_digicert_certificate_download_by_format(id, format)
       stub_api_response_with_io(
         :get,

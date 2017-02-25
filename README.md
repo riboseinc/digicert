@@ -540,6 +540,16 @@ order = Digicert::Order.find(order_id)
 order.email_validations
 ```
 
+#### Validate an Email Address
+
+Use this interface to verify control of an email address, using an email
+address/token pair.
+
+```ruby
+Digicert::EmailValidation.valid?(token: token, email: email)
+# => true or false
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the

@@ -10,6 +10,14 @@ module Digicert
       new(order_id: order_id, params: filter_params).all
     end
 
+    def self.valid?(token:, email:)
+      response = Digicert::Request.new(
+        :put, ["email-validation", token].join("/"), params: {email: email }
+      ).run
+
+      response.code.to_i == 204
+    end
+
     private
 
     attr_reader :order_id
