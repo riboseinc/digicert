@@ -18,6 +18,7 @@ require "digicert/container"
 require "digicert/domain"
 require "digicert/certificate_downloader"
 require "digicert/email_validation"
+require "digicert/order_reissuer"
 
 module Digicert
 

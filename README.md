@@ -184,6 +184,39 @@ The supported `name_id`'s are `ssl_plus`, `ssl_wildcard`, `ssl_ev_plus`,
 `client_premium`, `email_security_plus` and `digital_signature_plus`. Please
 check the Digicert documentation for more details on those.
 
+#### Reissue a Certificate Order
+
+Use this interface to reissue a certificate order. A reissue replaces the
+existing certificate with a new one that has different information such as
+common name, CSR, etc. The simplest interface to reissue an update an existing
+order is
+
+```ruby
+order = Digicert::Order.find(order_id)
+order.reissue
+
+# Alternative and prefereed in most case
+Digicert::OrderReissuer.create(order_id: order_id)
+```
+
+And if there are some updated information like `csr`, `common_name` or etc then
+you can use the same interface but pass the `:certificate` option. Please
+remember if any required fields are missing then it will use the data that
+already exists for that order.
+
+```ruby
+Digicert::OrderReissuer.create(
+  order: order_id,
+  certificate: {
+    common_name: certificate_common_name,
+    dns_names: [certificate_dns_name],
+    csr: certificate_csr,
+    signature_hash: certificate_signature_hash,
+    server_platform: { id: certificate_server_platform_id },
+  }
+)
+```
+
 #### View a Certificate Order
 
 Use this interface to retrieve a certificate order and the response includes all

@@ -51,6 +51,20 @@ RSpec.describe Digicert::Order do
     end
   end
 
+  describe "#reissue" do
+    it "sends Reissuer a create message" do
+      order_id = 123_456_789
+      order = Digicert::Order.find(order_id)
+      allow(Digicert::OrderReissuer).to receive(:create)
+
+      order.reissue
+
+      expect(
+        Digicert::OrderReissuer
+      ).to have_received(:create).with(order_id: order_id)
+    end
+  end
+
   def order_attributes
     {
       certificate: {

@@ -23,6 +23,10 @@ module Digicert
       certificate_klass.create(attributes)
     end
 
+    def reissue
+      Digicert::OrderReissuer.create(order_id: resource_id)
+    end
+
     def email_validations
       Digicert::EmailValidation.all(order_id: resource_id)
     end
