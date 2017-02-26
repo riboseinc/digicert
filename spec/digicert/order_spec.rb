@@ -65,6 +65,20 @@ RSpec.describe Digicert::Order do
     end
   end
 
+  describe "#duplicate" do
+    it "sends the duplicator a create message" do
+      order_id = 123_456_789
+      order = Digicert::Order.find(order_id)
+      allow(Digicert::OrderDuplicator).to receive(:create)
+
+      order.duplicate
+
+      expect(
+        Digicert::OrderDuplicator
+      ).to have_received(:create).with(order_id: order_id)
+    end
+  end
+
   def order_attributes
     {
       certificate: {

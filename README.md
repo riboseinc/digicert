@@ -217,6 +217,26 @@ Digicert::OrderReissuer.create(
 )
 ```
 
+#### Duplicate a Certificate Order
+
+Use this interface to request a duplicate certificate for an order. A duplicate
+shares the expiration date as the existing certificate and is identical with the
+exception of the CSR and a possible change in the server platform and signature
+hash. The common name and sans need to be the same as the original order.
+
+```ruby
+Digicert::OrderDuplicator.create(
+  order: order_id,
+  certificate: {
+    common_name: certificate_common_name,
+    dns_names: [certificate_dns_name],
+    csr: certificate_csr,
+    signature_hash: certificate_signature_hash,
+    server_platform: { id: certificate_server_platform_id },
+  }
+)
+```
+
 #### View a Certificate Order
 
 Use this interface to retrieve a certificate order and the response includes all

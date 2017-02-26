@@ -23,16 +23,20 @@ module Digicert
       certificate_klass.create(attributes)
     end
 
+    def self.create(name_id, attributes)
+      new(name_id: name_id, **attributes).create
+    end
+
     def reissue
       Digicert::OrderReissuer.create(order_id: resource_id)
     end
 
-    def email_validations
-      Digicert::EmailValidation.all(order_id: resource_id)
+    def duplicate
+      Digicert::OrderDuplicator.create(order_id: resource_id)
     end
 
-    def self.create(name_id, attributes)
-      new(name_id: name_id, **attributes).create
+    def email_validations
+      Digicert::EmailValidation.all(order_id: resource_id)
     end
 
     private

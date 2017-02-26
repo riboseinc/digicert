@@ -192,6 +192,16 @@ module Digicert
       )
     end
 
+    def stub_digicert_order_duplicate_api(order_id, attributes)
+      stub_api_response(
+        :post,
+        ["order", "certificate", order_id, "duplicate"].join("/"),
+        data: attributes,
+        filename: "order_duplicated",
+        status: 201,
+      )
+    end
+
     def stub_digicert_certificate_download_by_format(id, format)
       stub_api_response_with_io(
         :get,
