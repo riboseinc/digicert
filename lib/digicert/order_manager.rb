@@ -7,11 +7,12 @@ module Digicert
     def initialize(order_id:, **attributes)
       @order_id = order_id
       @attributes = attributes
+      @params = attributes.delete(:params)
     end
 
     private
 
-    attr_reader :order_id, :attributes
+    attr_reader :order_id, :attributes, :query_params
 
     def validate(attributes)
       order_attributes.merge(attributes)
@@ -27,6 +28,10 @@ module Digicert
           server_platform: { id: order.certificate.server_platform.id },
         }
       }
+    end
+
+    def resource_creation_path
+      resource_path
     end
 
     def order

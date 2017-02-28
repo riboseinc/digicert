@@ -225,7 +225,7 @@ exception of the CSR and a possible change in the server platform and signature
 hash. The common name and sans need to be the same as the original order.
 
 ```ruby
-Digicert::OrderDuplicator.create(
+Digicert::OrderDuplication.create(
   order: order_id,
   certificate: {
     common_name: certificate_common_name,
@@ -235,6 +235,18 @@ Digicert::OrderDuplicator.create(
     server_platform: { id: certificate_server_platform_id },
   }
 )
+```
+
+#### List Duplicate Certificates
+
+Use this interface to view all duplicate certificates for an order.
+
+```ruby
+order = Digicert::Order.find(order)
+order.duplicate_certificates
+
+# Alternative interface to list duplications
+Digicert::OrderDuplication.all(order_id: order_id)
 ```
 
 #### View a Certificate Order
