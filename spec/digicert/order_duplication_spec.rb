@@ -1,15 +1,25 @@
 require "spec_helper"
 
-RSpec.describe Digicert::OrderDuplicator do
+RSpec.describe Digicert::OrderDuplication do
   describe ".create" do
     it "creates a duplicate of an existing order" do
       stub_digicert_order_fetch_api(order_id)
 
       stub_digicert_order_duplicate_api(order_id, order_attributes)
-      order = Digicert::OrderDuplicator.create(order_id: order_id)
+      order = Digicert::OrderDuplication.create(order_id: order_id)
 
       expect(order.id).not_to be_nil
       expect(order.requests.first.id).not_to be_nil
+    end
+  end
+
+  describe ".all" do
+    it "list all duplicate certificates" do
+      stub_digicert_order_duplications_api(order_id)
+      certificates = Digicert::OrderDuplication.all(order_id: order_id)
+
+      expect(certificates.first.id).not_to be_nil
+      expect(certificates.first.status).to eq("approved")
     end
   end
 
