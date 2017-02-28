@@ -20,6 +20,7 @@ require "digicert/certificate_downloader"
 require "digicert/email_validation"
 require "digicert/order_reissuer"
 require "digicert/order_duplicator"
+require "digicert/duplicate_certificate"
 
 module Digicert
 

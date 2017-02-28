@@ -237,6 +237,18 @@ Digicert::OrderDuplicator.create(
 )
 ```
 
+#### List Duplicate Certificates
+
+Use this interface to view all duplicate certificates for an order.
+
+```ruby
+Digicert::DuplicateCertificate.all(order_id: order_id)
+
+# Alternative interface for duplicate certificates
+order = Digicert::Order.find(order_id)
+order.duplicate_certificates
+```
+
 #### View a Certificate Order
 
 Use this interface to retrieve a certificate order and the response includes all

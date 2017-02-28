@@ -1,0 +1,57 @@
+{
+  "certificates": [
+    {
+      "id": 1,
+      "thumbprint": "B71DCBAF5586D6D95FC0B7EA1C74ADEF4A99F960",
+      "serial_number": "0AE71279E5213729026AFE4BB58DE1AB",
+      "common_name": "*.digicert.com",
+      "dns_names": [
+        "*.digicert.com",
+        "digicert.com"
+      ],
+      "status": "approved",
+      "date_created": "2014-08-19T18:16:07+00:00",
+      "valid_from": "2014-08-19",
+      "valid_till": "2015-08-24",
+      "csr": "------ [CSR HERE] ------",
+      "server_platform": {
+        "id": 45,
+        "name": "Barracuda",
+        "install_url": "www.install.com",
+        "csr_url": "www.csr.com"
+      },
+      "signature_hash": "sha256",
+      "key_size": 2048,
+      "ca_cert_id": "B71DCBAF5586D6D95FC0B7EA1C74ADEF4A99F960",
+      "sub_id": "001",
+      "public_id": "F7QIRX5P462QUYGQGRF26RSTL"
+    },
+    {
+      "id": 2,
+      "thumbprint": "B71DCBAF5586D6D95FC0B7EA1C74ADEF4A99F960",
+      "serial_number": "0AE71279E5213729026AFE4BB58DE1AB",
+      "common_name": "*.digicert.com",
+      "dns_names": [
+        "*.digicert.com",
+        "digicert.com",
+        "subdomain.digicert.com"
+      ],
+      "status": "approved",
+      "date_created": "2014-08-19T18:16:07+00:00",
+      "valid_from": "2014-08-19",
+      "valid_till": "2015-08-24",
+      "csr": "------ [CSR HERE] ------",
+      "server_platform": {
+        "id": 45,
+        "name": "Barracuda",
+        "install_url": "www.install.com",
+        "csr_url": "www.csr.com"
+      },
+      "signature_hash": "sha256",
+      "key_size": 2048,
+      "ca_cert_id": "B71DCBAF5586D6D95FC0B7EA1C74ADEF4A99F960",
+      "sub_id": "002",
+      "public_id": "F7QIRX5P462QUYGQGRF26VLK"
+    }
+  ]
+}

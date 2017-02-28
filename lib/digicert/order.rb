@@ -35,6 +35,10 @@ module Digicert
       Digicert::OrderDuplicator.create(order_id: resource_id)
     end
 
+    def duplicate_certificates
+      Digicert::DuplicateCertificate.all(order_id: resource_id)
+    end
+
     def email_validations
       Digicert::EmailValidation.all(order_id: resource_id)
     end

@@ -202,6 +202,15 @@ module Digicert
       )
     end
 
+    def stub_digicert_order_duplications_api(order_id)
+      stub_api_response(
+        :get,
+        ["order", "certificate", order_id, "duplicate"].join("/"),
+        filename: "order_duplications",
+        status: 200,
+      )
+    end
+
     def stub_digicert_certificate_download_by_format(id, format)
       stub_api_response_with_io(
         :get,
