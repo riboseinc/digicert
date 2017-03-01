@@ -93,6 +93,22 @@ RSpec.describe Digicert::Order do
     end
   end
 
+  describe "#cancel" do
+    it "sends the create methods to order cancellation" do
+      order_id = 123_456_789
+      note = "This is the cancellation note"
+
+      order = Digicert::Order.find(order_id)
+      allow(Digicert::OrderCancellation).to receive(:create)
+
+      order.cancel(note: note)
+
+      expect(
+        Digicert::OrderCancellation
+      ).to have_received(:create).with(order_id: order_id, note: note)
+    end
+  end
+
   def order_attributes
     {
       certificate: {

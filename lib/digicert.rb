@@ -21,6 +21,7 @@ require "digicert/email_validation"
 require "digicert/order_reissuer"
 require "digicert/order_duplicator"
 require "digicert/duplicate_certificate"
+require "digicert/order_cancellation"
 
 module Digicert
 

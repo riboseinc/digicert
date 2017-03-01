@@ -43,6 +43,12 @@ module Digicert
       Digicert::EmailValidation.all(order_id: resource_id)
     end
 
+    def cancel(note:, **attrs)
+      Digicert::OrderCancellation.create(
+        order_id: resource_id, note: note, **attrs,
+      )
+    end
+
     private
 
     def resource_path

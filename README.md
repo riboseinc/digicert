@@ -249,6 +249,21 @@ order = Digicert::Order.find(order_id)
 order.duplicate_certificates
 ```
 
+#### Cancel a Certificate Order
+
+Use this interface to update the status of an order. Currently this endpoint only
+allows updating the status to 'CANCELED'
+
+```ruby
+order = Digicert::Order.find(order_id)
+order.cancel(note: "Cancellation note")
+
+# Or use the actual interface for more control
+Digicert::OrderCancellation.create(
+  order_id: order_id, status: "CANCELED", note: "your_note", send_emails: true,
+)
+```
+
 #### View a Certificate Order
 
 Use this interface to retrieve a certificate order and the response includes all

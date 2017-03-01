@@ -211,6 +211,16 @@ module Digicert
       )
     end
 
+    def stub_digicert_order_cancellation_api(order_id, attributes)
+      stub_api_response(
+        :put,
+        ["order", "certificate", order_id, "status"].join("/"),
+        data: attributes,
+        filename: "empty",
+        status: 204,
+      )
+    end
+
     def stub_digicert_certificate_download_by_format(id, format)
       stub_api_response_with_io(
         :get,
