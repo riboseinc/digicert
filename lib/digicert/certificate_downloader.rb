@@ -2,12 +2,6 @@ require "digicert/base"
 
 module Digicert
   class CertificateDownloader < Digicert::Base
-    def initialize(attributes = {})
-      @format = attributes.delete(:format)
-      @platform = attributes.delete(:platform)
-      super
-    end
-
     def fetch
       Digicert::Request.new(:get, certificate_download_path).run
     end
@@ -23,6 +17,11 @@ module Digicert
     private
 
     attr_reader :format, :platform
+
+    def extract_local_attribute_ids
+      @format = attributes.delete(:format)
+      @platform = attributes.delete(:platform)
+    end
 
     def resource_path
       ["certificate", resource_id, "download"].join("/")

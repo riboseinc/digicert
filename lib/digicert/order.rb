@@ -14,11 +14,6 @@ require "digicert/client_certificate/digital_signature_plus"
 
 module Digicert
   class Order < Digicert::Base
-    def initialize(attributes = {})
-      @name_id = attributes.delete(:name_id)
-      super
-    end
-
     def create
       certificate_klass.create(attributes)
     end
@@ -50,6 +45,10 @@ module Digicert
     end
 
     private
+
+    def extract_local_attribute_ids
+      @name_id = attributes.delete(:name_id)
+    end
 
     def resource_path
       "order/certificate"

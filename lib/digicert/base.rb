@@ -9,8 +9,9 @@ module Digicert
 
     def initialize(attributes = {})
       @attributes = attributes
-      @query_params = @attributes.delete(:params)
-      @resource_id = @attributes.delete(:resource_id)
+
+      extract_base_attribute_ids
+      extract_local_attribute_ids
     end
 
     # The `.find` interface is just an alternvatie to instantiate
@@ -35,6 +36,18 @@ module Digicert
     private
 
     attr_reader :attributes, :resource_id, :query_params
+
+    def extract_base_attribute_ids
+      @query_params = attributes.delete(:params)
+      @resource_id = attributes.delete(:resource_id)
+    end
+
+    def extract_local_attribute_ids
+      # Implement this to extract ids that are specific
+      # to each of the specific classes, for example
+      #
+      # @order_id = attributes.delete(:order_id)
+    end
 
     def resources_key
       [resource_path, "s"].join

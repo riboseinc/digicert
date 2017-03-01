@@ -2,10 +2,6 @@ require "digicert/base"
 
 module Digicert
   class EmailValidation < Digicert::Base
-    def initialize(attributes = {})
-      @order_id = attributes.delete(:order_id)
-    end
-
     def self.all(order_id:, **filter_params)
       new(order_id: order_id, params: filter_params).all
     end
@@ -21,6 +17,10 @@ module Digicert
     private
 
     attr_reader :order_id
+
+    def extract_local_attribute_ids
+      @order_id = attributes.delete(:order_id)
+    end
 
     def resources_key
       "emails"
