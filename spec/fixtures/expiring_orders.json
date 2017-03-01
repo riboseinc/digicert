@@ -1,0 +1,20 @@
+{
+  "expiring_orders": [
+    {
+      "days_expiring": 90,
+      "order_count": 10
+    },
+    {
+      "days_expiring": 60,
+      "order_count": 13
+    },
+    {
+      "days_expiring": 30,
+      "order_count": 3
+    },
+    {
+      "days_expiring": -7,
+      "order_count": 1
+    }
+  ]
+}

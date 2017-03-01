@@ -264,6 +264,16 @@ Digicert::OrderCancellation.create(
 )
 ```
 
+#### Expiring Orders
+
+Use this interface to retrieve the number of orders that have certificates
+expiring within 90, 60, and 30 days. The number of orders that have already
+expired certificates within the last 7 days is also returned.
+
+```ruby
+Digicert::ExpiringOrder.all(container_id: container_id)
+```
+
 #### View a Certificate Order
 
 Use this interface to retrieve a certificate order and the response includes all
