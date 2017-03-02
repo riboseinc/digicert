@@ -7,16 +7,20 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'digicert-api'
+gem "digicert-api"
 ```
 
 And then execute:
 
-    $ bundle
+```sh
+bundle install
+```
 
 Or install it yourself as:
 
-    $ gem install digicert-api
+```sh
+gem install digicert-api
+```
 
 ## Configure
 
@@ -94,9 +98,131 @@ including its name, description, template, and parent container id.
 Digicert::Container.fetch(container_id)
 ```
 
-### Product
+### Organization
 
-#### List Products
+#### Create an Organization
+
+Use this interface to create a new organization. The organization information
+will be used by DigiCert for validation and may appear on certificates.
+
+```ruby
+# Create a new organization
+# Please pay close attension bellow
+# on building the organization_attributes
+#
+Digicert::Organization.create(organization_attributes)
+
+# Organization attributes hash
+#
+organization_attributes = {
+  name: "digicert, inc.",
+  address: "333 s 520 w",
+  zip: 84042,
+  city: "lindon",
+  state: "utah",
+  country: "us",
+  telephone: 8015551212,
+  container: { id: 17 },
+
+  organization_contact: {
+    first_name: "Some",
+    last_name: "Guy",
+    email: "someguy@digicert.com",
+    telephone: 8015551212,
+  },
+
+  # Optional attributes
+  assumed_name: "DigiCert",
+  address2: "Suite 500",
+}
+```
+
+#### View an Organization
+
+Use this interface to view information about an organization.
+
+```ruby
+Digicert::Organization.fetch(organization_id)
+```
+
+#### List all organizations
+
+Use this interface to retrieve a list of organizations.
+
+```ruby
+Digicert::Organization.all
+```
+
+### Domain
+
+#### Create a new Domain
+
+Use this interface to add a domain for an organization in a container. You must
+specify at least one validation type for the domain.
+
+```ruby
+# Create a new domain in an organization
+# Please pay close attension in building the attibutes hash
+#
+Digicert::Domain.create(domain_attributes)
+
+# Domain attributes hash
+#
+domain_attributes = {
+  name: "digicert.com",
+  organization: { id: 117483 },
+  validations: [
+    {
+      type: "ev",
+      user: { id: 12 }
+    },
+  ],
+
+  dcv: { method: "email" },
+}
+```
+
+#### Activate a Domain
+
+Use this interface to activate a domain that was previously deactivated.
+
+```ruby
+domain = Digicert::Domain.find(domain_id)
+domain.activate
+```
+
+#### Deactivate a Domain
+
+Use this interface to deactivate a domain.
+
+```ruby
+domain = Digicert::Domain.find(domain_id)
+domain.deactivate
+```
+
+#### View a Domain
+
+Use this interface to view a domain, This interface also allows you to pass an
+additional to `hash` to specify if you want to retrieve additional data with the
+response.
+
+```ruby
+Digicert::Domain.fetch(domain_id, include_dcv: true)
+```
+
+#### List Domains
+
+Use this interface to retrieve a list of domains. This interface also supports
+an additional `filter_params` hash, which can be used to filter the list we want
+the interface to return.
+
+```ruby
+Digicert::Domain.all(filter_params_hash)
+```
+
+### Submitting Orders
+
+#### View Product List
 
 Use this interface to retrieve a list of available products for an account.
 
@@ -104,7 +230,7 @@ Use this interface to retrieve a list of available products for an account.
 Digicert::Product.all
 ```
 
-#### Product details
+#### View Product Details
 
 Use this interface to retrieve a full set of details for a product.
 
@@ -112,41 +238,10 @@ Use this interface to retrieve a full set of details for a product.
 Digicert::Product.fetch(name_id)
 ```
 
-### Certificate Request
-
-#### List certificate requests
-
-Use this interface to retrieve a list of certificate requests.
-
-```ruby
-Digicert::CertificateRequest.all
-```
-
-#### Certificate Request details
-
-Use this interface to retrieve the details for a certificate request.
-
-```ruby
-Digicert::CertificateRequest.fetch(request_id)
-```
-
-#### Update Request Status
-
-Use this interface to update the status of a previously submitted certificate
-request.
-
-```ruby
-Digicert::CertificateRequest.update(
-  request_id, status: "approved", processor_comment: "Your domain is approved",
-)
-```
-
-### Order
-
-### Create a new order
+#### Create any type of order
 
 Use this interface to create a new order, this expect two arguments one is
-`name_id` for the order and another one is the attributes hash for the order.
+`name_id` for the order and another one is the attributes hash.
 
 ```ruby
 order = Digicert::Order.create(
@@ -184,112 +279,8 @@ The supported `name_id`'s are `ssl_plus`, `ssl_wildcard`, `ssl_ev_plus`,
 `client_premium`, `email_security_plus` and `digital_signature_plus`. Please
 check the Digicert documentation for more details on those.
 
-#### Reissue a Certificate Order
-
-Use this interface to reissue a certificate order. A reissue replaces the
-existing certificate with a new one that has different information such as
-common name, CSR, etc. The simplest interface to reissue an update an existing
-order is
-
-```ruby
-order = Digicert::Order.find(order_id)
-order.reissue
-
-# Alternative and prefereed in most case
-Digicert::OrderReissuer.create(order_id: order_id)
-```
-
-And if there are some updated information like `csr`, `common_name` or etc then
-you can use the same interface but pass the `:certificate` option. Please
-remember if any required fields are missing then it will use the data that
-already exists for that order.
-
-```ruby
-Digicert::OrderReissuer.create(
-  order: order_id,
-  certificate: {
-    common_name: certificate_common_name,
-    dns_names: [certificate_dns_name],
-    csr: certificate_csr,
-    signature_hash: certificate_signature_hash,
-    server_platform: { id: certificate_server_platform_id },
-  }
-)
-```
-
-#### Duplicate a Certificate Order
-
-Use this interface to request a duplicate certificate for an order. A duplicate
-shares the expiration date as the existing certificate and is identical with the
-exception of the CSR and a possible change in the server platform and signature
-hash. The common name and sans need to be the same as the original order.
-
-```ruby
-Digicert::OrderDuplicator.create(
-  order: order_id,
-  certificate: {
-    common_name: certificate_common_name,
-    dns_names: [certificate_dns_name],
-    csr: certificate_csr,
-    signature_hash: certificate_signature_hash,
-    server_platform: { id: certificate_server_platform_id },
-  }
-)
-```
-
-#### List Duplicate Certificates
-
-Use this interface to view all duplicate certificates for an order.
-
-```ruby
-Digicert::DuplicateCertificate.all(order_id: order_id)
-
-# Alternative interface for duplicate certificates
-order = Digicert::Order.find(order_id)
-order.duplicate_certificates
-```
-
-#### Cancel a Certificate Order
-
-Use this interface to update the status of an order. Currently this endpoint only
-allows updating the status to 'CANCELED'
-
-```ruby
-order = Digicert::Order.find(order_id)
-order.cancel(note: "Cancellation note")
-
-# Or use the actual interface for more control
-Digicert::OrderCancellation.create(
-  order_id: order_id, status: "CANCELED", note: "your_note", send_emails: true,
-)
-```
-
-#### Expiring Orders
-
-Use this interface to retrieve the number of orders that have certificates
-expiring within 90, 60, and 30 days. The number of orders that have already
-expired certificates within the last 7 days is also returned.
-
-```ruby
-Digicert::ExpiringOrder.all(container_id: container_id)
-```
-
-#### View a Certificate Order
-
-Use this interface to retrieve a certificate order and the response includes all
-the order attributes along with a `certificate` in it.
-
-```ruby
-Digicert::Order.fetch(order_id)
-```
-
-#### List Certificate Orders
-
-Use this interface to retrieve a list of all certificate orders.
-
-```ruby
-Digicert::Order.all
-```
+If you want to create the order following each of the subclasses then please
+check the following interfaces.
 
 #### Order SSL Plus Certificate
 
@@ -436,129 +427,173 @@ Digicert::Order::DigitalSignaturePlus.create(
 )
 ```
 
-### Organization
+### Request Management
 
-#### List all organizations
+#### List certificate requests
 
-Use this interface to retrieve a list of organizations.
+Use this interface to retrieve a list of certificate requests.
 
 ```ruby
-Digicert::Organization.all
+Digicert::CertificateRequest.all
 ```
 
-#### Create an Organization
+#### Certificate Request details
 
-Use this interface to create a new organization. The organization information
-will be used by DigiCert for validation and may appear on certificates.
+Use this interface to retrieve the details for a certificate request.
 
 ```ruby
-# Create a new organization
-# Please pay close attension bellow
-# on building the organization_attributes
+Digicert::CertificateRequest.fetch(request_id)
+```
+
+#### Update Request Status
+
+Use this interface to update the status of a previously submitted certificate
+request.
+
+```ruby
+Digicert::CertificateRequest.update(
+  request_id, status: "approved", processor_comment: "Your domain is approved",
+)
+```
+
+### Order Management
+
+#### View a Certificate Order
+
+Use this interface to retrieve a certificate order and the response includes all
+the order attributes along with a `certificate` in it.
+
+```ruby
+Digicert::Order.fetch(order_id)
+```
+
+#### List Certificate Orders
+
+Use this interface to retrieve a list of all certificate orders.
+
+```ruby
+Digicert::Order.all
+```
+
+#### List of Email Validations
+
+Use this interface to view the status of all emails that require validation on a
+client certificate order.
+
+```ruby
+Digicert::EmailValidation.all(order_id: order_id)
+
+# If you prefer then there is an alternative alias method
+# on the order class, you can invoke that on any of its
+# instances. Usages
 #
-Digicert::Organization.create(organization_attributes)
-
-# Organization attributes hash
-#
-organization_attributes = {
-  name: "digicert, inc.",
-  address: "333 s 520 w",
-  zip: 84042,
-  city: "lindon",
-  state: "utah",
-  country: "us",
-  telephone: 8015551212,
-  container: { id: 17 },
-
-  organization_contact: {
-    first_name: "Some",
-    last_name: "Guy",
-    email: "someguy@digicert.com",
-    telephone: 8015551212,
-  },
-
-  # Optional attributes
-  assumed_name: "DigiCert",
-  address2: "Suite 500",
-}
+order = Digicert::Order.find(order_id)
+order.email_validations
 ```
 
-#### View an Organization
+#### Validate an Email Address
 
-Use this interface to view information about an organization.
+Use this interface to verify control of an email address, using an email
+address/token pair.
 
 ```ruby
-Digicert::Organization.fetch(organization_id)
+Digicert::EmailValidation.valid?(token: token, email: email)
+# => true or false
 ```
 
-### Domain
+#### Reissue a Certificate Order
 
-#### Create a new Domain
-
-Use this interface to add a domain for an organization in a container. You must
-specify at least one validation type for the domain.
+Use this interface to reissue a certificate order. A reissue replaces the
+existing certificate with a new one that has different information such as
+common name, CSR, etc. The simplest interface to reissue an update an existing
+order is
 
 ```ruby
-# Create a new domain in an organization
-# Please pay close attension in building the attibutes hash
-#
-Digicert::Domain.create(domain_attributes)
+order = Digicert::Order.find(order_id)
+order.reissue
 
-# Domain attributes hash
-#
-domain_attributes = {
-  name: "digicert.com",
-  organization: { id: 117483 },
-  validations: [
-    {
-      type: "ev",
-      user: { id: 12 }
-    },
-  ],
-
-  dcv: { method: "email" },
-}
+# Alternative and prefereed in most case
+Digicert::OrderReissuer.create(order_id: order_id)
 ```
 
-#### List Domains
-
-Use this interface to retrieve a list of domains. This interface also supports
-an additional `filter_params` hash, which can be used to filter the list we want
-the interface to return.
+And if there are some updated information like `csr`, `common_name` or etc then
+you can use the same interface but pass the `:certificate` option. Please
+remember if any required fields are missing then it will use the data that
+already exists for that order.
 
 ```ruby
-Digicert::Domain.all(filter_params_hash)
+Digicert::OrderReissuer.create(
+  order: order_id,
+  certificate: {
+    common_name: certificate_common_name,
+    dns_names: [certificate_dns_name],
+    csr: certificate_csr,
+    signature_hash: certificate_signature_hash,
+    server_platform: { id: certificate_server_platform_id },
+  }
+)
 ```
 
-#### View a Domain
+#### Duplicate a Certificate Order
 
-Use this interface to view a domain, This interface also allows you to pass an
-additional to `hash` to specify if you want to retrieve additional data with the
-response.
+Use this interface to request a duplicate certificate for an order. A duplicate
+shares the expiration date as the existing certificate and is identical with the
+exception of the CSR and a possible change in the server platform and signature
+hash. The common name and sans need to be the same as the original order.
 
 ```ruby
-Digicert::Domain.fetch(domain_id, include_dcv: true)
+Digicert::OrderDuplicator.create(
+  order: order_id,
+  certificate: {
+    common_name: certificate_common_name,
+    dns_names: [certificate_dns_name],
+    csr: certificate_csr,
+    signature_hash: certificate_signature_hash,
+    server_platform: { id: certificate_server_platform_id },
+  }
+)
 ```
 
-#### Activate a Domain
+#### List Duplicate Certificates
 
-Use this interface to activate a domain that was previously deactivated.
+Use this interface to view all duplicate certificates for an order.
 
 ```ruby
-domain = Digicert::Domain.find(domain_id)
-domain.activate
+Digicert::DuplicateCertificate.all(order_id: order_id)
+
+# Alternative interface for duplicate certificates
+order = Digicert::Order.find(order_id)
+order.duplicate_certificates
 ```
 
-#### Deactivate a Domain
+#### Cancel a Certificate Order
 
-Use this interface to deactivate a domain.
+Use this interface to update the status of an order. Currently this endpoint only
+allows updating the status to 'CANCELED'
 
 ```ruby
-domain = Digicert::Domain.find(domain_id)
-domain.deactivate
+order = Digicert::Order.find(order_id)
+order.cancel(note: "Cancellation note")
+
+# Or use the actual interface for more control
+Digicert::OrderCancellation.create(
+  order_id: order_id, status: "CANCELED", note: "your_note", send_emails: true,
+)
 ```
 
-### Certificate
+### Reports
+
+#### Expiring Orders
+
+Use this interface to retrieve the number of orders that have certificates
+expiring within 90, 60, and 30 days. The number of orders that have already
+expired certificates within the last 7 days is also returned.
+
+```ruby
+Digicert::ExpiringOrder.all(container_id: container_id)
+```
+
+### Certificate Management
 
 #### Download a Certificate
 
@@ -600,34 +635,6 @@ platform specified.
 certificate = Digicert::CertificateDownloader.fetch_by_platform(
   certificate_id, platform: "apache",
 )
-```
-
-### Email Validations
-
-#### List of Email Validations
-
-Use this interface to view the status of all emails that require validation on a
-client certificate order.
-
-```ruby
-Digicert::EmailValidation.all(order_id: order_id)
-
-# If you prefer then there is an alternative alias method
-# on the order class, you can invoke that on any of its
-# instances. Usages
-#
-order = Digicert::Order.find(order_id)
-order.email_validations
-```
-
-#### Validate an Email Address
-
-Use this interface to verify control of an email address, using an email
-address/token pair.
-
-```ruby
-Digicert::EmailValidation.valid?(token: token, email: email)
-# => true or false
 ```
 
 ## Play Box
