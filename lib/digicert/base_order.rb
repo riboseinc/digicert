@@ -1,5 +1,4 @@
 require "digicert/base"
-require "digicert/actions/create"
 
 module Digicert
   class BaseOrder < Digicert::Base

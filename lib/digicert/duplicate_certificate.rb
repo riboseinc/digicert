@@ -1,28 +1,21 @@
-require "digicert/actions/all"
+require "digicert/base"
 
 module Digicert
-  class DuplicateCertificate
+  class DuplicateCertificate < Digicert::Base
     include Digicert::Actions::All
 
-    def initialize(order_id:, params: {})
-      @order_id = order_id
-      @query_params = params
-    end
-
     def self.all(order_id:, **attributes)
-      new(order_id: order_id, **attributes).all
+      new(resource_id: order_id, **attributes).all
     end
 
     private
-
-    attr_reader :order_id, :query_params
 
     def resources_key
       "certificates"
     end
 
     def resource_path
-      ["order", "certificate", order_id, "duplicate"].join("/")
+      ["order", "certificate", resource_id, "duplicate"].join("/")
     end
   end
 end

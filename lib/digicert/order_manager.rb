@@ -1,17 +1,14 @@
-require "digicert/actions/create"
+require "digicert/base"
 
 module Digicert
-  class OrderManager
+  class OrderManager < Digicert::Base
     include Digicert::Actions::Create
 
-    def initialize(order_id:, **attributes)
-      @order_id = order_id
-      @attributes = attributes
+    def self.create(order_id:, **attributes)
+      new(resource_id: order_id, **attributes).create
     end
 
     private
-
-    attr_reader :order_id, :attributes
 
     def validate(attributes)
       order_attributes.merge(attributes)
@@ -32,5 +29,11 @@ module Digicert
     def order
       @order ||= Digicert::Order.fetch(order_id)
     end
+
+    # Expose the resource_id as order_id, as it sounds
+    # more readable and all of it's subclasses are only
+    # gonna deal with order.
+    #
+    alias_method :order_id, :resource_id
   end
 end
