@@ -4,6 +4,8 @@
 #
 
 require "digicert/base"
+require "digicert/findable"
+
 require "digicert/ssl_certificate/ssl_plus"
 require "digicert/ssl_certificate/ssl_ev_plus"
 require "digicert/ssl_certificate/ssl_wildcard"
@@ -14,6 +16,8 @@ require "digicert/client_certificate/digital_signature_plus"
 
 module Digicert
   class Order < Digicert::Base
+    extend Digicert::Findable
+
     def create
       certificate_klass.create(attributes)
     end

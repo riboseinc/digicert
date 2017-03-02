@@ -1,9 +1,11 @@
 require "digicert/base"
+require "digicert/findable"
 require "digicert/actions/create"
 
 module Digicert
   class Domain < Digicert::Base
     include Digicert::Actions::Create
+    extend Digicert::Findable
 
     def activate
       Digicert::Request.new(
