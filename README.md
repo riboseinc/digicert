@@ -436,16 +436,6 @@ Digicert::Order::DigitalSignaturePlus.create(
 )
 ```
 
-### Certificate Order
-
-#### Certificate order details
-
-Use this interface to retrieve a certificate order.
-
-```ruby
-Digicert::CertificateOrder.fetch(order_id)
-```
-
 ### Organization
 
 #### List all organizations
