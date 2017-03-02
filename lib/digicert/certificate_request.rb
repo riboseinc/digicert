@@ -1,17 +1,9 @@
 require "digicert/base"
+require "digicert/actions/update"
 
 module Digicert
   class CertificateRequest < Digicert::Base
-
-    def update
-      Digicert::Request.new(
-        :put, update_status_path, attributes,
-      ).parse
-    end
-
-    def self.update(resource_id, attributes)
-      new(resource_id: resource_id, **attributes).update
-    end
+    include Digicert::Actions::Update
 
     private
 
@@ -19,7 +11,7 @@ module Digicert
       "request"
     end
 
-    def update_status_path
+    def resource_update_path
       [resource_path, resource_id, "status"].join("/")
     end
   end
