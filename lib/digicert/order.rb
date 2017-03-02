@@ -18,6 +18,9 @@ module Digicert
   class Order < Digicert::Base
     extend Digicert::Findable
 
+    include Digicert::Actions::All
+    include Digicert::Actions::Fetch
+
     def create
       certificate_klass.create(attributes)
     end

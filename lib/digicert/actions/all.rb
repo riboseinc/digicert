@@ -13,6 +13,10 @@ module Digicert
         response[resources_key]
       end
 
+      def resources_key
+        [resource_path, "s"].join
+      end
+
       module ClassMethods
         def all(filter_params = {})
           new(params: filter_params).all

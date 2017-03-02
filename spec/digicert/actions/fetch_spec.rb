@@ -16,6 +16,8 @@ RSpec.describe "Digicert::Actions::Fetch" do
 
   module Digicert
     class TestFetchAction < Digicert::Base
+      include Digicert::Actions::Fetch
+
       private
 
       def resource_path

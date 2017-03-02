@@ -14,6 +14,8 @@ RSpec.describe "Digicert::Actions::ALL" do
 
   module Digicert
     class TestAllAction < Digicert::Base
+      include Digicert::Actions::All
+
       private
 
       def resource_path

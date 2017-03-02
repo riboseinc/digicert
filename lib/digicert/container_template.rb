@@ -2,6 +2,9 @@ require "digicert/base"
 
 module Digicert
   class ContainerTemplate < Base
+    include Digicert::Actions::All
+    include Digicert::Actions::Fetch
+
     def self.all(container_id)
       new(container_id: container_id).all
     end

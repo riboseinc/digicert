@@ -1,8 +1,8 @@
 require "digicert/base"
-require "digicert/actions/create"
 
 module Digicert
   class Container < Digicert::Base
+    include Digicert::Actions::Fetch
     include Digicert::Actions::Create
 
     def self.create(container_id:, **attributes)

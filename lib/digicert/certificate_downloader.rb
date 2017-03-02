@@ -2,6 +2,8 @@ require "digicert/base"
 
 module Digicert
   class CertificateDownloader < Digicert::Base
+    include Digicert::Actions::Fetch
+
     def fetch
       Digicert::Request.new(:get, certificate_download_path).run
     end

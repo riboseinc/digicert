@@ -2,6 +2,8 @@ require "digicert/base"
 
 module Digicert
   class EmailValidation < Digicert::Base
+    include Digicert::Actions::All
+
     def self.all(order_id:, **filter_params)
       new(order_id: order_id, params: filter_params).all
     end

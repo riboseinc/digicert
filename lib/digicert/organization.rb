@@ -3,10 +3,11 @@
 #
 #
 require "digicert/base"
-require "digicert/actions/create"
 
 module Digicert
   class Organization < Digicert::Base
+    include Digicert::Actions::All
+    include Digicert::Actions::Fetch
     include Digicert::Actions::Create
 
     private

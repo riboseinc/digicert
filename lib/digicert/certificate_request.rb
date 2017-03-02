@@ -1,8 +1,9 @@
 require "digicert/base"
-require "digicert/actions/update"
 
 module Digicert
   class CertificateRequest < Digicert::Base
+    include Digicert::Actions::All
+    include Digicert::Actions::Fetch
     include Digicert::Actions::Update
 
     private
