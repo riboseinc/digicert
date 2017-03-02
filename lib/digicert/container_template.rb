@@ -1,7 +1,7 @@
 require "digicert/base"
 
 module Digicert
-  class ContainerTemplate < Base
+  class ContainerTemplate < Digicert::Base
     include Digicert::Actions::All
     include Digicert::Actions::Fetch
 
@@ -15,6 +15,8 @@ module Digicert
 
     private
 
+    attr_reader :container_id
+
     def extract_local_attribute_ids
       @container_id = attributes.delete(:container_id)
     end
@@ -24,7 +26,7 @@ module Digicert
     end
 
     def resource_path
-      ["container", @container_id, "template"].join("/")
+      ["container", container_id, "template"].join("/")
     end
   end
 end

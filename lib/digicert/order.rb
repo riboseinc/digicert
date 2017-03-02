@@ -2,7 +2,6 @@
 # (c) 2017 Ribose, Inc. as unpublished work.
 #
 #
-
 require "digicert/base"
 require "digicert/findable"
 
@@ -29,12 +28,12 @@ module Digicert
       new(name_id: name_id, **attributes).create
     end
 
-    def reissue
-      Digicert::OrderReissuer.create(order_id: resource_id)
+    def reissue(attributes = {})
+      Digicert::OrderReissuer.create(order_id: resource_id, **attributes)
     end
 
-    def duplicate
-      Digicert::OrderDuplicator.create(order_id: resource_id)
+    def duplicate(attributes = {})
+      Digicert::OrderDuplicator.create(order_id: resource_id, **attributes)
     end
 
     def duplicate_certificates
@@ -53,6 +52,8 @@ module Digicert
 
     private
 
+    attr_reader :name_id
+
     def extract_local_attribute_ids
       @name_id = attributes.delete(:name_id)
     end
@@ -66,7 +67,7 @@ module Digicert
     end
 
     def certificate_klass
-      certificate_klass_hash[@name_id.to_sym] ||
+      certificate_klass_hash[name_id.to_sym] ||
         Digicert::SSLCertificate::SSLPlus
     end
 
