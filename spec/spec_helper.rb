@@ -1,6 +1,6 @@
 require "webmock/rspec"
 require "bundler/setup"
-require "digicert/api"
+require "digicert"
 
 Dir["./spec/support/**/*.rb"].sort.each { |file| require file }
 

@@ -7,7 +7,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem "digicert-api"
+gem "digicert"
 ```
 
 And then execute:
@@ -19,7 +19,7 @@ bundle install
 Or install it yourself as:
 
 ```sh
-gem install digicert-api
+gem install digicert
 ```
 
 ## Configure

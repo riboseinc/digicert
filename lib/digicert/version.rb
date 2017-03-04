@@ -2,9 +2,6 @@
 # (c) 2017 Ribose, Inc. as unpublished work.
 #
 #
-
 module Digicert
-  module Api
-    VERSION = "0.1.0"
-  end
+  VERSION = "0.1.0".freeze
 end

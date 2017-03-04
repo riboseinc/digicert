@@ -1,11 +1,11 @@
 # coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'digicert/api/version'
+require "digicert/version"
 
 Gem::Specification.new do |spec|
-  spec.name          = "digicert-api"
-  spec.version       = Digicert::Api::VERSION
+  spec.name          = "digicert"
+  spec.version       = Digicert::VERSION
   spec.authors       = ["Ronald Tse"]
   spec.email         = ["ronald.tse@ribose.com"]
 
