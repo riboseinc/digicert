@@ -17,8 +17,12 @@ module Digicert
 
     def parse_response
       if response.body
-        JSON.parse(response.body, object_class: ResponseObject)
+        JSON.parse(response.body, object_class: response_object_klass)
       end
+    end
+
+    def response_object_klass
+      Digicert.configuration.response_klass
     end
   end
 

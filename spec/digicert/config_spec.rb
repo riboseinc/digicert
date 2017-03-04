@@ -25,6 +25,9 @@ RSpec.describe Digicert::Config do
 
       expect(Digicert.configuration.api_host).to eq(api_host)
       expect(Digicert.configuration.base_path).to eq(base_path)
+      expect(
+        Digicert.configuration.response_klass,
+      ).to eq(Digicert::ResponseObject)
     end
   end
 

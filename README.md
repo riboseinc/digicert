@@ -30,6 +30,13 @@ with the following code
 ```ruby
 Digicert.configure do |config|
   config.api_key = "SECRET_DEV_API_KEY"
+
+  # Default response type is `object`, but you
+  # can configure it if necessary, and all the
+  # further response will be return as config
+  # supported options are `object`, `hash`
+  #
+  # config.response_type = :object
 end
 ```
 
