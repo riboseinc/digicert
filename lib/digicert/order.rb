@@ -50,6 +50,12 @@ module Digicert
       )
     end
 
+    def fetch_to_path(certificate_id, path:, ext: "zip")
+      Digicert::CertificateDownloader.fetch_to_path(
+        certificate_id, path: path, ext: ext,
+      )
+    end
+
     private
 
     attr_reader :name_id

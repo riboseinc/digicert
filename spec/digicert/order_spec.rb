@@ -93,6 +93,21 @@ RSpec.describe Digicert::Order do
     end
   end
 
+  describe "#fetch_to_path" do
+    it "sends `fetch_to_path` message to the downloader" do
+      order_id = 123_456_789
+      certificate_id = 112358
+      allow(Digicert::CertificateDownloader).to receive(:fetch_to_path)
+
+      order = Digicert::Order.find(order_id)
+      order.fetch_to_path(certificate_id, path: "tmp", ext: "pem")
+
+      expect(Digicert::CertificateDownloader,).
+        to have_received(:fetch_to_path).
+        with(certificate_id, path: "tmp", ext: "pem")
+    end
+  end
+
   describe "#cancel" do
     it "sends the create methods to order cancellation" do
       order_id = 123_456_789
