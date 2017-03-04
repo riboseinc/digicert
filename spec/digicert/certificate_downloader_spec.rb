@@ -13,6 +13,22 @@ RSpec.describe Digicert::CertificateDownloader do
     end
   end
 
+  describe ".fetch_to_path" do
+    it "fetch and write that to a file" do
+      certificate_id = 123_456_789
+      allow(File).to receive(:write)
+      download_path = File.expand_path("../../tmp", __FILE__)
+
+      stub_digicert_certificate_download_by_platform(certificate_id)
+      Digicert::CertificateDownloader.fetch_to_path(
+        certificate_id, path: download_path, ext: "zip",
+      )
+
+      download_url = [download_path, "certificate.zip"].join("/")
+      expect(File).to have_received(:write).with(download_url, any_args)
+    end
+  end
+
   describe ".fetch_by_platform" do
     it "retrieves a certificate by specified platform" do
       platform = "apache"

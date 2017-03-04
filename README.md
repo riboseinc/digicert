@@ -613,6 +613,18 @@ certificate = Digicert::CertificateDownloader.fetch(certificate_id)
 File.write("path_to_file_system/certificate.zip", certificate.body)
 ```
 
+Additionally, if you want the gem to handle the file writing then it also
+provides another helper interface `fetch_to_path`, and that will fetch the file
+content and write the content to supplied path.
+
+```ruby
+Digicert::CertificateDownloader.fetch_to_path(
+  certificate_id,
+  ext: "zip",
+  path: File.expand_path("./file/download/path"),
+)
+```
+
 #### Download a Certificate By Format
 
 This interface will return an SSL Certificate file from an order. The certificate

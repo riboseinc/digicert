@@ -16,6 +16,15 @@ module Digicert
       new(resource_id: certificate_id, platform: platform).fetch
     end
 
+    def self.fetch_to_path(certificate_id, path:, ext: "zip")
+      response = fetch(certificate_id)
+
+      if response.code.to_i == 200
+        filename = ["certificate", ext].join(".")
+        File.write([path, filename].join("/"), response.body)
+      end
+    end
+
     private
 
     attr_reader :format, :platform
