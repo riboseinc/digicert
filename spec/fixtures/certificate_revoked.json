@@ -1,0 +1,13 @@
+{
+  "id": 1,
+  "date": "2016-02-10T17:06:15+00:00",
+  "type": "revoke",
+  "status": "pending",
+  "requester": {
+    "id": 242140,
+    "first_name": "Jack",
+    "last_name": "White",
+    "email": "j.white@fakeaddy.com"
+  },
+  "comments": "Revoked via API!"
+}

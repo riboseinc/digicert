@@ -230,6 +230,16 @@ module Digicert
       )
     end
 
+    def stub_digicert_certificate_revoke_api(id, attributes)
+      stub_api_response(
+        :put,
+        ["certificate", id, "revoke"].join("/"),
+        data: attributes,
+        filename: "certificate_revoked",
+        status: 201,
+      )
+    end
+
     def stub_digicert_certificate_download_by_format(id, format)
       stub_api_response_with_io(
         :get,

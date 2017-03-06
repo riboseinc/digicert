@@ -683,6 +683,14 @@ certificate = Digicert::CertificateDownloader.fetch_by_platform(
 )
 ```
 
+#### Revoke a Certificate
+
+This interface will revoke a previously issued SSL Certificate.
+
+```ruby
+Digicert::Certificate.revoke(certificate_id, comments: "Your comment")
+```
+
 ## Play Box
 
 The API Play Box provides an interactive console so we can easily test out the
