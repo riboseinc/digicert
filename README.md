@@ -561,6 +561,33 @@ Digicert::OrderDuplicator.create(
 )
 ```
 
+#### Find a Duplicate Certificate
+
+As of now, the Digicert API, does not have an easier way to find a duplicate
+certificate, as the certificate duplication returns existing `order_id` with a
+`request` node which only has an `id`.
+
+So to find out a duplicate certificate, we need to retrieve the details for that
+specific request and from that response retrieve the `date_created` for the
+duplicate certificate and then use that `date_created` to find out the correct
+certificate from the duplications of that specific order.
+
+This requires lots of work, so this following interface will do all of its
+underlying tasks, and all we need to do is pass the requests id that we will
+have form the certificate duplication.
+
+```ruby
+# Duplicate an existing certificate order
+#
+order = Digicert::Order.find(order_id)
+duplicate_order = order.duplicate
+
+# Use the request id to find out the certificate
+#
+request_id = duplicate_order.requests.first.id
+Digicert::DuplicateCertificateFinder.find_by(request_id: request_id)
+```
+
 #### List Duplicate Certificates
 
 Use this interface to view all duplicate certificates for an order.

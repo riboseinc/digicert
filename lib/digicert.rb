@@ -18,6 +18,7 @@ require "digicert/order_duplicator"
 require "digicert/duplicate_certificate"
 require "digicert/order_cancellation"
 require "digicert/expiring_order"
+require "digicert/duplicate_certificate_finder"
 
 module Digicert
 end

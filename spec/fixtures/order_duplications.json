@@ -37,7 +37,7 @@
         "subdomain.digicert.com"
       ],
       "status": "approved",
-      "date_created": "2014-08-19T18:16:07+00:00",
+      "date_created": "2014-12-04T20:32:59+00:00",
       "valid_from": "2014-08-19",
       "valid_till": "2015-08-24",
       "csr": "------ [CSR HERE] ------",
