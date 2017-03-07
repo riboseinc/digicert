@@ -9,7 +9,7 @@ module Digicert
     end
 
     def revoke
-      Digicert::Request.new(:put, revocation_path, attributes).parse
+      request_klass.new(:put, revocation_path, attributes).parse
     end
 
     def self.revoke(certificate_id, attributes = {})

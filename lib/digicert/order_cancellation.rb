@@ -3,7 +3,7 @@ require "digicert/base"
 module Digicert
   class OrderCancellation < Digicert::Base
     def create
-      Digicert::Request.new(
+      request_klass.new(
         :put, resource_path, default_attributes.merge(attributes),
       ).run
     end

@@ -3,7 +3,7 @@ require "digicert/base"
 module Digicert
   class CertificateDownloader < Digicert::Base
     def fetch
-      Digicert::Request.new(:get, certificate_download_path).run
+      request_klass.new(:get, certificate_download_path).run
     end
 
     def fetch_to_path(path:, extension: "zip")

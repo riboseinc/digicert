@@ -10,13 +10,13 @@ module Digicert
     include Digicert::Actions::Create
 
     def activate
-      Digicert::Request.new(
+      request_klass.new(
         :put, [resource_path, resource_id, "activate"].join("/"),
       ).parse
     end
 
     def deactivate
-      Digicert::Request.new(
+      request_klass.new(
         :put, [resource_path, resource_id, "deactivate"].join("/"),
       ).parse
     end

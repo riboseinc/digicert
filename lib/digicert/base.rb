@@ -27,5 +27,9 @@ module Digicert
       @query_params = attributes.delete(:params)
       @resource_id = attributes.delete(:resource_id)
     end
+
+    def request_klass
+      Digicert::Request
+    end
   end
 end
