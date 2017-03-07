@@ -2,6 +2,7 @@ require "uri"
 require "json"
 require "net/http"
 require "digicert/response"
+require "digicert/errors"
 
 module Digicert
   class Request
@@ -13,7 +14,7 @@ module Digicert
     end
 
     def run
-      send_http_request
+      valid_response || raise_response_error
     end
 
     def parse
@@ -24,6 +25,22 @@ module Digicert
 
     attr_reader :attributes
 
+    def valid_response
+      if valid_response?
+        response
+      end
+    end
+
+    def valid_response?
+      response.is_a?(Net::HTTPSuccess)
+    end
+
+    def response
+      @response ||= send_http_request
+    rescue *server_errors => error
+      @response ||= error
+    end
+
     def send_http_request
       Net::HTTP.start(*net_http_options) do |http|
         request = constanize_net_http_class.new(uri)
@@ -31,6 +48,10 @@ module Digicert
         set_request_body!(request)
         http.request(request)
       end
+    end
+
+    def raise_response_error
+      raise response_error, error_message
     end
 
     def net_http_options
@@ -70,6 +91,21 @@ module Digicert
 
     def digicert_api_path_with_base
       ["", Digicert.configuration.base_path, @end_point].join("/").squeeze("/")
+    end
+
+    def response_error
+      Digicert::Errors.error_klass_for(response)
+    end
+
+    def server_errors
+      Digicert::Errors.server_errors
+    end
+
+    # This is only for the development purpose, later we can
+    # add an option to turn on the debug mode if necessary.
+    #
+    def error_message
+      response.body
     end
   end
 end

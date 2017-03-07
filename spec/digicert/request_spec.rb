@@ -3,12 +3,23 @@ require "digicert/request"
 
 RSpec.describe Digicert::Request do
   describe "#run" do
-    it "retrieves a resource via a specified http verb" do
-      stub_ping_reqeust_via_get
-      response = Digicert::Request.new(:get, "ping").run
+    context "with 2xx response" do
+      it "retrieves a resource via a specified http verb" do
+        stub_ping_reqeust_via_get
+        response = Digicert::Request.new(:get, "ping").run
 
-      expect(response.code.to_i).to eq(200)
-      expect(response.class).to eq(Net::HTTPOK)
+        expect(response.code.to_i).to eq(200)
+        expect(response.class).to eq(Net::HTTPOK)
+      end
+    end
+
+    context "with 4xx, 5xx responses" do
+      it "raises the proper response error" do
+        stub_invalid_ping_reqeust_via_get
+        request = Digicert::Request.new(:get, "ping")
+
+        expect{ request.run }.to raise_error(Digicert::Errors::ServerError)
+      end
     end
   end
 
@@ -28,5 +39,9 @@ RSpec.describe Digicert::Request do
     # reponse with an identical json file that can be found in `fixtures`
     #
     stub_api_response(:get, "ping", filename: "ping")
+  end
+
+  def stub_invalid_ping_reqeust_via_get
+    stub_api_response(:get, "ping", filename: "orders", status: 500)
   end
 end
