@@ -645,6 +645,11 @@ certificate = Digicert::CertificateDownloader.fetch(certificate_id)
 # write to content to somewhere in your filesystem.
 #
 File.write("path_to_file_system/certificate.zip", certificate.body)
+
+# Alaternative to fetch it through certificate instance
+#
+certificate = Digicert::Certificate.find(certificate_id)
+certificate_content_object = certificate.download
 ```
 
 Additionally, if you want the gem to handle the file writing then it also
@@ -670,6 +675,11 @@ to write that as zip archive.
 Digicert::CertificateDownloader.fetch_by_format(
   certificate_id, format: format,
 )
+
+# Alternative using the certificate instance
+#
+certificate = Digicert::Certificate.find(certificate_id)
+certificate_content_object = certificate.download(format: format)
 ```
 
 #### Download a Certificate By Platform
@@ -681,6 +691,11 @@ platform specified.
 certificate = Digicert::CertificateDownloader.fetch_by_platform(
   certificate_id, platform: "apache",
 )
+
+# Alternative using the certificate instance
+#
+certificate = Digicert::Certificate.find(certificate_id)
+certificate_content_object = certificate.download(platform: "apache")
 ```
 
 #### Revoke a Certificate
