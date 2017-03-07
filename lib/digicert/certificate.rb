@@ -16,6 +16,11 @@ module Digicert
       new(attributes.merge(resource_id: certificate_id)).revoke
     end
 
+    def download_to_path(path:, ext: "zip", **attributes)
+      new_downloader(attributes.merge(resource_id: resource_id)).
+        fetch_to_path(path: path, extension: ext)
+    end
+
     private
 
     def new_downloader(attributes)

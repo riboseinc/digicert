@@ -16,8 +16,8 @@ RSpec.describe Digicert::CertificateDownloader do
   describe ".fetch_to_path" do
     it "fetch and write that to a file" do
       certificate_id = 123_456_789
-      allow(File).to receive(:write)
-      download_path = File.expand_path("../../tmp", __FILE__)
+      allow(File).to receive(:open)
+      download_path = File.expand_path("../../../tmp", __FILE__)
 
       stub_digicert_certificate_download_by_platform(certificate_id)
       Digicert::CertificateDownloader.fetch_to_path(
@@ -25,7 +25,7 @@ RSpec.describe Digicert::CertificateDownloader do
       )
 
       download_url = [download_path, "certificate.zip"].join("/")
-      expect(File).to have_received(:write).with(download_url, any_args)
+      expect(File).to have_received(:open).with(download_url, "w")
     end
   end
 

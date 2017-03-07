@@ -661,7 +661,13 @@ Digicert::CertificateDownloader.fetch_to_path(
   certificate_id,
   ext: "zip",
   path: File.expand_path("./file/download/path"),
+  **other_attributes_hash_like_platform_or_format,
 )
+
+# Alternative through a certificate instance
+#
+certificate = Digicert::Certificate.find(certificate_id)
+certificate.download_to_path(path: "file/path", ext: "zip", format: "zip")
 ```
 
 #### Download a Certificate By Format

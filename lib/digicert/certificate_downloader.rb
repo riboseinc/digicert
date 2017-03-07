@@ -8,6 +8,10 @@ module Digicert
       Digicert::Request.new(:get, certificate_download_path).run
     end
 
+    def fetch_to_path(path:, extension: "zip")
+      download_to_path(path: path, extension: extension)
+    end
+
     def self.fetch_by_format(certificate_id, format:)
       new(resource_id: certificate_id, format: format).fetch
     end
@@ -16,13 +20,9 @@ module Digicert
       new(resource_id: certificate_id, platform: platform).fetch
     end
 
-    def self.fetch_to_path(certificate_id, path:, ext: "zip")
-      response = fetch(certificate_id)
-
-      if response.code.to_i == 200
-        filename = ["certificate", ext].join(".")
-        File.write([path, filename].join("/"), response.body)
-      end
+    def self.fetch_to_path(certificate_id, path:, ext: "zip", **attributes)
+      new(attributes.merge(resource_id: certificate_id)).
+        fetch_to_path(path: path, extension: ext)
     end
 
     private
@@ -44,6 +44,14 @@ module Digicert
         download_path_by_order_specified_platfrom
     end
 
+    def download_to_path(path:, extension:)
+      response = fetch
+
+      if response.code.to_i == 200
+        write_to_path(response.body, path: path, extension: extension)
+      end
+    end
+
     def download_path_by_format
       if format
         [resource_path, "format", format].join("/")
@@ -58,6 +66,15 @@ module Digicert
 
     def download_path_by_order_specified_platfrom
       [resource_path, "platform"].join("/")
+    end
+
+    def write_to_path(content, path:, extension:)
+      filename = ["certificate", extension].join(".")
+      file_with_path = [path, filename].join("/")
+
+      File.open(file_with_path, "w") do |file|
+        file.write(content)
+      end
     end
   end
 end
