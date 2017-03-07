@@ -15,17 +15,13 @@ RSpec.describe Digicert::Certificate do
       it "fetches the certificate using the format" do
         certificate_id = 123_456_789
         certificate = Digicert::Certificate.find(certificate_id)
-        expected_hash = { resource_id: certificate_id, format: "zip" }
-
-        allow(
-          Digicert::CertificateDownloader,
-        ).to receive_message_chain(:new, :fetch)
+        allow(Digicert::CertificateDownloader).to receive(:fetch)
 
         certificate.download(format: "zip")
 
         expect(
           Digicert::CertificateDownloader,
-        ).to have_received(:new).with(expected_hash)
+        ).to have_received(:fetch).with(certificate_id, format: "zip")
       end
     end
 
@@ -33,17 +29,13 @@ RSpec.describe Digicert::Certificate do
       it "fetches the certificate using the platfrom" do
         certificate_id = 123_456_789
         certificate = Digicert::Certificate.find(certificate_id)
-        expected_hash = { resource_id: certificate_id, platform: "apache"}
-
-        allow(
-          Digicert::CertificateDownloader,
-        ).to receive_message_chain(:new, :fetch)
+        allow(Digicert::CertificateDownloader).to receive(:fetch)
 
         certificate.download(platform: "apache")
 
         expect(
           Digicert::CertificateDownloader,
-        ).to have_received(:new).with(expected_hash)
+        ).to have_received(:fetch).with(certificate_id, platform: "apache")
       end
     end
   end

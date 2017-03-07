@@ -640,7 +640,7 @@ uses the platform specified by the order.
 # want to write it to your filesystem or directly upload it to
 # your host, and the contents it returns is `zip` archieve.
 #
-certificate = Digicert::CertificateDownloader.fetch(certificate_id)
+certificate = Digicert::CertificateDownloader.fetch(certificate_id, **attributes)
 
 # write to content to somewhere in your filesystem.
 #

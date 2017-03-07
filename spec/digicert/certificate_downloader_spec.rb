@@ -4,9 +4,12 @@ RSpec.describe Digicert::CertificateDownloader do
   describe ".fetch" do
     it "retrives the certificate contents" do
       certificate_id = 123_456_789
+      platform = "apache"
+      stub_digicert_certificate_download_by_platform(certificate_id, platform)
 
-      stub_digicert_certificate_download_by_platform(certificate_id)
-      certificate = Digicert::CertificateDownloader.fetch(certificate_id)
+      certificate = Digicert::CertificateDownloader.fetch(
+        certificate_id, platform: platform,
+      )
 
       expect(certificate.code.to_i).to eq(200)
       expect_certficate_to_be_a_zip_archieve(certificate)

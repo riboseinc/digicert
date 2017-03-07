@@ -5,7 +5,7 @@ module Digicert
     extend Digicert::Findable
 
     def download(attributes = {})
-      new_downloader(attributes).fetch
+      certificate_downloader.fetch(resource_id, attributes)
     end
 
     def revoke
@@ -17,17 +17,12 @@ module Digicert
     end
 
     def download_to_path(path:, ext: "zip", **attributes)
-      new_downloader(attributes.merge(resource_id: resource_id)).
-        fetch_to_path(path: path, extension: ext)
+      certificate_downloader.fetch_to_path(
+        resource_id, attributes.merge(path: path, ext: ext),
+      )
     end
 
     private
-
-    def new_downloader(attributes)
-      Digicert::CertificateDownloader.new(
-        attributes.merge(resource_id: resource_id),
-      )
-    end
 
     def resource_path
       "certificate"
@@ -35,6 +30,10 @@ module Digicert
 
     def revocation_path
       [resource_path, resource_id, "revoke"].join("/")
+    end
+
+    def certificate_downloader
+      Digicert::CertificateDownloader
     end
   end
 end

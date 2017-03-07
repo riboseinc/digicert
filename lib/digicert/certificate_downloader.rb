@@ -2,8 +2,6 @@ require "digicert/base"
 
 module Digicert
   class CertificateDownloader < Digicert::Base
-    include Digicert::Actions::Fetch
-
     def fetch
       Digicert::Request.new(:get, certificate_download_path).run
     end
@@ -12,12 +10,16 @@ module Digicert
       download_to_path(path: path, extension: extension)
     end
 
+    def self.fetch(certificate_id, attributes = {})
+      new(attributes.merge(resource_id: certificate_id)).fetch
+    end
+
     def self.fetch_by_format(certificate_id, format:)
-      new(resource_id: certificate_id, format: format).fetch
+      fetch(certificate_id, format: format)
     end
 
     def self.fetch_by_platform(certificate_id, platform:)
-      new(resource_id: certificate_id, platform: platform).fetch
+      fetch(certificate_id, platform: platform)
     end
 
     def self.fetch_to_path(certificate_id, path:, ext: "zip", **attributes)
