@@ -13,6 +13,15 @@ RSpec.describe "Container Management" do
     end
   end
 
+  describe "fetching a container details", api_call: true do
+    it "retrieves the details for a container" do
+      container = Digicert::Container.fetch(container_id)
+
+      expect(container.is_active).to eq(true)
+      expect(container.name).to eq("Ribose Inc.")
+    end
+  end
+
   def container_id
     @container_id ||= ENV["DIGICERT_CONTAINER_ID"]
   end
