@@ -13,7 +13,7 @@ module Digicert
     end
   end
 
-  # Expose config module methodas as class level method,
+  # Expose config module methods as class level method,
   # so we can use those method whenever necessary, specially
   # the `configuration` throughout the gem
   #

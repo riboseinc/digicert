@@ -1,4 +1,4 @@
-# Digicert::Api
+# Digicert
 
 [![CircleCI](https://circleci.com/gh/abunashir/digicert-api/tree/master.svg?style=svg&circle-token=21edcc7e3704f7d5b689e87b9e3af658e34a5be4)](https://circleci.com/gh/abunashir/digicert-api/tree/master)
 
@@ -88,7 +88,7 @@ Digicert::Container.create(
 
   user: {
     first_name: "Awesome",
-    last_name: "User"
+    last_name: "User",
     email: "awesomeuser@example.com",
     username: "awesomeuser@example.com",
     access_roles: [{ id: 1 }],
@@ -210,7 +210,7 @@ domain.deactivate
 #### View a Domain
 
 Use this interface to view a domain, This interface also allows you to pass an
-additional to `hash` to specify if you want to retrieve additional data with the
+additional `hash` to specify if you want to retrieve additional data with the
 response.
 
 ```ruby
@@ -282,12 +282,12 @@ order_attributes = {
 }
 ```
 
-The supported `name_id`'s are `ssl_plus`, `ssl_wildcard`, `ssl_ev_plus`,
+The supported value for `name_id` are `ssl_plus`, `ssl_wildcard`, `ssl_ev_plus`,
 `client_premium`, `email_security_plus` and `digital_signature_plus`. Please
 check the Digicert documentation for more details on those.
 
-If you want to create the order following each of the subclasses then please
-check the following interfaces.
+If you want to create a new order by yourself by following each of the specific
+class then please check out the interfaces specified bellow.
 
 #### Order SSL Plus Certificate
 
@@ -416,7 +416,7 @@ Digicert::ClientCertificate::EmailSecurityPlus.create(
 
 #### Order Client Digital Signature Plus
 
-Use this interface to order a Order Client Digital Signature Plus
+Use this interface to order a Client Digital Signature Plus
 
 ```ruby
 Digicert::Order::DigitalSignaturePlus.create(
