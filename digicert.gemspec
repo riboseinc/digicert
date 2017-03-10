@@ -6,8 +6,8 @@ require "digicert/version"
 Gem::Specification.new do |spec|
   spec.name          = "digicert"
   spec.version       = Digicert::VERSION
-  spec.authors       = ["Ronald Tse"]
-  spec.email         = ["ronald.tse@ribose.com"]
+  spec.authors       = ["Ribose Inc."]
+  spec.email         = ["operations@ribose.com"]
 
   spec.summary       = %q{Digicert Ruby API.}
   spec.description   = %q{Digicert Ruby API.}
