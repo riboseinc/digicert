@@ -764,6 +764,35 @@ Start playing with it.
 Digicert::Product.all
 ```
 
+### Generate Docs
+
+We've used some standard to write this usages guide and the gem, so if we want
+then we can generate a pretty formatted doc using [YARD](http://yardoc.org/).
+For simplicity we did not add the `doc` in this repo, but please follow the
+following steps to generate the updated doc.
+
+Install `yard`
+
+```sh
+gem install yard
+```
+
+Generate the documentation
+
+```sh
+
+# If you want to see what's available then
+# please use yard --help
+#
+yard doc
+```
+
+Open the doc in the browser
+
+```sh
+open doc/index.html
+```
+
 ## Contributing
 
 First, thank you for contributing! We love pull requests from everyone. By
