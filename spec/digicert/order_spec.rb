@@ -1,19 +1,6 @@
 require "spec_helper"
 
 RSpec.describe Digicert::Order do
-  describe ".create" do
-    it "creates a new order" do
-      name_id = "ssl_plus"
-
-      stub_digicert_order_create_api(name_id, order_attributes)
-      order = Digicert::Order.create(name_id, order_attributes)
-
-      expect(order.id).not_to be_nil
-      expect(order.requests.first.id).not_to be_nil
-      expect(order.requests.first.status).not_to be_nil
-    end
-  end
-
   describe ".fetch" do
     it "retrieves a specific certificate order" do
       order_id = 123_456_789
@@ -38,16 +25,30 @@ RSpec.describe Digicert::Order do
     end
   end
 
+  describe ".create" do
+    it "sends create message to certificate klass" do
+      name_id = "ssl_plus"
+      allow(Digicert::SSLCertificate::SSLPlus).to receive(:create)
+
+      Digicert::Order.create(name_id, order_attributes)
+
+      expect(
+        Digicert::SSLCertificate::SSLPlus,
+      ).to have_received(:create).with(order_attributes)
+    end
+  end
+
   describe "#email_validations" do
-    it "retrieves list of emails with validation status" do
+    it "sends all message to EmailValidation" do
       order_id = 123_456_789
       order = Digicert::Order.find(order_id)
+      allow(Digicert::EmailValidation).to receive(:all)
 
-      stub_digicert_email_validations_api(order_id)
-      email_validations = order.email_validations
+      order.email_validations
 
-      expect(email_validations.first.status).to eq("validated")
-      expect(email_validations.first.email).to eq("email@example.com")
+      expect(
+        Digicert::EmailValidation,
+      ).to have_received(:all).with(order_id: order_id)
     end
   end
 
