@@ -27,6 +27,7 @@ RSpec.configure do |config|
   # perform an actual API reques
   #
   config.before :each, api_call: true do
+    Digicert.configuration.debug_mode = true
     WebMock.allow_net_connect!
   end
 
