@@ -26,9 +26,8 @@ module Digicert
     attr_reader :attributes
 
     def valid_response
-      if valid_response?
-        response
-      end
+      log_details_in_debug_mode
+      return response if valid_response?
     end
 
     def valid_response?
@@ -43,15 +42,19 @@ module Digicert
 
     def send_http_request
       Net::HTTP.start(*net_http_options) do |http|
-        request = constanize_net_http_class.new(uri)
-        set_request_headers!(request)
+        http.request(http_request)
+      end
+    end
+
+    def http_request
+      @http_request ||= constanize_net_http_class.new(uri).tap do |request|
         set_request_body!(request)
-        http.request(request)
+        set_request_headers!(request)
       end
     end
 
     def raise_response_error
-      raise response_error, error_message
+      raise response_error
     end
 
     def net_http_options
@@ -101,11 +104,15 @@ module Digicert
       Digicert::Errors.server_errors
     end
 
-    # This is only for the development purpose, later we can
-    # add an option to turn on the debug mode if necessary.
-    #
-    def error_message
-      response.body
+    def debug_mode_on?
+      @debug_mode ||= Digicert.configuration.debug_mode?
+    end
+
+    def log_details_in_debug_mode
+      if debug_mode_on?
+        require "digicert/debugger"
+        Digicert::Debugger.new(request: http_request, response: response).debug
+      end
     end
   end
 end

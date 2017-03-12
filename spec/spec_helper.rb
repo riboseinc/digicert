@@ -15,6 +15,7 @@ RSpec.configure do |config|
 
   config.before :all do
     Digicert.configure do |digicert_config|
+      digicert_config.debug_mode = false
       digicert_config.api_key = ENV["SECRET_DEV_API_KEY"] || "SECRET_KEY"
     end
   end
