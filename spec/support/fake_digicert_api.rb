@@ -115,6 +115,12 @@ module Digicert
       )
     end
 
+    def stub_digicert_container_list_api
+      stub_api_response(
+        :get, "container", filename: "containers", status: 200,
+      )
+    end
+
     def stub_digicert_container_fetch_api(container_id)
       stub_api_response(
         :get, ["container", container_id].join("/"), filename: "container",

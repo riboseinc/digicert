@@ -50,33 +50,24 @@ Digicert.configuration.api_key = "SECRET_DEV_API_KEY"
 
 ### Container
 
-#### List Container Templates
+Container is an Operational Division used to model your organizational
+structure. The features of the container you create are determined by
+its Container Template.
 
-Container Templates define a set of features that are available to a container.
-Use this interface to retrieve a list of the templates that are available to use
-to create child containers.
+#### List Containers
 
-```ruby
-Digicert::ContainerTemplate.all(container_id)
-```
+Use this interface to retrieve a list of existing containers.
 
-#### View a Container Template
-
-Use this interface to retrieve information about a specific container template,
-including which user access roles are available under this template.
+Note: This is an undocumented endpoint of the DigiCert Services API.
 
 ```ruby
-Digicert::ContainerTemplate.fetch(
-  template_id: template_id, container_id: container_id,
-)
+Digicert::Container.all
 ```
 
 #### Create a Container
 
-Container is an Operational Division used to model your organizational
-structure. The features of the container you create are determined by its
-Container Template. Use this interface to create new container, and this
-interface also expects us to provide `parent_container` along with the others
+Use this interface to create new container, and this interface also
+expects us to provide `parent_container` along with the others
 attributes as `container_id`.
 
 ```ruby
@@ -103,6 +94,30 @@ including its name, description, template, and parent container id.
 
 ```ruby
 Digicert::Container.fetch(container_id)
+```
+
+### Container Template
+
+Container Templates define a set of features that are available to a container.
+
+#### List Container Templates
+
+Use this interface to retrieve a list of the templates that are available to use
+to create child containers.
+
+```ruby
+Digicert::ContainerTemplate.all(container_id)
+```
+
+#### View a Container Template
+
+Use this interface to retrieve information about a specific container template,
+including which user access roles are available under this template.
+
+```ruby
+Digicert::ContainerTemplate.fetch(
+  template_id: template_id, container_id: container_id,
+)
 ```
 
 ### Organization

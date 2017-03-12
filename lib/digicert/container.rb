@@ -2,6 +2,7 @@ require "digicert/base"
 
 module Digicert
   class Container < Digicert::Base
+    include Digicert::Actions::All
     include Digicert::Actions::Fetch
     include Digicert::Actions::Create
 

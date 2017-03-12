@@ -1,6 +1,16 @@
 require "spec_helper"
 
 RSpec.describe Digicert::Container do
+  describe ".all" do
+    it "retrieves the list of containers" do
+      stub_digicert_container_list_api
+      containers = Digicert::Container.all
+
+      expect(containers.first.id).not_to be_nil
+      expect(containers.first.name).to eq("Ribose Inc.")
+    end
+  end
+
   describe ".create" do
     it "creates a new sub container" do
       stub_digicert_container_create_api(container_attributes)

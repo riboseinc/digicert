@@ -1,0 +1,14 @@
+{
+  "containers": [
+    {
+      "id": 123456,
+      "public_id": "vp1h1ou11h1h1h11o",
+      "name": "Ribose Inc.",
+      "parent_id": 0,
+      "template_id": 5,
+      "ekey": "ch23fafaahfha",
+      "has_logo": false,
+      "is_active": true
+    }
+  ]
+}

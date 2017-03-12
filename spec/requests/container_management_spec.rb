@@ -23,6 +23,14 @@ RSpec.describe "Container Management" do
   end
 
   def container_id
-    @container_id ||= ENV["DIGICERT_CONTAINER_ID"]
+    @container_id ||= containers.first.id
+  end
+
+  def containers
+    # We are making this API call intentionally, this
+    # ensures the listing containers API is working as
+    # it should have as long as there are no errors.
+    #
+    @containers ||= Digicert::Container.all
   end
 end
