@@ -308,7 +308,10 @@ module Digicert
     end
 
     def api_key_header
-      { "X-DC-DEVKEY" => Digicert.configuration.api_key }
+      {
+        "Content-Type" => "application/json",
+        "X-DC-DEVKEY" => Digicert.configuration.api_key
+      }
     end
 
     def digicert_fixture(filename)
