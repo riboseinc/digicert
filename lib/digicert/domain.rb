@@ -28,13 +28,13 @@ module Digicert
     end
 
     def validate_validations(attributes)
-      attributes.each do |attribute|
+      attributes.map do |attribute|
         validate_validation(attribute)
       end
     end
 
     def validate_validation(type:, **attributes)
-      { type: type }.merge(attributes)
+      { type: type.downcase }.merge(attributes)
     end
 
     def validate(name:, organization:, validations:, **attributes)
