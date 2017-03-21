@@ -33,6 +33,15 @@ module Digicert
       end
     end
 
+    # Validate validation
+    #
+    # We need to provide a valid type of valitations when creating a new domain,
+    # but the most important thing about the types are it has to be in lowercase
+    # format, otherwise Digicert won't accept it a valid type. So let's ensure
+    # we are always providig the type in correct format.
+    #
+    # Ref: https://www.digicert.com/services/v2/documentation/appendix-validation-types
+    #
     def validate_validation(type:, **attributes)
       { type: type.downcase }.merge(attributes)
     end
