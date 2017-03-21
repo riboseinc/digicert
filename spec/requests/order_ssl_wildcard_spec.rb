@@ -51,7 +51,7 @@ RSpec.describe "Order SSLWildcard" do
 
   def csr_content_for_ribosetest
     @csr_content ||= Digicert::CSRGenerator.generate(
-      domain: common_name, organization: ribose_inc,
+      common_name: common_name, organization: ribose_inc,
     )
   end
 end
