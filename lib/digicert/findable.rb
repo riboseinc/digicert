@@ -18,5 +18,16 @@ module Digicert
     def find(resource_id)
       new(resource_id: resource_id)
     end
+
+    # Find by object
+    #
+    # This `find_by_object` interface works more likely a wrapper
+    # around `find` interface, it expects the `object` to response
+    # to the `id` method. Then it delegates object initialization
+    # behavior to the `find` interface.
+    #
+    def find_by_object(object)
+      find(object.id)
+    end
   end
 end
