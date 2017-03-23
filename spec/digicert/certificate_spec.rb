@@ -26,7 +26,7 @@ RSpec.describe Digicert::Certificate do
     end
 
     context "when platform specified" do
-      it "fetches the certificate using the platfrom" do
+      it "fetches the certificate using the platform" do
         certificate_id = 123_456_789
         certificate = Digicert::Certificate.find(certificate_id)
         allow(Digicert::CertificateDownloader).to receive(:fetch)

@@ -42,8 +42,8 @@ module Digicert
 
     def certificate_download_path
       download_path_by_format ||
-        download_path_by_platfrom ||
-        download_path_by_order_specified_platfrom
+        download_path_by_platform ||
+        download_path_by_order_specified_platform
     end
 
     def download_to_path(path:, extension:)
@@ -60,13 +60,13 @@ module Digicert
       end
     end
 
-    def download_path_by_platfrom
+    def download_path_by_platform
       if platform
         [resource_path, "platform", platform].join("/")
       end
     end
 
-    def download_path_by_order_specified_platfrom
+    def download_path_by_order_specified_platform
       [resource_path, "platform"].join("/")
     end
 
