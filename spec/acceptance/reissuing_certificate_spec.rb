@@ -19,14 +19,14 @@ RSpec.describe "Re-issuing a certificate" do
     )
 
     # Retrieve the request details from the
-    # Order Reissuing reqeusts, if it needs further
+    # Order Reissuing requests, if it needs further
     # processing then we can use that id to do that
     #
     request_id = reissued_order.requests.first.id
     stub_digicert_certificate_request_fetch_api(request_id)
     request = Digicert::CertificateRequest.fetch(request_id)
 
-    # Let's checks the reqeust status if it's pending
+    # Let's checks the request status if it's pending
     # then we can update the status using the update
     # interface on Digicert::CertificateRequest
     #
@@ -38,7 +38,7 @@ RSpec.describe "Re-issuing a certificate" do
       Digicert::CertificateRequest.update(request_id, request_status_attributes)
     end
 
-    # We can recheck the reqeust status, and once that
+    # We can recheck the request status, and once that
     # is approved (manually/using the interface), then
     # we can use that to retrieve the order details
     #

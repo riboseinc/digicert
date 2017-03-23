@@ -26,7 +26,7 @@ RSpec.describe Digicert::CertificateRequest do
   end
 
   describe ".update" do
-    it "updates the specified ceritfiicate reqeust status" do
+    it "updates the specified ceritfiicate request status" do
       request_id = 123_456_789
       stub_digicert_certificate_request_update_api(
         request_id, request_status_attributes,

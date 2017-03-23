@@ -20,14 +20,14 @@ RSpec.describe "Certificate Order Duplication" do
     duplicate_order = order_obj.duplicate(certificate_attributes)
 
     # Retrieve the request details from the
-    # Order Reissuing reqeusts, if it needs further
+    # Order Reissuing requests, if it needs further
     # processing then we can use that id to do that
     #
     request_id = duplicate_order.requests.first.id
     stub_digicert_certificate_request_fetch_api(request_id)
     request = Digicert::CertificateRequest.fetch(request_id)
 
-    # We can recheck the reqeust status, and once that
+    # We can recheck the request status, and once that
     # is approved (manually/using the interface), then
     # we can use that to retrieve the order details
     #
