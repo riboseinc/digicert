@@ -2,7 +2,8 @@ require "r509"
 
 module Digicert
   class CSRGenerator
-    def initialize(common_name:, organization:, san_names: [])
+    def initialize(common_name:, organization:, san_names: [], rsa_key: nil)
+      @rsa_key = rsa_key
       @common_name = common_name
       @san_names = san_names
       @organization = organization
@@ -18,12 +19,15 @@ module Digicert
 
     private
 
-    attr_reader :organization, :common_name, :san_names
+    attr_reader :organization, :common_name, :san_names, :rsa_key
 
     def create_r509_csr
-      R509::CSR.new(
-        key: rsa_key_file, subject: subject_items, san_names: san_names,
-      )
+      R509::CSR.new(r509_attributes_hash)
+    end
+
+    def r509_attributes_hash
+      { key: rsa_key, subject: subject_items, san_names: san_names }.
+        reject { |key, value| value.nil? || value.empty? }
     end
 
     def subject_items
@@ -34,11 +38,6 @@ module Digicert
         ["L",  organization.city],
         ["O",  organization.name],
       ]
-    end
-
-    def rsa_key_file
-      rsa_key_path = "../../fixtures/rsa4096.key"
-      File.read(File.expand_path(rsa_key_path, __FILE__))
     end
   end
 end

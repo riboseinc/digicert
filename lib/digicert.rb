@@ -6,6 +6,7 @@
 require "digicert/config"
 require "digicert/product"
 require "digicert/order"
+require "digicert/csr_generator"
 require "digicert/certificate_request"
 require "digicert/organization"
 require "digicert/container_template"

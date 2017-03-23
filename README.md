@@ -260,6 +260,20 @@ Use this interface to retrieve a full set of details for a product.
 Digicert::Product.fetch(name_id)
 ```
 
+#### Generate the CSR content
+
+This interface will allow us to generate the CSR content on the fly, it will
+return the content that we can use for order creation.
+
+```ruby
+Digicert::CSRGenerator.generate(
+  common_name: "example.com",
+  san_names: ["example.com", "www.example.com"],
+  rsa_key: File.read("your_rsa_key_file_path"),
+  organization: Digicert::Organization.first,
+)
+```
+
 #### Create any type of order
 
 Use this interface to create a new order, this expect two arguments one is
