@@ -18,7 +18,7 @@ RSpec.describe Digicert::Request do
         stub_invalid_ping_request_via_get
         request = Digicert::Request.new(:get, "ping")
 
-        expect{ request.run }.to raise_error(Digicert::Errors::ServerError)
+        expect{ request.run }.to raise_error(/not_found\|route/)
       end
     end
   end
@@ -42,6 +42,6 @@ RSpec.describe Digicert::Request do
   end
 
   def stub_invalid_ping_request_via_get
-    stub_api_response(:get, "ping", filename: "orders", status: 500)
+    stub_api_response(:get, "ping", filename: "errors", status: 404)
   end
 end

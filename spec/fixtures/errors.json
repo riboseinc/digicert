@@ -1,0 +1,6 @@
+{
+  "errors": {
+    "code": "not_found|route",
+    "message": "The specified route was not found."
+  }
+}

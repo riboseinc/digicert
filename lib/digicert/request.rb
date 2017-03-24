@@ -54,7 +54,7 @@ module Digicert
     end
 
     def raise_response_error
-      raise response_error
+      raise response_error, error_message
     end
 
     def net_http_options
@@ -98,6 +98,11 @@ module Digicert
 
     def response_error
       Digicert::Errors.error_klass_for(response)
+    end
+
+    def error_message
+      JSON(response.body)["errors"]
+    rescue response.inspect
     end
 
     def server_errors
