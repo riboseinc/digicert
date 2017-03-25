@@ -733,6 +733,21 @@ certificate = Digicert::Certificate.find(certificate_id)
 certificate_content_object = certificate.download(platform: "apache")
 ```
 
+#### Download a Certificate content
+
+This interface will fetch a SSL Certificate and extract all of its subsidiary
+certificates content and return as a hash with `certificate`, `root_certificate`
+and `intermediate_certificate` keys.
+
+```ruby
+Digicert::CertificateDownloader.fetch_content(certificate_id)
+
+# Alternative using certificate instance
+#
+certificate = Digicert::Certificate.find(certificate_id)
+certificate.download_content
+```
+
 #### Revoke a Certificate
 
 This interface will revoke a previously issued SSL Certificate.

@@ -61,6 +61,20 @@ RSpec.describe Digicert::Certificate do
     end
   end
 
+  describe "#download_content" do
+    it "sends fetch_content message to the downloader" do
+      certificate_id = 123_456_789
+      certificate = Digicert::Certificate.find(certificate_id)
+      allow(Digicert::CertificateDownloader).to receive(:fetch_content)
+
+      certificate.download_content
+
+      expect(
+        Digicert::CertificateDownloader,
+      ).to have_received(:fetch_content).with(certificate_id)
+    end
+  end
+
   describe "#revoke" do
     it "revokes an existing certificate" do
       certificate_id = 123_456_789

@@ -62,6 +62,19 @@ RSpec.describe Digicert::CertificateDownloader do
     end
   end
 
+  describe ".fetch_content" do
+    it "retrives the certificate and extract the content to hash" do
+      cert_id = 123_456_789
+
+      stub_digicert_certificate_download_by_format(cert_id, "pem_all", "pem")
+      certificate = Digicert::CertificateDownloader.fetch_content(cert_id)
+
+      expect(certificate[:certificate]).not_to be_nil
+      expect(certificate[:root_certificate]).not_to be_nil
+      expect(certificate[:intermediate_certificate]).not_to be_nil
+    end
+  end
+
   def expect_certficate_to_be_a_zip_archieve(certificate)
     # The response we get from the certificate downloader is
     # a file, and it's a `.zip` to be more specific. The easiest

@@ -246,11 +246,11 @@ module Digicert
       )
     end
 
-    def stub_digicert_certificate_download_by_format(id, format)
+    def stub_digicert_certificate_download_by_format(id, format, ext = "zip")
       stub_api_response_with_io(
         :get,
         ["certificate", id, "download", "format", format].join("/"),
-        filename: "certificate.zip",
+        filename: ["certificate", ext].join("."),
         status: 200,
       )
     end

@@ -8,6 +8,10 @@ module Digicert
       certificate_downloader.fetch(resource_id, attributes)
     end
 
+    def download_content
+      certificate_downloader.fetch_content(resource_id)
+    end
+
     def revoke
       request_klass.new(:put, revocation_path, attributes).parse
     end
