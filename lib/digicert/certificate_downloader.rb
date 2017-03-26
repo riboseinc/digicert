@@ -86,9 +86,10 @@ module Digicert
       contents = split_pem_certificates(content)
 
       Hash.new.tap do |content_hash|
-        content_hash[:certificate] = contents[0]
-        content_hash[:intermediate_certificate] = contents[1]
-        content_hash[:root_certificate] = contents[2]
+        content_hash[:text] = content
+        content_hash[:certificate] = contents.first
+        content_hash[:root_certificate] = contents.last
+        content_hash[:intermediate_certificate] = extract_intermediate(contents)
       end
     end
 
@@ -105,6 +106,23 @@ module Digicert
     #
     def split_pem_certificates(content)
       content.split(/(?<=END CERTIFICATE-----)\r?\n/)
+    end
+
+    # Extract intermediate certificate
+    #
+    # Normally the second certificate item is intermediate certificate
+    # but in some rare case digicert responds with four certificate, so
+    # this method will also check for the length of the responses and
+    # it will build an array if necessary.
+    #
+    def extract_intermediate(certificates)
+      certificate = certificates[1]
+
+      if certificates.length > 3
+        certificate = [certificate, certificates[2]]
+      end
+
+      certificate
     end
 
     def write_to_path(content, path:, extension:)
