@@ -18,14 +18,14 @@ RSpec.describe "Client Premium Certificate" do
       #
       order = Digicert::Order.fetch(order_request.id)
 
-      expect(order.product.name).to eq("WildCard Plus")
+      expect(order.product.name).to eq("Premium")
       expect(order.certificate.common_name).to eq(common_name)
       expect(order.organization.display_name).to eq(ribose_inc.display_name)
     end
   end
 
   def common_name
-    "ribosetest.com"
+    "Awesome People"
   end
 
   def order_attributes
@@ -49,8 +49,12 @@ RSpec.describe "Client Premium Certificate" do
     }
   end
 
+  def domain
+    "ribosetest.com"
+  end
+
   def awesomepeople_email
-    ["awesomepeople", common_name].join("@")
+    ["awesomepeople", domain].join("@")
   end
 
   def csr_content_for_ribosetest
