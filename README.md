@@ -36,10 +36,9 @@ with the following code
 Digicert.configure do |config|
   config.api_key = "SECRET_DEV_API_KEY"
 
-  # Default response type is `object`, but you
-  # can configure it if necessary, and all the
-  # further response will be return as config
-  # supported options are `object`, `hash`
+  # Default response type is `object`, but you can configure it if
+  # necessary, and all the further response will be return as config
+  # supported options are `object` and `hash`.
   #
   # config.response_type = :object
 end
@@ -764,17 +763,16 @@ Digicert::Certificate.revoke(certificate_id, comments: "Your comment")
 ## Development
 
 We are following Sandi Metz's Rules for this gem, you can read the
-[description of the rules here] (http://robots.thoughtbot.com/post/50655960596/sandi-metz-rules-for-developers).
-All new code should follow these rules. If you make changes in a pre-existing
-file that violates these rules you should fix the violations as part of your
-contribution.
+[description of the rules here][sandi-metz] All new code should follow these
+rules. If you make changes in a pre-existing file that violates these rules you
+should fix the violations as part of your contribution.
 
 ### Setup
 
 Clone the repository.
 
 ```sh
-git clone https://git-codecommit.us-east-1.amazonaws.com/v1/repos/digicert-api
+git clone https://github.com/riboseinc/digicert
 ```
 
 Setup your environment.
@@ -813,42 +811,13 @@ Start playing with it.
 Digicert::Product.all
 ```
 
-### Generate Docs
-
-We've used some standard to write this usages guide and the gem, so if we want
-then we can generate a pretty formatted doc using [YARD](http://yardoc.org/).
-For simplicity we did not add the `doc` in this repo, but please follow the
-following steps to generate the updated doc.
-
-Install `yard`
-
-```sh
-gem install yard
-```
-
-Generate the documentation
-
-```sh
-
-# If you want to see what's available then
-# please use yard --help
-#
-yard doc
-```
-
-Open the doc in the browser
-
-```sh
-open doc/index.html
-```
-
 ## Contributing
 
 First, thank you for contributing! We love pull requests from everyone. By
-participating in this project, you hereby grant Ribose Inc. the right to grant
-or transfer an unlimited number of non exclusive licenses or sub-licenses to
-third parties, under the copyright covering the contribution to use the
-contribution by all means.
+participating in this project, you hereby grant [Ribose Inc.][riboseinc] the
+right to grant or transfer an unlimited number of non exclusive licenses or
+sub-licenses to third parties, under the copyright covering the contribution
+to use the contribution by all means.
 
 Here are a few technical guidelines to follow:
 
@@ -859,9 +828,12 @@ Here are a few technical guidelines to follow:
 1. [Squash your commits][squash] after receiving feedback.
 1. Party!
 
-[issues]: https://github.com/abunashir/digicert-api/issues
-[squash]: https://github.com/thoughtbot/guides/tree/master/protocol/git#write-a-feature
 
 ## Credits
 
-This gem is developed, maintained and funded by [Ribose Inc.](https://www.ribose.com)
+This gem is developed, maintained and funded by [Ribose Inc.][riboseinc]
+
+[riboseinc]: https://www.ribose.com
+[issues]: https://github.com/riboseinc/digicert/issues
+[squash]: https://github.com/thoughtbot/guides/tree/master/protocol/git#write-a-feature
+[sandi-metz]: http://robots.thoughtbot.com/post/50655960596/sandi-metz-rules-for-developers
