@@ -1,6 +1,11 @@
 # Digicert
 
-[![CircleCI](https://circleci.com/gh/abunashir/digicert-api/tree/master.svg?style=svg&circle-token=21edcc7e3704f7d5b689e87b9e3af658e34a5be4)](https://circleci.com/gh/abunashir/digicert-api/tree/master)
+[![Build
+Status](https://travis-ci.org/riboseinc/digicert.svg?branch=master)](https://travis-ci.org/riboseinc/digicert)
+[![Code
+Climate](https://codeclimate.com/github/riboseinc/digicert/badges/gpa.svg)](https://codeclimate.com/github/riboseinc/digicert)
+
+The Ruby client for the official Digicert API.
 
 ## Installation
 
