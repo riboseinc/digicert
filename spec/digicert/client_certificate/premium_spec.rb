@@ -3,7 +3,7 @@ require "spec_helper"
 RSpec.describe Digicert::ClientCertificate::Premium do
   describe ".create" do
     it "creates a new order for a client premium certificate" do
-      stub_digicert_order_create_api("client_premium_sha2", order_attributes)
+      stub_digicert_order_create_api("client_premium", order_attributes)
       order = Digicert::ClientCertificate::Premium.create(order_attributes)
 
       expect(order.id).not_to be_nil
