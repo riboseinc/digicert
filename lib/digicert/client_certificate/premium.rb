@@ -6,7 +6,7 @@ module Digicert
       private
 
       def certificate_type
-        "client_premium_sha2"
+        "client_premium"
       end
 
       def validate_certificate(csr:, **attributes)
