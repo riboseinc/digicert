@@ -4,6 +4,8 @@
 Status](https://travis-ci.org/riboseinc/digicert.svg?branch=master)](https://travis-ci.org/riboseinc/digicert)
 [![Code
 Climate](https://codeclimate.com/github/riboseinc/digicert/badges/gpa.svg)](https://codeclimate.com/github/riboseinc/digicert)
+[![Gem
+Version](https://badge.fury.io/rb/digicert.svg)](https://badge.fury.io/rb/digicert)
 
 The Ruby client for the official Digicert API.
 
