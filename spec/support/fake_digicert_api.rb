@@ -2,19 +2,19 @@ module Digicert
   module FakeDigicertApi
     def stub_digicert_product_list_api
       stub_api_response(
-        :get, "product", filename: "products", status: 200,
+        :get, "product", filename: "products", status: 200
       )
     end
 
     def stub_digicert_product_fetch_api(name_id)
       stub_api_response(
-        :get, ["product", name_id].join("/"), filename: "product", status: 200,
+        :get, ["product", name_id].join("/"), filename: "product", status: 200
       )
     end
 
     def stub_digicert_certificate_request_list_api
       stub_api_response(
-        :get, "request", filename: "certificate_requests", status: 200,
+        :get, "request", filename: "certificate_requests", status: 200
       )
     end
 
@@ -49,25 +49,25 @@ module Digicert
 
     def stub_digicert_order_fetch_api(order_id)
       stub_api_response(
-        :get, ["order/certificate", order_id].join("/"), filename: "order",
+        :get, ["order/certificate", order_id].join("/"), filename: "order"
       )
     end
 
     def stub_digicert_order_list_api
       stub_api_response(
-        :get, "order/certificate", filename: "orders", status: 200,
+        :get, "order/certificate", filename: "orders", status: 200
       )
     end
 
     def stub_digicert_certificate_order_fetch_api(order_id)
       stub_api_response(
-        :get, ["order/certificate", order_id].join("/"), filename: "order",
+        :get, ["order/certificate", order_id].join("/"), filename: "order"
       )
     end
 
     def stub_digicert_organization_list_api
       stub_api_response(
-        :get, "organization", filename: "organizations", status: 200,
+        :get, "organization", filename: "organizations", status: 200
       )
     end
 
@@ -83,7 +83,7 @@ module Digicert
 
     def stub_digicert_organization_fetch_api(id)
       stub_api_response(
-        :get, ["organization", id].join("/"), filename: "organization",
+        :get, ["organization", id].join("/"), filename: "organization"
       )
     end
 
@@ -117,13 +117,13 @@ module Digicert
 
     def stub_digicert_container_list_api
       stub_api_response(
-        :get, "container", filename: "containers", status: 200,
+        :get, "container", filename: "containers", status: 200
       )
     end
 
     def stub_digicert_container_fetch_api(container_id)
       stub_api_response(
-        :get, ["container", container_id].join("/"), filename: "container",
+        :get, ["container", container_id].join("/"), filename: "container"
       )
     end
 
@@ -139,7 +139,7 @@ module Digicert
 
     def stub_digicert_domain_list_api(filters = {})
       stub_api_response(
-        :get, path_with_query("domain", filters), filename: "domains",
+        :get, path_with_query("domain", filters), filename: "domains"
       )
     end
 
@@ -310,7 +310,7 @@ module Digicert
     def api_key_header
       {
         "Content-Type" => "application/json",
-        "X-DC-DEVKEY" => Digicert.configuration.api_key
+        "X-DC-DEVKEY" => Digicert.configuration.api_key,
       }
     end
 

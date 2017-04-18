@@ -32,7 +32,7 @@ RSpec.describe "Re-issuing a certificate" do
     #
     if request.status == "pending"
       stub_digicert_certificate_request_update_api(
-        request_id, request_status_attributes,
+        request_id, request_status_attributes
       )
 
       Digicert::CertificateRequest.update(request_id, request_status_attributes)
@@ -84,7 +84,7 @@ RSpec.describe "Re-issuing a certificate" do
         csr: order.certificate.csr,
         signature_hash: order.certificate.signature_hash,
         server_platform: { id: order.certificate.server_platform.id },
-      }
+      },
     }
   end
 

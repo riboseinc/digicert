@@ -10,7 +10,7 @@ module Digicert
 
     def self.valid?(token:, email:)
       response = Digicert::Request.new(
-        :put, ["email-validation", token].join("/"), params: {email: email }
+        :put, ["email-validation", token].join("/"), params: { email: email }
       ).run
 
       response.code.to_i == 204

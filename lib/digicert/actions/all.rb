@@ -7,7 +7,7 @@ module Digicert
 
       def all
         response = Digicert::Request.new(
-          :get, resource_path, params: query_params,
+          :get, resource_path, params: query_params
         ).parse
 
         response[resources_key]

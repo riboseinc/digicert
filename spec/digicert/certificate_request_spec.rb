@@ -29,11 +29,11 @@ RSpec.describe Digicert::CertificateRequest do
     it "updates the specified ceritfiicate request status" do
       request_id = 123_456_789
       stub_digicert_certificate_request_update_api(
-        request_id, request_status_attributes,
+        request_id, request_status_attributes
       )
 
       status_update = Digicert::CertificateRequest.update(
-        request_id, request_status_attributes,
+        request_id, request_status_attributes
       )
 
       expect(status_update.code).to eq("204")

@@ -42,7 +42,7 @@ RSpec.describe "Domain Management" do
       dcv: { method: "email" },
       name: ribose_test_domain,
       organization: { id: organization_id },
-      validations: [{ type: "OV", user: { id: administrator_id }}],
+      validations: [{ type: "OV", user: { id: administrator_id } }],
     }
   end
 

@@ -7,11 +7,11 @@ RSpec.describe "Digicert::Actions::Update" do
     it "updates the resource attributes" do
       resource_id = 123_456_789
       stub_digicert_certificate_request_update_api(
-        resource_id, certificate_status_attributes,
+        resource_id, certificate_status_attributes
       )
 
       resource = Digicert::TestUpdateAction.update(
-        resource_id, certificate_status_attributes,
+        resource_id, certificate_status_attributes
       )
 
       expect(resource.code.to_i).to eq(204)

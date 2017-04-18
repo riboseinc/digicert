@@ -82,7 +82,7 @@ RSpec.describe Digicert::Certificate do
       stub_digicert_certificate_revoke_api(certificate_id, comments: comments)
 
       revocation = Digicert::Certificate.revoke(
-        certificate_id, comments: comments,
+        certificate_id, comments: comments
       )
 
       expect(revocation.id).not_to be_nil

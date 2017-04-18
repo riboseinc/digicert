@@ -27,7 +27,7 @@ module Digicert
 
     def r509_attributes_hash
       { key: rsa_key, subject: subject_items, san_names: san_names }.
-        reject { |key, value| value.nil? || value.empty? }
+        reject { |_key, value| value.nil? || value.empty? }
     end
 
     def subject_items

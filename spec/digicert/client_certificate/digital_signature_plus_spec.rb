@@ -4,7 +4,7 @@ RSpec.describe Digicert::ClientCertificate::DigitalSignaturePlus do
   describe ".create" do
     it "creates a new order for a digital signature plus certificate" do
       stub_digicert_order_create_api(
-        "client_digital_signature_plus", order_attributes,
+        "client_digital_signature_plus", order_attributes
       )
 
       order = Digicert::ClientCertificate::DigitalSignaturePlus.create(

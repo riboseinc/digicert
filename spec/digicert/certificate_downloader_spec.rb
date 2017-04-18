@@ -8,7 +8,7 @@ RSpec.describe Digicert::CertificateDownloader do
       stub_digicert_certificate_download_by_platform(certificate_id, platform)
 
       certificate = Digicert::CertificateDownloader.fetch(
-        certificate_id, platform: platform,
+        certificate_id, platform: platform
       )
 
       expect(certificate.code.to_i).to eq(200)
@@ -24,7 +24,7 @@ RSpec.describe Digicert::CertificateDownloader do
 
       stub_digicert_certificate_download_by_platform(certificate_id)
       Digicert::CertificateDownloader.fetch_to_path(
-        certificate_id, path: download_path, ext: "zip",
+        certificate_id, path: download_path, ext: "zip"
       )
 
       download_url = [download_path, "certificate.zip"].join("/")
@@ -39,7 +39,7 @@ RSpec.describe Digicert::CertificateDownloader do
 
       stub_digicert_certificate_download_by_platform(certificate_id, platform)
       certificate = Digicert::CertificateDownloader.fetch_by_platform(
-        certificate_id, platform: platform,
+        certificate_id, platform: platform
       )
 
       expect(certificate.code.to_i).to eq(200)
@@ -54,7 +54,7 @@ RSpec.describe Digicert::CertificateDownloader do
 
       stub_digicert_certificate_download_by_format(certificate_id, format)
       certificate = Digicert::CertificateDownloader.fetch_by_format(
-        certificate_id, format: format,
+        certificate_id, format: format
       )
 
       expect(certificate.code.to_i).to eq(200)

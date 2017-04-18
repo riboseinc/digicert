@@ -14,7 +14,7 @@ module Digicert
         Errno::ECONNRESET,
         Net::OpenTimeout,
         SocketError,
-        Net::HTTPServerError
+        Net::HTTPServerError,
       ]
     end
 

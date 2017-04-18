@@ -1,5 +1,5 @@
 require "json"
-require 'ostruct'
+require "ostruct"
 
 module Digicert
   class Response
@@ -26,5 +26,5 @@ module Digicert
     end
   end
 
-  class ResponseObject < OpenStruct;end
+  class ResponseObject < OpenStruct; end
 end

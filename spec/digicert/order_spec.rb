@@ -61,7 +61,7 @@ RSpec.describe Digicert::Order do
       order.reissue
 
       expect(
-        Digicert::OrderReissuer
+        Digicert::OrderReissuer,
       ).to have_received(:create).with(order_id: order_id)
     end
   end
@@ -75,7 +75,7 @@ RSpec.describe Digicert::Order do
       order.duplicate
 
       expect(
-        Digicert::OrderDuplicator
+        Digicert::OrderDuplicator,
       ).to have_received(:create).with(order_id: order_id)
     end
   end
@@ -89,7 +89,7 @@ RSpec.describe Digicert::Order do
       order.duplicate_certificates
 
       expect(
-        Digicert::DuplicateCertificate
+        Digicert::DuplicateCertificate,
       ).to have_received(:all).with(order_id: order_id)
     end
   end
@@ -105,7 +105,7 @@ RSpec.describe Digicert::Order do
       order.cancel(note: note)
 
       expect(
-        Digicert::OrderCancellation
+        Digicert::OrderCancellation,
       ).to have_received(:create).with(order_id: order_id, note: note)
     end
   end

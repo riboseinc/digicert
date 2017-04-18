@@ -73,7 +73,7 @@ RSpec.describe "Certificate Order Duplication" do
         csr: order.certificate.csr,
         signature_hash: order.certificate.signature_hash,
         server_platform: { id: order.certificate.server_platform.id },
-      }
+      },
     }
   end
 

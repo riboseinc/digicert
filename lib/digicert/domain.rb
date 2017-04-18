@@ -11,13 +11,13 @@ module Digicert
 
     def activate
       request_klass.new(
-        :put, [resource_path, resource_id, "activate"].join("/"),
+        :put, [resource_path, resource_id, "activate"].join("/")
       ).parse
     end
 
     def deactivate
       request_klass.new(
-        :put, [resource_path, resource_id, "deactivate"].join("/"),
+        :put, [resource_path, resource_id, "deactivate"].join("/")
       ).parse
     end
 
@@ -50,7 +50,7 @@ module Digicert
       required_attributes = {
         name: name,
         organization: organization,
-        validations: validate_validations(validations)
+        validations: validate_validations(validations),
       }
 
       required_attributes.merge(attributes)

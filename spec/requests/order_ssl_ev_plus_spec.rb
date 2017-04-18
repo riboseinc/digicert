@@ -9,7 +9,7 @@ RSpec.describe "Order SSl EV Plus" do
       # interface by providing t`name_id` and required attributes
       #
       order_request = Digicert::Order.create(
-        product_name_id, order_attributes,
+        product_name_id, order_attributes
       )
 
       # Retrieve order details using the order_request id as
@@ -45,7 +45,7 @@ RSpec.describe "Order SSl EV Plus" do
       common_name: common_name,
       signature_hash: "sha256",
       csr: csr_content_for_ribosetest,
-      server_platform: { id: 2 }
+      server_platform: { id: 2 },
     }
   end
 

@@ -38,7 +38,7 @@ RSpec.describe Digicert::Domain do
   describe ".fetch" do
     it "retrieves the specific domain" do
       domain_id = 123_456_789
-      filters = { include_dcv: true, include_validation: true}
+      filters = { include_dcv: true, include_validation: true }
 
       stub_digicert_domain_fetch_api(domain_id, filters)
       domain = Digicert::Domain.fetch(domain_id, filters)
@@ -80,7 +80,7 @@ RSpec.describe Digicert::Domain do
       validations: [
         {
           type: "ev",
-          user: { id: 12 }
+          user: { id: 12 },
         },
       ],
       dcv: { method: "email" },

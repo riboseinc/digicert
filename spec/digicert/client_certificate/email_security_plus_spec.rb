@@ -4,7 +4,7 @@ RSpec.describe Digicert::ClientCertificate::EmailSecurityPlus do
   describe ".create" do
     it "creates a new order for a email security plus certificate" do
       stub_digicert_order_create_api(
-        "client_email_security_plus", order_attributes,
+        "client_email_security_plus", order_attributes
       )
 
       order = Digicert::ClientCertificate::EmailSecurityPlus.create(

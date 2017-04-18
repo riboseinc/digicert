@@ -9,7 +9,7 @@ RSpec.describe "Client Premium Certificate" do
       # interface by providing t`name_id` and required attributes
       #
       order_request = Digicert::Order.create(
-        product_name_id, order_attributes,
+        product_name_id, order_attributes
       )
 
       # Retrieve order details using the order_request id as

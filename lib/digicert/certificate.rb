@@ -22,7 +22,7 @@ module Digicert
 
     def download_to_path(path:, ext: "zip", **attributes)
       certificate_downloader.fetch_to_path(
-        resource_id, attributes.merge(path: path, ext: ext),
+        resource_id, attributes.merge(path: path, ext: ext)
       )
     end
 

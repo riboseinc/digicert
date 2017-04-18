@@ -3,7 +3,6 @@ require "spec_helper"
 RSpec.describe "Reissuing Certificate" do
   describe "reissue" do
     it "reissues an existing nonexpired certificate", api_call: true do
-
       # This tests will find the last created certificate order and
       # then will try to reissue that, but one important thing to note
       # that digicert only allows expects active certificate to reissue

@@ -65,7 +65,7 @@ module Digicert
       URI::HTTPS.build(
         host: Digicert.configuration.api_host,
         path: digicert_api_path_with_base,
-        query: build_query_params
+        query: build_query_params,
       )
     end
 
@@ -82,7 +82,7 @@ module Digicert
     def set_request_headers!(request)
       request.initialize_http_header(
         "Content-Type" => "application/json",
-        "X-DC-DEVKEY" => Digicert.configuration.api_key
+        "X-DC-DEVKEY" => Digicert.configuration.api_key,
       )
     end
 

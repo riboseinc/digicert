@@ -9,7 +9,7 @@ RSpec.describe "Order client email security plus" do
       # interface with `product_name_id` and required attributes
       #
       order_request = Digicert::Order.create(
-        product_name_id, order_attributes,
+        product_name_id, order_attributes
       )
 
       puts order_request

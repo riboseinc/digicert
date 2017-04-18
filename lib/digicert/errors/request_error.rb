@@ -9,7 +9,7 @@ module Digicert
       end
 
       def message
-        <<-MSG.gsub(/^ {8}/, '')
+        <<-MSG.gsub(/^ {8}/, "")
         #{explanation}:
         #{response_body}
         MSG
@@ -28,7 +28,8 @@ module Digicert
       attr_reader :msg
 
       def response_body
-        JSON[msg] rescue {}
+        JSON[msg]
+      rescue {}
       end
     end
   end
