@@ -1,7 +1,9 @@
 require "dotenv/load"
 require "webmock/rspec"
 require "bundler/setup"
+
 require "digicert"
+require "digicert/rspec"
 
 Dir["./spec/support/**/*.rb"].sort.each { |file| require file }
 
@@ -30,6 +32,4 @@ RSpec.configure do |config|
     Digicert.configuration.debug_mode = true
     WebMock.allow_net_connect!
   end
-
-  config.include Digicert::FakeDigicertApi
 end

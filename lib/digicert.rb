@@ -40,4 +40,7 @@ require "digicert/duplicate_certificate_finder"
 require "digicert/certificate"
 
 module Digicert
+  def self.root
+    File.dirname(__dir__)
+  end
 end

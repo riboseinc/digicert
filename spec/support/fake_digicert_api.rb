@@ -316,7 +316,7 @@ module Digicert
 
     def digicert_fixture(filename)
       file_name = [filename, "json"].join(".")
-      file_path = ["../../", "fixtures", file_name].join("/")
+      file_path = File.join(Digicert.root, "spec", "fixtures", file_name)
 
       File.read(File.expand_path(file_path, __FILE__))
     end
