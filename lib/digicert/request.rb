@@ -1,6 +1,8 @@
 require "uri"
 require "json"
 require "net/http"
+
+require "digicert/util"
 require "digicert/response"
 require "digicert/errors"
 
@@ -88,7 +90,7 @@ module Digicert
 
     def build_query_params
       if @query_params
-        URI.encode_www_form(@query_params)
+        Digicert::Util.to_query(@query_params)
       end
     end
 
