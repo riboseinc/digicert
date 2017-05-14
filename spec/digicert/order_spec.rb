@@ -15,13 +15,27 @@ RSpec.describe Digicert::Order do
   end
 
   describe ".all" do
-    it "retrieves the list of all certificate orders" do
-      stub_digicert_order_list_api
-      orders = Digicert::Order.all
+    context "without any query params" do
+      it "retrieves the list of all certificate orders" do
+        stub_digicert_order_list_api
+        orders = Digicert::Order.all
 
-      expect(orders.first.id).not_to be_nil
-      expect(orders.first.status).to eq("issued")
-      expect(orders.first.certificate.common_name).to eq("digicert.com")
+        expect(orders.first.id).not_to be_nil
+        expect(orders.first.status).to eq("issued")
+        expect(orders.first.certificate.common_name).to eq("digicert.com")
+      end
+    end
+
+    context "with specified query params" do
+      it "retrieves the filtered list of certificate orders" do
+        query_params = { limit: 3, offset: 0, sort: "date_created" }
+        stub_digicert_order_list_api(query_params)
+
+        orders = Digicert::Order.all(query_params)
+
+        expect(orders.count).to eq(query_params[:limit])
+        expect(orders.first.certificate.common_name).to eq("digicert.com")
+      end
     end
   end
 

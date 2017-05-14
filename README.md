@@ -517,6 +517,13 @@ Use this interface to retrieve a list of all certificate orders.
 Digicert::Order.all
 ```
 
+This interface also supports query params like `limit`, `offset` and `sort`. We
+can use those to retrieve our desire orders.
+
+```ruby
+Digicert::Order.all(limit: 20, offset: 0, sort: 'date_created')
+```
+
 #### List of Email Validations
 
 Use this interface to view the status of all emails that require validation on a

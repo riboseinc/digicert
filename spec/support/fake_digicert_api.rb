@@ -53,9 +53,12 @@ module Digicert
       )
     end
 
-    def stub_digicert_order_list_api
+    def stub_digicert_order_list_api(params = {})
       stub_api_response(
-        :get, "order/certificate", filename: "orders", status: 200
+        :get,
+        path_with_query("order/certificate", params),
+        filename: "orders",
+        status: 200,
       )
     end
 
@@ -65,9 +68,12 @@ module Digicert
       )
     end
 
-    def stub_digicert_organization_list_api
+    def stub_digicert_organization_list_api(params = {})
       stub_api_response(
-        :get, "organization", filename: "organizations", status: 200
+        :get,
+        path_with_query("organization", params),
+        filename: "organizations",
+        status: 200,
       )
     end
 

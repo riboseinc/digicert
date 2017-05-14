@@ -18,8 +18,8 @@ module Digicert
       end
 
       module ClassMethods
-        def all(filter_params = {})
-          new(params: filter_params).all
+        def all(query_params = {})
+          new(params: query_params).all
         end
       end
     end
