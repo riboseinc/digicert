@@ -289,7 +289,7 @@ module Digicert
     end
 
     def path_with_query(path, params)
-      query_params = params.map { |key, value| "#{key}=#{value}" }.join("&")
+      query_params = Digicert::Util.to_query(params)
       [path, query_params].join("?")
     end
 

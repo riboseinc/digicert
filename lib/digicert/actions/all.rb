@@ -21,6 +21,10 @@ module Digicert
         def all(query_params = {})
           new(params: query_params).all
         end
+
+        def filter(filter_params = {})
+          new(params: { filters: filter_params }).all
+        end
       end
     end
   end

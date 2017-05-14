@@ -26,6 +26,20 @@ RSpec.describe "Digicert::Actions::ALL" do
     end
   end
 
+  describe ".filter" do
+    context "with filters params" do
+      it "retrieves the filterered resources" do
+        filters = { status: "approved" }
+        stub_digicert_organization_list_api(filters: filters)
+
+        organizations = Digicert::TestAllAction.filter(filters)
+
+        expect(organizations.count).to eq(2)
+        expect(organizations.first.name).not_to be_nil
+      end
+    end
+  end
+
   module Digicert
     class TestAllAction < Digicert::Base
       include Digicert::Actions::All
