@@ -13,9 +13,9 @@ RSpec.describe "Re-issuing a certificate" do
     # Reissue an existing certificate order, it
     # usages the order_id from the existing order
     #
-    stub_digicert_order_reissue_api(order.id, new_order_attributes)
+    stub_digicert_order_reissue_api(order.id, certificate_attributes)
     reissued_order = Digicert::OrderReissuer.create(
-      order_id: order.id, **new_order_attributes,
+      order_id: order.id, **certificate_attributes,
     )
 
     # Retrieve the request details from the
@@ -76,15 +76,13 @@ RSpec.describe "Re-issuing a certificate" do
     }
   end
 
-  def new_order_attributes
+  def certificate_attributes
     {
-      certificate: {
-        common_name: order.certificate.common_name,
-        dns_names: order.certificate.dns_names,
-        csr: order.certificate.csr,
-        signature_hash: order.certificate.signature_hash,
-        server_platform: { id: order.certificate.server_platform.id },
-      },
+      common_name: order.certificate.common_name,
+      dns_names: order.certificate.dns_names,
+      csr: order.certificate.csr,
+      signature_hash: order.certificate.signature_hash,
+      server_platform: { id: order.certificate.server_platform.id },
     }
   end
 

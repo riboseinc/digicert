@@ -67,13 +67,11 @@ RSpec.describe "Certificate Order Duplication" do
 
   def certificate_attributes
     {
-      certificate: {
-        common_name: order.certificate.common_name,
-        dns_names: order.certificate.dns_names,
-        csr: order.certificate.csr,
-        signature_hash: order.certificate.signature_hash,
-        server_platform: { id: order.certificate.server_platform.id },
-      },
+      common_name: order.certificate.common_name,
+      dns_names: order.certificate.dns_names,
+      csr: order.certificate.csr,
+      signature_hash: order.certificate.signature_hash,
+      server_platform: { id: order.certificate.server_platform.id },
     }
   end
 
