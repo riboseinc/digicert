@@ -5,7 +5,7 @@ RSpec.describe Digicert::OrderDuplicator do
     it "creates a duplicate of an existing order" do
       stub_digicert_order_fetch_api(order_id)
 
-      stub_digicert_order_duplicate_api(order_id, order_attributes)
+      stub_digicert_order_duplicate_api(order_id, certificate_attributes)
       order = Digicert::OrderDuplicator.create(order_id: order_id)
 
       expect(order.id).not_to be_nil
@@ -17,15 +17,13 @@ RSpec.describe Digicert::OrderDuplicator do
     123_456_789
   end
 
-  def order_attributes
+  def certificate_attributes
     {
-      certificate: {
-        common_name: order.certificate.common_name,
-        dns_names: order.certificate.dns_names,
-        csr: order.certificate.csr,
-        signature_hash: order.certificate.signature_hash,
-        server_platform: { id: order.certificate.server_platform.id },
-      },
+      common_name: order.certificate.common_name,
+      dns_names: order.certificate.dns_names,
+      csr: order.certificate.csr,
+      signature_hash: order.certificate.signature_hash,
+      server_platform: { id: order.certificate.server_platform.id },
     }
   end
 

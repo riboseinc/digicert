@@ -198,7 +198,7 @@ module Digicert
       stub_api_response(
         :post,
         ["order", "certificate", order_id, "reissue"].join("/"),
-        data: attributes,
+        data: { certificate: attributes },
         filename: "order_reissued",
         status: 201,
       )
@@ -208,7 +208,7 @@ module Digicert
       stub_api_response(
         :post,
         ["order", "certificate", order_id, "duplicate"].join("/"),
-        data: attributes,
+        data: { certificate: attributes },
         filename: "order_duplicated",
         status: 201,
       )
