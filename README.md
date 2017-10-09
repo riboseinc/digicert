@@ -250,6 +250,17 @@ Digicert::Domain.all(filter_params_hash)
 
 ### Submitting Orders
 
+#### Important Note
+
+Recently DigiCert improved the certificate issuance process to allow for
+[immediate certificate issuance]. It does not require us to change anything on
+our API calls but now the response will be different based on your DigiCert
+account settings.
+
+If you have everything setup in place and any order is eligible for immediate
+issuance then the certificate will be included with the response. Please check
+the [certificate download spec] for inspiration.
+
 #### View Product List
 
 Use this interface to retrieve a list of available products for an account.
@@ -864,3 +875,5 @@ This gem is developed, maintained and funded by [Ribose Inc.][riboseinc]
 [issues]: https://github.com/riboseinc/digicert/issues
 [squash]: https://github.com/thoughtbot/guides/tree/master/protocol/git#write-a-feature
 [sandi-metz]: http://robots.thoughtbot.com/post/50655960596/sandi-metz-rules-for-developers
+[immediate certificate issuance]: https://www.digicert.com/certcentral-support/immediate-certificate-issuance-feature.htm
+[certificate download spec]: https://github.com/riboseinc/digicert/blob/master/spec/acceptance/certificate_download_spec.rb#L5
