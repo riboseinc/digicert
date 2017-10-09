@@ -47,6 +47,15 @@ module Digicert
       )
     end
 
+    def stub_digicert_order_with_immediate_issuance(cert_type, attributes)
+      stub_api_response(
+        :post,
+        ["order/certificate", cert_type].join("/"),
+        filename: "order_created_with_immediate_issuance",
+        status: 201,
+      )
+    end
+
     def stub_digicert_order_fetch_api(order_id)
       stub_api_response(
         :get, ["order/certificate", order_id].join("/"), filename: "order"
