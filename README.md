@@ -287,7 +287,7 @@ Digicert::CSRGenerator.generate(
   common_name: "example.com",
   san_names: ["example.com", "www.example.com"],
   rsa_key: File.read("your_rsa_key_file_path"),
-  organization: Digicert::Organization.first,
+  organization: Digicert::Organization.all.first,
 )
 ```
 
