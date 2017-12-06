@@ -6,6 +6,7 @@ require "digicert/ssl_certificate/ssl_ev_plus"
 require "digicert/ssl_certificate/ssl_wildcard"
 
 require "digicert/client_certificate/premium"
+require "digicert/client_certificate/private_premium"
 require "digicert/client_certificate/email_security_plus"
 require "digicert/client_certificate/digital_signature_plus"
 

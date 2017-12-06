@@ -437,6 +437,28 @@ Digicert::ClientCertificate::Premium.create(
 )
 ```
 
+#### Order Private Client Premium Certificate
+
+Use this interface to order a Private Client Premium Certificate.
+
+```ruby
+Digicert::ClientCertificate::PrivatePremium.create(
+  certificate: {
+    organization_units: ["Developer Operations"],
+
+    csr: "------ [CSR HERE] ------",
+    emails: ["a.name@example.com"],
+    common_name: "Common Name",
+    signature_hash: "sha256",
+  },
+  organization: { id: "12345" },
+  validity_years: 3,
+  auto_renew: nil,
+  container: { id: "654321" },
+  payment_method: "balance",
+)
+```
+
 #### Order Email Security Plus
 
 Use this interface to order a Email Security Plus Certificate
