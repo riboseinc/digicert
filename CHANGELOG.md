@@ -1,3 +1,8 @@
+## 0.3.0 (2017-12-08)
+
+* Minor updates in the readme and `rubocop` configuration
+* Add support for Private Premium client certificate (#130, @davidcpell)
+
 ## 0.2.0 (2017-08-09)
 
 * Fix reissue/duplication issue for custom attribute (PR #124)
