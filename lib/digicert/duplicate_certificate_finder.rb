@@ -21,7 +21,7 @@ module Digicert
     end
 
     def certificates_by_date_created
-      duplicate_certificates.select do |certificate|
+      (duplicate_certificates || []).select do |certificate|
         compare_date(certificate.date_created, request_created_at) < 5
       end
     end
