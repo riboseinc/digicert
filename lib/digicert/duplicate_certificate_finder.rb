@@ -22,7 +22,7 @@ module Digicert
 
     def certificates_by_date_created
       duplicate_certificates.select do |certificate|
-        certificate.date_created == request_created_at
+        compare_date(certificate.date_created, request_created_at) < 5
       end
     end
 
@@ -33,6 +33,13 @@ module Digicert
 
     def request_created_at
       request.order.certificate.date_created
+    end
+
+    def compare_date(from_date, to_date)
+      from_time = DateTime.parse(from_date).to_time
+      to_time = DateTime.parse(to_date).to_time
+
+      from_time.to_i - to_time.to_i
     end
 
     def request
