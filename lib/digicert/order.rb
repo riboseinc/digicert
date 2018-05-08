@@ -33,8 +33,8 @@ module Digicert
       Digicert::OrderDuplicator.create(order_id: resource_id, **attributes)
     end
 
-    def duplicate_certificates
-      Digicert::DuplicateCertificate.all(order_id: resource_id)
+    def duplicate_certificates(attributes = {})
+      Digicert::DuplicateCertificate.all(order_id: resource_id, **attributes)
     end
 
     def email_validations

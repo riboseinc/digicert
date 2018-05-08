@@ -100,11 +100,11 @@ RSpec.describe Digicert::Order do
       order = Digicert::Order.find(order_id)
       allow(Digicert::DuplicateCertificate).to receive(:all)
 
-      order.duplicate_certificates
+      order.duplicate_certificates(sort: "date_created")
 
       expect(
         Digicert::DuplicateCertificate,
-      ).to have_received(:all).with(order_id: order_id)
+      ).to have_received(:all).with(order_id: order_id, sort: "date_created")
     end
   end
 
