@@ -18,11 +18,13 @@ module Digicert
       )
     end
 
-    def stub_digicert_certificate_request_fetch_api(request_id)
+    def stub_digicert_certificate_request_fetch_api(request_id, json_file = nil)
+      json_file ||= "certificate_request"
+
       stub_api_response(
         :get,
         ["request", request_id].join("/"),
-        filename: "certificate_request",
+        filename: json_file,
         status: 200,
       )
     end

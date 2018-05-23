@@ -20,7 +20,7 @@ RSpec.describe Digicert::CertificateRequest do
       certificate_request = Digicert::CertificateRequest.fetch(request_id)
 
       expect(certificate_request.order.id).not_to be_nil
-      expect(certificate_request.status).to eq("pending")
+      expect(certificate_request.status).to eq("approved")
       expect(certificate_request.requester.first_name).not_to be_nil
     end
   end
