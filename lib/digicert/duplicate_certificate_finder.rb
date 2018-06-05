@@ -5,7 +5,11 @@ module Digicert
     end
 
     def find
-      certificate_by_date_created
+      certificate_by_date_created || raise(
+        Digicert::Errors::RequestError.new(
+          request: "The request is still pending, needs an approval first!",
+        ),
+      )
     end
 
     def self.find_by(request_id:)
@@ -17,7 +21,9 @@ module Digicert
     attr_reader :request_id
 
     def certificate_by_date_created
-      certificates_by_date_created.first
+      if request.status == "approved"
+        certificates_by_date_created.first
+      end
     end
 
     def certificates_by_date_created
