@@ -38,7 +38,7 @@ module Digicert
 
     def simplify_dns_name_to_duplicate_ev_plus
       dns_names = order.certificate.dns_names
-      dns_names.map { |dns_name| dns_name.gsub("www.", "") }.uniq
+      dns_names.select { |dns_name| dns_name.match(/.+\..+\..+/) }.uniq
     end
 
     # Expose the resource_id as order_id, as it sounds

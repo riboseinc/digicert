@@ -40,7 +40,7 @@ RSpec.describe Digicert::OrderDuplicator do
 
   def stub_digicert_ev_plus_duplicate_api
     attributes = certificate_attributes
-    attributes[:dns_names] = [attributes[:dns_names].first]
+    attributes[:dns_names] = [attributes[:dns_names].last]
     stub_digicert_order_duplicate_api(order_id, attributes)
   end
 
