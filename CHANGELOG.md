@@ -1,3 +1,10 @@
+## 0.4.0 (2018-07-22)
+
+* Add option support on certificate duplication
+* Fix duplicate certificate finder related issue
+* Fix duplication issue for `EV Plus` certificate
+* Fix server platform id issue from order manager
+
 ## 0.3.0 (2017-12-08)
 
 * Minor updates in the readme and `rubocop` configuration
