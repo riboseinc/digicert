@@ -34,7 +34,7 @@ RSpec.describe Digicert::OrderDuplicator do
       dns_names: order.certificate.dns_names,
       csr: order.certificate.csr,
       signature_hash: order.certificate.signature_hash,
-      server_platform: { id: order.certificate.server_platform.id },
+      # server_platform: { id: order.certificate.server_platform.id },
     }
   end
 
