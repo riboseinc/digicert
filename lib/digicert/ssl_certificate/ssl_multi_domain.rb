@@ -8,7 +8,6 @@ module Digicert
       def certificate_type
         "ssl_multi_domain"
       end
-
     end
   end
 end
