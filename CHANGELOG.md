@@ -1,3 +1,8 @@
+## 0.4.1 (2018-10-26)
+
+* Add support for SSL Multi Domain Order
+* Add support for ssl ev multi domain Order
+
 ## 0.4.0 (2018-07-22)
 
 * Add option support on certificate duplication
