@@ -5,6 +5,7 @@ require "digicert/ssl_certificate/ssl_plus"
 require "digicert/ssl_certificate/ssl_ev_plus"
 require "digicert/ssl_certificate/ssl_wildcard"
 require "digicert/ssl_certificate/ssl_multi_domain"
+require "digicert/ssl_certificate/ssl_ev_multi_domain"
 
 require "digicert/client_certificate/premium"
 require "digicert/client_certificate/private_premium"
@@ -75,6 +76,7 @@ module Digicert
         ssl_wildcard: Digicert::SSLCertificate::SSLWildcard,
         ssl_ev_plus: Digicert::SSLCertificate::SSLEVPlus,
         ssl_multi_domain: Digicert::SSLCertificate::SSLMultiDomain,
+        ssl_ev_multi_domain: Digicert::SSLCertificate::SSLEVMultiDomain,
         client_premium: Digicert::ClientCertificate::Premium,
         email_security_plus: Digicert::ClientCertificate::EmailSecurityPlus,
         digital_signature_plus: Digicert::ClientCertificate::DigitalSignaturePlus,
