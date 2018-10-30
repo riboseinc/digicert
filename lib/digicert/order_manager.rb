@@ -20,13 +20,7 @@ module Digicert
         dns_names: simplified_certificate_dns_names,
         csr: order.certificate.csr,
         signature_hash: order.certificate.signature_hash,
-
-        # In a recent changes, the order response does not seem
-        # to have the paltform id in it, so let's not try to fetch
-        # the platform id for now, and once confirmed then we can
-        # also adjust this as necessary.
-        #
-        # server_platform: { id: order.certificate.server_platform.id },
+        server_platform: { id: order.certificate.server_platform.id },
       }
     end
 
