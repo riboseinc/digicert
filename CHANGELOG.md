@@ -1,3 +1,8 @@
+## 0.5.0 (2020-03-03)
+
+* Remove bundler's hard dependency
+* Add server platform id back for order
+
 ## 0.4.1 (2018-10-26)
 
 * Add support for SSL Multi Domain Order
