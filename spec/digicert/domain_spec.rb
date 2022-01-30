@@ -79,8 +79,8 @@ RSpec.describe Digicert::Domain do
       organization: { id: 117483 },
       validations: [
         {
-          type: "ev",
           user: { id: 12 },
+          type: "ev",
         },
       ],
       dcv: { method: "email" },

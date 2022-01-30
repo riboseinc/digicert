@@ -13,8 +13,8 @@ RSpec.describe Digicert::Container do
 
   describe ".create" do
     it "creates a new sub container" do
-      stub_digicert_container_create_api(container_attributes)
-      container = Digicert::Container.create(container_attributes)
+      stub_digicert_container_create_api(**container_attributes)
+      container = Digicert::Container.create(**container_attributes)
 
       expect(container.id).not_to be_nil
     end

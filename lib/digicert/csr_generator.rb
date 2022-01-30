@@ -14,7 +14,7 @@ module Digicert
     end
 
     def self.generate(attributes)
-      new(attributes).generate
+      new(**attributes).generate
     end
 
     private

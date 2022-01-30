@@ -8,8 +8,8 @@ module Digicert
 
     def validate(certificate:, organization:, validity_years:, **attributes)
       required_attributes = {
-        certificate: validate_certificate(certificate),
-        organization: validate_organization(organization),
+        certificate: validate_certificate(**certificate),
+        organization: validate_organization(**organization),
         validity_years: validity_years,
       }
 

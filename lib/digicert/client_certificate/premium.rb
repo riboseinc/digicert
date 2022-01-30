@@ -10,7 +10,7 @@ module Digicert
       end
 
       def validate_certificate(csr:, **attributes)
-        super(attributes.merge(csr: csr))
+        super(**attributes.merge(csr: csr))
       end
     end
   end

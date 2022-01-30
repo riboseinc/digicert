@@ -29,7 +29,7 @@ module Digicert
 
     def validate_validations(attributes)
       attributes.map do |attribute|
-        validate_validation(attribute)
+        validate_validation(**attribute)
       end
     end
 
@@ -43,7 +43,7 @@ module Digicert
     # Ref: https://www.digicert.com/services/v2/documentation/appendix-validation-types
     #
     def validate_validation(type:, **attributes)
-      { type: type.downcase }.merge(attributes)
+      attributes.merge(type: type.downcase)
     end
 
     def validate(name:, organization:, validations:, **attributes)
