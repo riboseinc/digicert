@@ -4,7 +4,7 @@ module Digicert
   class OrderCancellation < Digicert::Base
     def create
       request_klass.new(
-        :put, resource_path, default_attributes.merge(attributes)
+        :put, resource_path, **default_attributes.merge(attributes)
       ).run
     end
 

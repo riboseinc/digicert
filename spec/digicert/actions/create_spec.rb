@@ -4,7 +4,7 @@ require "digicert/base"
 RSpec.describe "Digicert::Actions::Create" do
   describe ".create" do
     it "creates a new resource" do
-      stub_digicert_container_create_api(container_attributes)
+      stub_digicert_container_create_api(**container_attributes)
       resource = Digicert::TestCreateAction.create(container_attributes)
 
       expect(resource.id).not_to be_nil

@@ -52,7 +52,7 @@ RSpec.describe Digicert::Certificate do
       }
 
       stub_digicert_certificate_download_by_platform(certificate_id)
-      certificate.download_to_path(download_to_path_attributes)
+      certificate.download_to_path(**download_to_path_attributes)
 
       download_url =
         [download_to_path_attributes[:path], "certificate.zip"].join("/")

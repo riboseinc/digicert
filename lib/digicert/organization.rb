@@ -23,7 +23,7 @@ module Digicert
         country: country,
         telephone: telephone,
         container: container,
-        organization_contact: validate_contact(organization_contact),
+        organization_contact: validate_contact(**organization_contact),
       }
 
       required_attributes.merge(attributes)

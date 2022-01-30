@@ -16,10 +16,10 @@ RSpec.describe Digicert::EmailValidation do
   describe ".valid?" do
     it "validates the email through digicert" do
       validation_attributes = { token: "token", email: "email@example.com" }
-      stub_digicert_email_validations_validate_api(validation_attributes)
+      stub_digicert_email_validations_validate_api(**validation_attributes)
 
       expect(
-        Digicert::EmailValidation.valid?(validation_attributes),
+        Digicert::EmailValidation.valid?(**validation_attributes),
       ).to eq(true)
     end
   end

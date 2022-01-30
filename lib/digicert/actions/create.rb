@@ -7,7 +7,7 @@ module Digicert
 
       def create
         Digicert::Request.new(
-          :post, resource_creation_path, validate(attributes)
+          :post, resource_creation_path, **validate(**attributes)
         ).parse
       end
 

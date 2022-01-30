@@ -5,12 +5,12 @@ module Digicert
     include Digicert::Actions::Create
 
     def self.create(order_id:, **attributes)
-      new(resource_id: order_id, **attributes).create
+      new(attributes.merge(resource_id: order_id)).create
     end
 
     private
 
-    def validate(attributes)
+    def validate(**attributes)
       { certificate: order_attributes.merge(attributes) }
     end
 
