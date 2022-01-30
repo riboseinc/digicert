@@ -1,7 +1,6 @@
 # Digicert
 
-[![Build
-Status](https://travis-ci.org/riboseinc/digicert.svg?branch=master)](https://travis-ci.org/riboseinc/digicert)
+[![Build Status](https://github.com/riboseinc/digicert/actions/workflows/test.yml/badge.svg)](https://github.com/riboseinc/digicert/actions/workflows/test.yml)
 [![Code
 Climate](https://codeclimate.com/github/riboseinc/digicert/badges/gpa.svg)](https://codeclimate.com/github/riboseinc/digicert)
 [![Gem
